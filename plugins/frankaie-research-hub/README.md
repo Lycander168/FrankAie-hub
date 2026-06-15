@@ -39,6 +39,10 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `ad-hook-writer` — 廣告 Hook 生成器。一個賣點 → 8 種框架的前三秒 hook ＋ 短影音開場分鏡。
 - `copy-humanizer` — 文案去 AI 味潤稿器。把生硬文案改自然、貼品牌語氣，並附改動清單（不改事實）。
 - `review-miner` — 評論痛點萃取器。雜亂評論 → 量化痛點 / 讚點 ＋ 產品改善方向與賣點機會。
+- `pricing-calculator` — 定價試算器。成本＋通路費用 → 各售價毛利 / break-even ACOS / 情境比較與定價建議。
+- `email-sequence-builder` — EDM 序列產生器。目標＋受眾階段 → 完整 email 自動化序列（時機 / 主旨 / 內文 / CTA）。
+- `competitor-comparison` — 競品比較表生成器。自家 vs 競品 → 加權比較表＋差異化定位與主打方向。
+- `seo-keyword-expander` — SEO 關鍵字擴展器。種子詞 → 分群分意圖的關鍵字地圖，供 Listing / SEO / 廣告使用。
 
 ## 新增角色範本（SKILL.md frontmatter）
 
@@ -55,6 +59,7 @@ description: >
 
 ## 版本
 
+- v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。
 - v0.3.0 — 新增 4 個原創工具型 skill：listing-optimizer、ad-hook-writer、copy-humanizer、review-miner，供團隊執行具體產出。
 - v0.2.0 — 擴編為 100 位 AI 角色：新增 6 個專家團隊（30 人）＋ 4 個市場 AI 消費者小組（70 人）＋ ROSTER.md 編制表。
 - v0.1.0 — 初版，收錄 electronics-engineer、animation-designer 兩個角色。
