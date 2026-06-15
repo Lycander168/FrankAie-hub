@@ -254,4 +254,4 @@ LYCANDER AI RESEARCH HUB 的機構設計團隊是對標精品 3C 機構的專業
 
 ---
 
-**版本：** 1.0 | **更新日期：** 2026-06-15 | **所屬組織：** LYCANDER AI RESEARCH HUB
+**所屬組織：** LYCANDER AI RESEARCH HUB（版本以 plugin.json 為準）

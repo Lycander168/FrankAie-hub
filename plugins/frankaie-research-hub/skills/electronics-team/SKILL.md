@@ -245,4 +245,4 @@ LYCANDER AI RESEARCH HUB 的電子工程團隊是對標 Anker 級硬體研發的
 
 ---
 
-**版本：** 1.0 | **更新日期：** 2026-06-15 | **所屬組織：** LYCANDER AI RESEARCH HUB
+**所屬組織：** LYCANDER AI RESEARCH HUB（版本以 plugin.json 為準）

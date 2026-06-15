@@ -65,6 +65,7 @@ description: >
 
 ## 版本
 
+- v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
 - v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。
 - v0.3.0 — 新增 4 個原創工具型 skill：listing-optimizer、ad-hook-writer、copy-humanizer、review-miner，供團隊執行具體產出。
