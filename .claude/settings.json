@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "extraKnownMarketplaces": {
+    "frankaie-hub": {
+      "source": {
+        "source": "github",
+        "repo": "Lycander168/FrankAie-hub"
+      }
+    }
+  },
+  "enabledPlugins": [
+    "frankaie-research-hub@frankaie-hub"
+  ]
+}
