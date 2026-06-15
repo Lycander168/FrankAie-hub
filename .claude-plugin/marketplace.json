@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "LYCANDER AI RESEARCH HUB — 專業 AI 角色技能庫。每個 skill 都是一位資深領域專家 AI，依「搜集市場資訊 → 驗證 → 開發/設計」流程獨立發展技能。",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "frankaie-research-hub",
       "source": "./plugins/frankaie-research-hub",
-      "description": "FrankAie 研究中心：資深電子工程師、動畫設計師等專家 AI 角色集合（持續擴充）。"
+      "description": "FrankAie 研究中心：資深電子工程師、結構/工業設計師、認證法規專家、供應鏈採購、動畫設計師、跨境電商營運等專家 AI 角色集合（持續擴充）。"
     }
   ]
 }

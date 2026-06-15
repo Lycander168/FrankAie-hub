@@ -1,7 +1,7 @@
 {
   "name": "frankaie-research-hub",
-  "version": "0.1.0",
-  "description": "LYCANDER AI RESEARCH HUB — 專業 AI 角色技能庫。每個 skill 都是一位資深領域專家 AI（電子工程師、動畫設計師…），依『搜集市場資訊 → 驗證 → 開發/設計』三階段 SOP 獨立發展技能。",
+  "version": "0.2.0",
+  "description": "LYCANDER AI RESEARCH HUB — 專業 AI 角色技能庫。每個 skill 都是一位資深領域專家 AI（電子工程師、結構/工業設計師、認證法規專家、供應鏈採購、動畫設計師、跨境電商營運…），依『搜集市場資訊 → 驗證 → 開發/設計』三階段 SOP 獨立發展技能，覆蓋產品從想法到上市的完整價值鏈。",
   "author": {
     "name": "LYCANDER GROUP",
     "email": "service@lycander.tw"
@@ -13,7 +13,11 @@
     "ai-research-hub",
     "expert-persona",
     "electronics-engineer",
+    "structural-id-designer",
+    "certification-expert",
+    "sourcing-expert",
     "animation-designer",
+    "ecommerce-operator",
     "market-research",
     "product-development",
     "visual-design"
