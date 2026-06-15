@@ -1,0 +1,18 @@
+{
+  "name": "frankaie-hub",
+  "owner": {
+    "name": "Lycander168",
+    "email": "service@lycander.tw"
+  },
+  "metadata": {
+    "description": "LYCANDER AI RESEARCH HUB — 100 位 AI 角色虛擬公司：30 位專家（6 團隊）＋ 70 位 AI 消費者（4 市場），依「搜集市場資訊 → 驗證 → 開發/設計」三階段 SOP 協作。",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "frankaie-research-hub",
+      "source": "./plugins/frankaie-research-hub",
+      "description": "FrankAie 研究中心：資深電子工程師、動畫設計師等專家 AI 角色集合（持續擴充）。"
+    }
+  ]
+}
