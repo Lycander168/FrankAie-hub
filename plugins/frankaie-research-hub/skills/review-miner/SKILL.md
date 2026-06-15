@@ -69,6 +69,19 @@ description: >
 
 ---
 
+## 實例演練（Worked Example）
+
+**輸入**：競品 65W GaN 充電器 Amazon 200 則評論，含星等分布。
+
+**輸出（節錄）**：
+| 痛點 | 頻率 | 推測根因 | 對應動作 |
+|------|------|----------|----------|
+| 充電時發熱明顯 | 31% 一星/二星 | 散熱設計不足 | 強化散熱（→ electronics-team / mechanical-team）|
+| 插頭太大擋到旁邊插座 | 18% | 機構外形 | 縮小體積（→ mechanical-team）|
+
+**讚點**：雙孔同時充（42% 五星提及）→ 可轉成主打賣點。
+**賣點機會**：競品最痛是「發熱」，我們若能做到低溫即為差異化切角（→ ad-hook-writer / listing-optimizer）。
+
 ## 與團隊串接
 
 - **下游（產品）**：痛點根因交 `electronics-team` / `mechanical-team` 改善。

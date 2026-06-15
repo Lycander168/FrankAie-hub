@@ -77,6 +77,19 @@ description: >
 
 ---
 
+## 實例演練（Worked Example）
+
+**輸入**：種子詞 `GaN charger`｜Amazon US｜賣點：65W、雙孔、不發燙、輕巧。
+
+**輸出（節錄）**：
+- 主詞（放標題）：`65W gan charger`、`usb c gan charger`
+- 流量詞（放五點/A+）：`dual port charger`、`fast charger for macbook`、`compact wall charger`
+- 長尾（放 A+/廣告精準）：`65w gan charger for laptop and phone`、`travel charger that stays cool`
+- 防禦/品牌詞（廣告）：`anker 65w alternative`【僅廣告，勿放 Listing】
+
+**後台 search terms**：`gan usb c pd 65w dual port laptop travel compact cool gallium nitride`
+**SEO 主題建議**：「GaN 充電器為什麼比較不發燙？」FAQ 文。
+
 ## 與團隊串接
 
 - **平行**：清單直接餵 `listing-optimizer`（放對位置）、`ad-hook-writer`（語意靈感）。

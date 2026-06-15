@@ -15,9 +15,15 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 
 完整名冊見 [`ROSTER.md`](./ROSTER.md)。架構為 **30 位專家（6 團隊）＋ 70 位 AI 消費者（4 市場）**。
 
-### 旗艦單一專家（深度 SOP）
-- `electronics-engineer` — 資深電子工程師（Anker 級）。產品想法 → 市場情報卡 → 功能驗證報告 → 產品開發包（Spec + BOM + 里程碑）。
-- `animation-designer` — 資深動畫 / 視覺設計師（Native Union 級）。視覺需求 → 視覺情報卡 → 轉化率驗證報告 → 創意製作包（Brief + 分鏡 + 規格 + prompt）。
+### 總機 / 路由（總經理室）
+- `hub-router` — 大需求 / 跨團隊專案的調度中樞。拆解需求 → 判斷該召集哪些團隊與工具 → 排協作順序，產出「專案作戰計畫」。不確定該找誰時先找它。
+
+### 旗艦單一專家（快速單兵諮詢 · 深度 SOP）
+> 與「專家團隊」的區別：旗艦＝一位專家快速判斷/單兵完整產出；團隊＝召集 5 位具名成員分工協作完整專案。觸發情境已在各 skill description 明確區隔，避免路由衝突。
+- `electronics-engineer` — 資深電子工程師（Anker 級）。單兵完整開發包（Spec + BOM + 里程碑）。
+- `animation-designer` — 資深動畫 / 視覺設計師（Native Union 級）。單兵創意包（Brief + 分鏡 + prompt）。
+- `financial-analyst` — 資深產品財務分析師（CFO 視角）。成本/毛利/現金流/回本/投資評估，與 pricing-calculator 搭配。
+- `legal-ip` — 資深法務 / 智財顧問。專利迴避 FTO、合約紅線、商標、廣告與隱私合規（提示風險，非正式法律意見）。
 
 ### 專家團隊（每個 skill = 5 位具名專家）
 - `electronics-team` — 電子工程團隊（電源/快充、電池安全、韌體、RF/無線、測試認證）
@@ -59,6 +65,7 @@ description: >
 
 ## 版本
 
+- v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
 - v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。
 - v0.3.0 — 新增 4 個原創工具型 skill：listing-optimizer、ad-hook-writer、copy-humanizer、review-miner，供團隊執行具體產出。
 - v0.2.0 — 擴編為 100 位 AI 角色：新增 6 個專家團隊（30 人）＋ 4 個市場 AI 消費者小組（70 人）＋ ROSTER.md 編制表。

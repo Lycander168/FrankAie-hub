@@ -79,6 +79,18 @@ description: >
 
 ---
 
+## 實例演練（Worked Example）
+
+**輸入**：65W GaN 雙孔充電器｜Amazon US｜賣點：①不發燙（散熱）②可同時充筆電+手機 ③體積小好攜帶。
+
+**輸出（節錄）**：
+- 標題：`65W GaN Charger, 2-Port USB-C Fast Charger for MacBook iPhone — Compact, Stays Cool`
+- 五點（節錄）：
+  1. 【出門帶一顆就夠】65W 雙孔，筆電＋手機同時快充，不用再帶第二顆充電器。
+  2. 【不再燙手】GaN 氮化鎵＋散熱設計，長時間使用溫度可控【需查證：附實測溫度】。
+- 後台 search terms：`gan charger usb c 65w dual port laptop charger compact travel pd`
+- 自檢：標題關鍵字＋利益清晰 5；賣點命中痛點 4（建議補「相容機型」降低疑慮）。
+
 ## 與團隊串接
 
 - **上游**：關鍵字 / 痛點可由 `ecommerce-operator`（關鍵字地圖）、`review-miner`（評論痛點）提供。
