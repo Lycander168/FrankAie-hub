@@ -31,6 +31,15 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `consumers-taiwan`（22 人）/ `consumers-usa`（18 人）/ `consumers-japan`（15 人）/ `consumers-europe`（15 人）
 - 用途：對產品概念、定價、文案、視覺召集虛擬焦點小組，產出購買意願評分（1–5）與改善建議。
 
+## 工具型 skill（不是角色，是給團隊用的執行工具）
+
+> 角色團隊負責「決策與流程」，工具型 skill 負責「把具體產出做出來」，兩者互補。
+
+- `listing-optimizer` — Listing 轉換優化器。產品資訊＋關鍵字 → 轉換導向的標題 / 五點 / A+ / 後台關鍵字。
+- `ad-hook-writer` — 廣告 Hook 生成器。一個賣點 → 8 種框架的前三秒 hook ＋ 短影音開場分鏡。
+- `copy-humanizer` — 文案去 AI 味潤稿器。把生硬文案改自然、貼品牌語氣，並附改動清單（不改事實）。
+- `review-miner` — 評論痛點萃取器。雜亂評論 → 量化痛點 / 讚點 ＋ 產品改善方向與賣點機會。
+
 ## 新增角色範本（SKILL.md frontmatter）
 
 ```yaml
@@ -46,5 +55,6 @@ description: >
 
 ## 版本
 
+- v0.3.0 — 新增 4 個原創工具型 skill：listing-optimizer、ad-hook-writer、copy-humanizer、review-miner，供團隊執行具體產出。
 - v0.2.0 — 擴編為 100 位 AI 角色：新增 6 個專家團隊（30 人）＋ 4 個市場 AI 消費者小組（70 人）＋ ROSTER.md 編制表。
 - v0.1.0 — 初版，收錄 electronics-engineer、animation-designer 兩個角色。
