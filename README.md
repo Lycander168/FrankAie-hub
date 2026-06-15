@@ -8,15 +8,26 @@
 
 ---
 
-## 目前收錄的專家 AI 角色
+## 編制：100 位 AI 角色
 
+**30 位專家（6 團隊）＋ 70 位 AI 消費者（4 市場）**。完整名冊見
+`plugins/frankaie-research-hub/ROSTER.md`。
+
+### 旗艦單一專家
 | 角色 skill | 定位（對標） | 三階段 SOP |
 |------------|--------------|------------|
-| `electronics-engineer` 資深電子工程師 | Anker 級 / 10 年+ 硬體研發 | 搜集市場資訊 → 驗證產品功能 → 開發對應產品 |
-| `animation-designer` 資深動畫 / 視覺設計師 | Native Union 級 / 品牌動態視覺 | 搜集市場資訊 → 驗證視覺轉化率 → 設計對應圖像及影像 |
+| `electronics-engineer` 資深電子工程師 | Anker 級 | 搜集市場資訊 → 驗證產品功能 → 開發對應產品 |
+| `animation-designer` 資深動畫 / 視覺設計師 | Native Union 級 | 搜集市場資訊 → 驗證視覺轉化率 → 設計對應圖像及影像 |
 
-> 之後要再加新角色（例：供應鏈專家、品牌行銷長、UX 研究員…），只要在
-> `plugins/frankaie-research-hub/skills/` 下新增一個資料夾 + `SKILL.md` 即可。
+### 6 個專家團隊（每個 = 5 位具名專家，共 30 人）
+`electronics-team`（電子工程）、`mechanical-team`（機構設計）、`visual-team`（視覺設計）、
+`marketing-team`（行銷企劃）、`operations-team`（營運執行）、`cx-team`（售後客服）。
+
+### 4 個 AI 消費者市場小組（共 70 人）
+`consumers-taiwan`（22）、`consumers-usa`（18）、`consumers-japan`（15）、`consumers-europe`（15）。
+用來在「驗證」階段召集虛擬焦點小組，對產品/定價/文案/視覺給購買意願評分與改善建議。
+
+> 要再擴編，只要在 `plugins/frankaie-research-hub/skills/` 下新增資料夾 + `SKILL.md` 即可。
 
 ---
 
