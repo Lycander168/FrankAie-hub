@@ -1,0 +1,57 @@
+name: 每日 AI 產業情報報告（Daily AI Industry Report）
+
+# 每天自動產生 LYCANDER 全球 AI 產業情報日報，並開 PR 供審核合併。
+# 由 ai-industry-intelligence 角色（plugins/.../skills/ai-industry-intelligence/SKILL.md）驅動。
+#
+# ⚠️ 啟用前置需求：
+#   1. 在 repo Settings → Secrets and variables → Actions 新增 secret：
+#      ANTHROPIC_API_KEY（Anthropic API 金鑰）。
+#   2. Settings → Actions → General → Workflow permissions 設為
+#      「Read and write permissions」，並勾選「Allow GitHub Actions to create and approve pull requests」。
+#   3. 注意：GitHub Actions 執行環境的網路存取可能受限；若 WebSearch 不可用，
+#      報告會以「可取得的來源 + 標註【需查證】」方式產出，請於合併前人工複核。
+
+on:
+  schedule:
+    # 每日 UTC 23:30 = 台灣時間隔日 07:30。GitHub cron 為 UTC。
+    - cron: "30 23 * * *"
+  workflow_dispatch:  # 也允許手動觸發
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: daily-ai-report
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 計算今日日期（Asia/Taipei）
+        id: date
+        run: echo "today=$(TZ=Asia/Taipei date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      - name: 由 AI 產業研究總監產生今日報告
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            你是 LYCANDER AI RESEARCH HUB 的「全球 AI 產業研究總監」。
+            請依 plugins/frankaie-research-hub/skills/ai-industry-intelligence/SKILL.md
+            定義的角色與三階段 SOP（全球掃描 → 驗證與評分 → 商機轉化），
+            產出 ${{ steps.date.outputs.today }} 的每日 AI 產業情報報告。
+
+            要求：
+            - 以即時網路研究為主（若無網路存取，改以可取得資訊產出，並把無一手來源的主張標【需查證】，不得臆造數字）。
+            - 完全依 SKILL.md「範本 A」的版型輸出（今日摘要 / 全球十大 AI 新聞 / LYCANDER 商機深度分析 30-90-365 天 / AI 模型能力排行榜 / 對 LYCANDER 的影響 / 未來 30 天關注 / 執行建議 / 資料來源）。
+            - 每則重點新聞附可點擊來源連結；市場規模/毛利率/開發難度標明為研究估算。
+            - 將報告存成 reports/${{ steps.date.outputs.today }}.md，並在 reports/README.md 的索引表新增一列。
+            - 參考既有 reports/2026-06-17.md 的格式與深度。
+
+            完成後請建立分支並開 Pull Request（標題含日期），不要直接 push 到 main。
+          claude_args: "--allowed-tools WebSearch,WebFetch,Read,Write,Edit,Bash,Glob,Grep"
