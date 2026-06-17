@@ -18,6 +18,7 @@
 |------------|--------------|------------|
 | `electronics-engineer` 資深電子工程師 | Anker 級 | 搜集市場資訊 → 驗證產品功能 → 開發對應產品 |
 | `animation-designer` 資深動畫 / 視覺設計師 | Native Union 級 | 搜集市場資訊 → 驗證視覺轉化率 → 設計對應圖像及影像 |
+| `ai-industry-intelligence` 全球 AI 產業研究總監 | 情報總監級 | 全球掃描 → 驗證與評分 → 轉成 LYCANDER 商機（每日報告存 `reports/`）|
 
 ### 6 個專家團隊（每個 = 5 位具名專家，共 30 人）
 `electronics-team`（電子工程）、`mechanical-team`（機構設計）、`visual-team`（視覺設計）、
@@ -59,6 +60,9 @@ FrankAie-hub/
 ├─ .claude-plugin/
 │  └─ marketplace.json              ← marketplace 定義（指向 plugin）
 ├─ README.md                        ← 你正在看的這份
+├─ reports/                         ← 每日 AI 產業情報報告（ai-industry-intelligence 產出）
+│  ├─ README.md                     ← 報告索引
+│  └─ 2026-06-17.md                 ← 每日報告（YYYY-MM-DD.md）
 └─ plugins/
    └─ frankaie-research-hub/
       ├─ .claude-plugin/
