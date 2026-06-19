@@ -55,6 +55,7 @@ description: >
 | `email-sequence-builder` | EDM 自動化序列 |
 | `competitor-comparison` | 競品比較與差異化 |
 | `seo-keyword-expander` | 關鍵字地圖 |
+| `drive-md-browser` | 雲端硬碟 .md 報告瀏覽 / 讀取 / 彙整 |
 
 ## 標準調度動線（新品從 0 到上市）
 
