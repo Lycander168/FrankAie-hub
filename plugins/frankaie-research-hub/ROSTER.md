@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 4 位支援專家（電子/視覺/財務/法務）＋ 8 個工具型 skill。
+> **支援陣容**：1 總機（hub-router）＋ 5 位支援專家（電子/視覺/財務/法務/SEO）＋ 8 個工具型 skill。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」。共 23 個 skill。
+> 總機負責「分流」、工具負責「執行產出」。共 24 個 skill。
 
 ---
 
@@ -93,6 +93,7 @@
 | `animation-designer` | 資深動畫/視覺設計師 — 單兵創意包（快速方向用，多人協作改 visual-team）|
 | `financial-analyst` | 資深財務分析師 — 成本/毛利/現金流/回本/投資評估 |
 | `legal-ip` | 資深法務/智財 — 專利迴避 FTO/合約紅線/商標/合規（提示風險，非正式法律意見）|
+| `luna-seo-navigator` | Luna SEO 導航員 — SEO 策略總監（Growth Director）。統籌搜尋意圖/關鍵字金字塔/競品 SERP/內容策略/GEO/技術 SEO/Schema/內外鏈/30-60-90 天/成效預估；戰術關鍵字交 `seo-keyword-expander`|
 
 ### 🛠️ 工具型 skill（執行具體產出）
 | skill | 產出 |
@@ -123,6 +124,7 @@
 | 客服/退換/口碑/會員 | `cx-team` |
 | 算成本/定價/毛利/回本 | `financial-analyst`（深度）/ `pricing-calculator`（快算）|
 | 專利/合約/商標/合規風險 | `legal-ip` |
+| 整體 SEO 策略 / GEO / AI 搜尋 / SERP 競品 / 搜尋流量護城河 | `luna-seo-navigator`（策略）/ `seo-keyword-expander`（快擴關鍵字）|
 | 測產品/定價/文案會不會被買 | `consumers-taiwan/usa/japan/europe` |
 | 寫 Listing | `listing-optimizer` |
 | 寫廣告 hook | `ad-hook-writer` |

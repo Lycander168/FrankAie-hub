@@ -24,6 +24,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `animation-designer` — 資深動畫 / 視覺設計師（Native Union 級）。單兵創意包（Brief + 分鏡 + prompt）。
 - `financial-analyst` — 資深產品財務分析師（CFO 視角）。成本/毛利/現金流/回本/投資評估，與 pricing-calculator 搭配。
 - `legal-ip` — 資深法務 / 智財顧問。專利迴避 FTO、合約紅線、商標、廣告與隱私合規（提示風險，非正式法律意見）。
+- `luna-seo-navigator` — Luna SEO 導航員（SEO Growth Director）。統籌搜尋意圖、關鍵字金字塔、競品/SERP、內容策略、GEO/AI 搜尋、Schema、內外鏈與 30/60/90 天路線圖與成效預估；戰術關鍵字交 `seo-keyword-expander`。
 
 ### 專家團隊（每個 skill = 5 位具名專家）
 - `electronics-team` — 電子工程團隊（電源/快充、電池安全、韌體、RF/無線、測試認證）
@@ -65,6 +66,7 @@ description: >
 
 ## 版本
 
+- v0.7.0 — 新增旗艦支援專家 `luna-seo-navigator`（Luna SEO 導航員 / SEO Growth Director）：六步驟輸出協議（意圖→金字塔→競爭→內容→GEO→30/60/90）＋競品/SERP/Schema/內外鏈/GEO 範本，鎖定 Apple 周邊、Qi2.2、Thunderbolt 5、USB4 搜尋市場；與 `seo-keyword-expander`（戰術）互補。共 24 個 skill。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
 - v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。

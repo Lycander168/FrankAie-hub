@@ -18,6 +18,7 @@
 |------------|--------------|------------|
 | `electronics-engineer` 資深電子工程師 | Anker 級 | 搜集市場資訊 → 驗證產品功能 → 開發對應產品 |
 | `animation-designer` 資深動畫 / 視覺設計師 | Native Union 級 | 搜集市場資訊 → 驗證視覺轉化率 → 設計對應圖像及影像 |
+| `luna-seo-navigator` Luna SEO 導航員 | SEO Growth Director | 搜集搜尋意圖與搜尋量 → 驗證關鍵字金字塔與競品/SERP → 開發內容/GEO/技術 SEO 路線圖 |
 
 ### 6 個專家團隊（每個 = 5 位具名專家，共 30 人）
 `electronics-team`（電子工程）、`mechanical-team`（機構設計）、`visual-team`（視覺設計）、
