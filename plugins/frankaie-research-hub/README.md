@@ -55,6 +55,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 > 不產出內容，而是讓「長專案 / 多角色協作」具備持久記憶與可恢復性。
 
 - `planning-with-files` — 檔案化規劃 / 持久記憶（Manus 風格）。把工作記憶寫進 `task_plan.md` / `findings.md` / `progress.md` 三個磁碟檔，讓任務在 `/clear`、context 壓縮或 session 中斷後仍能無縫接回；並提供多角色共享狀態（總機持有主計畫、各角色寫自己段落、進度集中記）。由 `hub-router` 在大專案開跑前先建檔。改寫自開源社群 `OthmanAdi/planning-with-files` 模式並在地化整合進 HUB 三階段 SOP。
+- `quality-gate` — 產出品質閘門 / 對抗式審查。對每份產出（情報卡 / 驗證報告 / Spec / Listing / 文案 / 視覺 brief…）以「致命 / 重要 / 次要」三級審查，跑「完成前驗證」檢核表，通過才放行；含 HUB 專用審查維度（防臆造、可回溯、可量測、邏輯一致、風險揭露…）與「收到審查意見的回應法」。由 `hub-router` 在每階段交棒前與結案前插入。改寫自開源社群 superpowers 的 code-review / verification-before-completion 方法（`obra/superpowers`）並在地化。
 
 ## 新增角色範本（SKILL.md frontmatter）
 
@@ -71,6 +72,7 @@ description: >
 
 ## 版本
 
+- v0.8.0 — 新增基礎建設 skill `quality-gate`（產出品質閘門 / 對抗式審查）：致命/重要/次要三級、HUB 專用審查維度、完成前驗證檢核表、收到審查意見的回應法；`hub-router` 每階段交棒前與結案前插入審查。改寫自 superpowers 的 code-review / verification 方法。
 - v0.7.0 — 新增基礎建設 skill `planning-with-files`（Manus 風格檔案化規劃 / 持久記憶）：task_plan/findings/progress 三檔、完成閘門、多角色共享狀態；`hub-router` 動線加入「0. 建檔」前置步驟。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。

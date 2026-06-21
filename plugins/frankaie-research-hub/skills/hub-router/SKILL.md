@@ -56,10 +56,11 @@ description: >
 | `competitor-comparison` | 競品比較與差異化 |
 | `seo-keyword-expander` | 關鍵字地圖 |
 
-### 基礎建設 skill（記憶 / 流程）
+### 基礎建設 skill（記憶 / 流程 / 品質）
 | Skill | 用途 |
 |-------|------|
 | `planning-with-files` | 長專案/多角色的持久記憶：把作戰計畫落地成 `task_plan.md` / `findings.md` / `progress.md`，防 context 流失、支援多角色共享狀態與恢復 |
+| `quality-gate` | 產出品質閘門：每階段產出 / 交棒 / 結案前做對抗式審查（致命/重要/次要三級）＋ 完成前驗證，通過才放行 |
 
 ## 標準調度動線（新品從 0 到上市）
 
@@ -75,6 +76,8 @@ description: >
 5. 上市前驗證→ consumers-*（素材/定價打分）
 6. 上架投放 → marketing-team ＋ operations-team（出貨）
 7. 售後迭代 → cx-team ＋ review-miner →（回饋 1.）
+
+※ 每階段「產出後 / 交棒前」插入 quality-gate 審查；結案前做最後總驗收，通過才標 done。
 ```
 
 ---
