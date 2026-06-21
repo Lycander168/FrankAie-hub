@@ -22,6 +22,8 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 > 與「專家團隊」的區別：旗艦＝一位專家快速判斷/單兵完整產出；團隊＝召集 5 位具名成員分工協作完整專案。觸發情境已在各 skill description 明確區隔，避免路由衝突。
 - `electronics-engineer` — 資深電子工程師（Anker 級）。單兵完整開發包（Spec + BOM + 里程碑）。
 - `animation-designer` — 資深動畫 / 視覺設計師（Native Union 級）。單兵創意包（Brief + 分鏡 + prompt）。
+- `product-manager` — 資深產品經理。產品決策者：機會評估 → Go/No-Go → PRD + 功能優先級 + 路線圖。與 hub-router 分工（它排「召集誰」，PM 裁「做什麼產品」）。
+- `data-analyst` — 資深資料 / 數據分析師。把流量/轉換/ROAS/留存/評論情緒等數據變成可決策洞察與監控指標盤。與 financial-analyst 分工（財務看錢，數據看行為成效）。
 - `financial-analyst` — 資深產品財務分析師（CFO 視角）。成本/毛利/現金流/回本/投資評估，與 pricing-calculator 搭配。
 - `legal-ip` — 資深法務 / 智財顧問。專利迴避 FTO、合約紅線、商標、廣告與隱私合規（提示風險，非正式法律意見）。
 
@@ -72,6 +74,7 @@ description: >
 
 ## 版本
 
+- v0.9.0 — 補強角色缺口（以 agency-agents 16 部門盤點後）：新增支援專家 `product-manager`（產品決策/PRD/優先級）與 `data-analyst`（行為成效數據洞察/指標盤）；hub-router 動線於立項/開發/售後納入兩者；ROSTER 與「中心」對照同步更新（產品中心、數據中心落地）。
 - v0.8.0 — 新增基礎建設 skill `quality-gate`（產出品質閘門 / 對抗式審查）：致命/重要/次要三級、HUB 專用審查維度、完成前驗證檢核表、收到審查意見的回應法；`hub-router` 每階段交棒前與結案前插入審查。改寫自 superpowers 的 code-review / verification 方法。
 - v0.7.0 — 新增基礎建設 skill `planning-with-files`（Manus 風格檔案化規劃 / 持久記憶）：task_plan/findings/progress 三檔、完成閘門、多角色共享狀態；`hub-router` 動線加入「0. 建檔」前置步驟。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
