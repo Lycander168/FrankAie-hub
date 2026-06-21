@@ -50,6 +50,12 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `competitor-comparison` — 競品比較表生成器。自家 vs 競品 → 加權比較表＋差異化定位與主打方向。
 - `seo-keyword-expander` — SEO 關鍵字擴展器。種子詞 → 分群分意圖的關鍵字地圖，供 Listing / SEO / 廣告使用。
 
+## 基礎建設 skill（記憶 / 流程）
+
+> 不產出內容，而是讓「長專案 / 多角色協作」具備持久記憶與可恢復性。
+
+- `planning-with-files` — 檔案化規劃 / 持久記憶（Manus 風格）。把工作記憶寫進 `task_plan.md` / `findings.md` / `progress.md` 三個磁碟檔，讓任務在 `/clear`、context 壓縮或 session 中斷後仍能無縫接回；並提供多角色共享狀態（總機持有主計畫、各角色寫自己段落、進度集中記）。由 `hub-router` 在大專案開跑前先建檔。改寫自開源社群 `OthmanAdi/planning-with-files` 模式並在地化整合進 HUB 三階段 SOP。
+
 ## 新增角色範本（SKILL.md frontmatter）
 
 ```yaml
@@ -65,6 +71,7 @@ description: >
 
 ## 版本
 
+- v0.7.0 — 新增基礎建設 skill `planning-with-files`（Manus 風格檔案化規劃 / 持久記憶）：task_plan/findings/progress 三檔、完成閘門、多角色共享狀態；`hub-router` 動線加入「0. 建檔」前置步驟。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
 - v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。

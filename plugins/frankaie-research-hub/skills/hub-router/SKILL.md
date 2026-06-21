@@ -56,9 +56,18 @@ description: >
 | `competitor-comparison` | 競品比較與差異化 |
 | `seo-keyword-expander` | 關鍵字地圖 |
 
+### 基礎建設 skill（記憶 / 流程）
+| Skill | 用途 |
+|-------|------|
+| `planning-with-files` | 長專案/多角色的持久記憶：把作戰計畫落地成 `task_plan.md` / `findings.md` / `progress.md`，防 context 流失、支援多角色共享狀態與恢復 |
+
 ## 標準調度動線（新品從 0 到上市）
 
+> 大專案開跑前，先用 `planning-with-files` 把作戰計畫落地成 `task_plan.md`，
+> 之後每階段把產出寫進 `findings.md`、進度寫進 `progress.md`，確保中斷也能無縫接回。
+
 ```
+0. 建檔     → planning-with-files（建立 task_plan/findings/progress，把計畫變可勾選、可恢復）
 1. 立項     → financial-analyst（算帳）＋ consumers-*（需求驗證）＋ competitor-comparison
 2. 開發     → electronics-team ＋ mechanical-team（並行）→ legal-ip（專利迴避）
 3. 認證量產 → electronics-team(認證) ＋ operations-team（採購/量產）
