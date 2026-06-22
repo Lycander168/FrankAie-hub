@@ -11,6 +11,9 @@ Checks:
      matches the real number of skill folders.
   3. Version consistency — marketplace.json and plugin.json declare the same
      version, and the marketplace plugin entry version matches too.
+  4. Structure consistency — every SKILL.md has frontmatter whose `name` equals
+     its folder, a non-trivial `description`, at least one output template
+     (code fence or markdown table) and an anti-hallucination guardrail marker.
 
 Exit code 0 = all good, 1 = at least one problem (CI fails).
 No third-party dependencies — standard library only.
@@ -40,6 +43,13 @@ ALLOWLIST = {
 TOKEN_RE = re.compile(r"`([a-z][a-z0-9]+(?:-[a-z0-9]+)+)`")
 
 DOC_GLOBS = ["README.md", "plugins/**/*.md", "plugins/**/SKILL.md"]
+
+# Anti-hallucination markers — bracket tags or in-prose phrasing. A skill must
+# contain at least one of these so every output carries a "don't fabricate" rule.
+GUARDRAIL_RE = re.compile(
+    r"需查證|需數據|假設|需驗證|需執業律師確認|臆造|杜撰|誇大|誇張|不杜撰|"
+    r"保持原樣|虛假廣告|根拠|模擬"
+)
 
 
 def real_skills() -> set[str]:
@@ -72,6 +82,48 @@ def check_references(skills: set[str]) -> list[str]:
                     errors.append(
                         f"  {rel}:{lineno}  ->  `{token}` is not a known skill"
                     )
+    return errors
+
+
+def _frontmatter(text: str) -> tuple[dict[str, str], str]:
+    """Return (frontmatter dict, body). Only top-level `key: value` lines are
+    parsed; folded values (`>`) collapse their continuation lines into one."""
+    if not text.startswith("---"):
+        return {}, text
+    end = text.find("\n---", 3)
+    if end == -1:
+        return {}, text
+    fm_block = text[3:end]
+    body = text[end + 4:]
+    fm: dict[str, str] = {}
+    key = None
+    for line in fm_block.splitlines():
+        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)$", line)
+        if m:
+            key = m.group(1)
+            fm[key] = m.group(2).strip()
+        elif key and line.strip():
+            fm[key] = (fm[key] + " " + line.strip()).strip()
+    return fm, body
+
+
+def check_structure(skills: set[str]) -> list[str]:
+    errors: list[str] = []
+    for skill in sorted(skills):
+        path = SKILLS_DIR / skill / "SKILL.md"
+        text = path.read_text(encoding="utf-8")
+        fm, body = _frontmatter(text)
+        where = f"  skills/{skill}/SKILL.md"
+        name = fm.get("name", "").strip().strip("\"'")
+        if name != skill:
+            errors.append(f"{where}: frontmatter name='{name}' != folder '{skill}'")
+        desc = fm.get("description", "").strip().strip(">").strip()
+        if len(desc) < 40:
+            errors.append(f"{where}: description missing or too short")
+        if "```" not in body and not re.search(r"^\s*\|", body, re.M):
+            errors.append(f"{where}: no output template (no code fence or table)")
+        if not GUARDRAIL_RE.search(body):
+            errors.append(f"{where}: no anti-hallucination guardrail marker")
     return errors
 
 
@@ -112,6 +164,7 @@ def main() -> int:
 
     sections = [
         ("Broken skill references", check_references(skills)),
+        ("Skill structure consistency", check_structure(skills)),
         ("Skill count consistency", check_count(skills)),
         ("Version consistency", check_versions()),
     ]

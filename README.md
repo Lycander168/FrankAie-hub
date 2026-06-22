@@ -8,7 +8,7 @@
 
 ---
 
-## 編制：100 位 AI 角色 ＋ 支援陣容（共 29 個 skill）
+## 編制：100 位 AI 角色 ＋ 支援陣容（共 33 個 skill）
 
 **核心 100 人 = 30 位團隊專家（6 團隊）＋ 70 位 AI 消費者（4 市場）**，
 另有總機、支援專家、工具與基礎建設。完整名冊見
@@ -22,16 +22,18 @@
 `consumers-taiwan`（22）、`consumers-usa`（18）、`consumers-japan`（15）、`consumers-europe`（15）。
 用來在「驗證」階段召集虛擬焦點小組，對產品/定價/文案/視覺給購買意願評分與改善建議。
 
-### 1 總機 ＋ 8 位支援專家（單兵深度諮詢）
+### 1 總機 ＋ 11 位支援專家（單兵深度諮詢）
 `hub-router`（總機路由）；`electronics-engineer`、`animation-designer`、`product-manager`、
-`data-analyst`、`security-engineer`、`channel-sales`、`financial-analyst`、`legal-ip`。
+`data-analyst`、`security-engineer`、`channel-sales`、`supply-chain-expert`、`growth-retention`、
+`web-engineer`、`financial-analyst`、`legal-ip`。
 
 ### 8 個工具型 skill（執行具體產出）
 `listing-optimizer`、`ad-hook-writer`、`copy-humanizer`、`review-miner`、
 `pricing-calculator`、`email-sequence-builder`、`competitor-comparison`、`seo-keyword-expander`。
 
-### 2 個基礎建設 skill（記憶 / 品質）
-`planning-with-files`（長專案持久記憶）、`quality-gate`（產出對抗式審查 + 完成前驗證）。
+### 3 個基礎建設 skill（記憶 / 品質 / 驗證）
+`planning-with-files`（長專案持久記憶）、`quality-gate`（產出對抗式審查 + 完成前驗證）、
+`validation-panel`（AI 消費者驗證關卡，統一 1–5 購買意願 rubric）。
 
 > 要再擴編，只要在 `plugins/frankaie-research-hub/skills/` 下新增資料夾 + `SKILL.md` 即可
 > （新增後 `scripts/check_skills.py` 會在 CI 自動檢查引用與計數一致性）。
@@ -53,7 +55,7 @@
    /plugin install frankaie-research-hub@frankaie-hub
    ```
 
-4. 重啟 session 後，29 個 skill 就會出現在清單，依各自 description 的觸發關鍵字自動觸發；
+4. 重啟 session 後，33 個 skill 就會出現在清單，依各自 description 的觸發關鍵字自動觸發；
    不確定該找誰時先呼叫 `hub-router` 由總機分流。
 
 > Repo 設為 **Public** 最省事；若設 Private，安裝時需設定 GitHub 認證。
@@ -76,8 +78,9 @@ FrankAie-hub/
       ├─ .claude-plugin/
       │  └─ plugin.json             ← plugin 基本資料
       ├─ README.md                  ← plugin 說明 + 新增角色教學 + 格式選用指南
-      ├─ ROSTER.md                  ← 完整編制名冊 & 路由表（29 個 skill）
-      └─ skills/                    ← 29 個 skill，每個一個資料夾 + SKILL.md
+      ├─ ROSTER.md                  ← 完整編制名冊 & 路由表（33 個 skill）
+      └─ skills/                    ← 33 個 skill，每個一個資料夾 + SKILL.md
+         ├─ _TEMPLATE/              ← 新增 skill 範本（Pattern A/B/C）
          ├─ hub-router/             ← 總機路由
          ├─ electronics-team/ … cx-team/        ← 6 專家團隊
          ├─ consumers-taiwan/ … consumers-europe/ ← 4 AI 消費者小組

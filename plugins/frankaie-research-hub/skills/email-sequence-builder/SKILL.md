@@ -92,4 +92,5 @@ description: >
 - **平行**：文案丟 `copy-humanizer` 去 AI 味；主旨可呼叫 `ad-hook-writer` 取靈感。
 - **下游**：序列交 `marketing-team` 設定自動化；售後類序列交 `cx-team`。
 
-> 提醒：優惠 / 保固 / 庫存承諾要與 `operations-team` 對齊，不在信中承諾做不到的事。
+> 提醒：優惠 / 保固 / 庫存承諾要與 `operations-team` 對齊，不在信中承諾做不到的事；
+> 任何具體數字 / 優惠 / 保證未經確認一律標 `【需查證】`，不杜撰、不誇大。

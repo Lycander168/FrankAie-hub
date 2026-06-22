@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 8 位支援專家（電子/視覺/產品/數據/資安/通路/財務/法務）＋ 8 個工具型 skill ＋ 2 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質）。
+> **支援陣容**：1 總機（hub-router）＋ 11 位支援專家（電子/視覺/產品/數據/資安/通路/供應鏈/成長/網站/財務/法務）＋ 8 個工具型 skill ＋ 3 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質 / validation-panel 驗證）。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶與品質」。共 29 個 skill。
+> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶/品質/驗證」。共 33 個 skill。
 
 ---
 
@@ -95,6 +95,9 @@
 | `data-analyst` | 資深資料分析師 — 把流量/轉換/ROAS/評論等數據變成可決策洞察與指標盤 |
 | `security-engineer` | 資深資安/裝置安全 — 韌體/OTA/連網/DTC 站資安與資料隱私（防禦性，技術面）|
 | `channel-sales` | 資深通路/B2B 業務 — marketplace 帳號健康、經銷批發/B2B 開發、通路價格與鋪貨 |
+| `supply-chain-expert` | 資深供應鏈/策略採購 — 供應商評鑑/多源備援/TCO 降本/斷鏈韌性（策略層，operations 之上）|
+| `growth-retention` | 資深成長/再購 — 留存/流失喚回/會員分層/LTV 成長（既有客，marketing 獲取之外）|
+| `web-engineer` | 資深前端/DTC 站工程 — 官網/落地頁/結帳優化/效能/埋點/A-B 基建（技術實作）|
 | `financial-analyst` | 資深財務分析師 — 成本/毛利/現金流/回本/投資評估 |
 | `legal-ip` | 資深法務/智財 — 專利迴避 FTO/合約紅線/商標/合規（提示風險，非正式法律意見）|
 
@@ -121,6 +124,10 @@
 | 看數據 / 轉換漏斗 / ROAS / A/B / 找掉量原因 / 做指標盤 | `data-analyst` |
 | 資安/韌體安全/OTA/資料隱私（含 App/連網產品）| `security-engineer` |
 | 鋪通路/找經銷批發/B2B 報價/marketplace 帳號健康 | `channel-sales` |
+| 找供應商/策略採購/多源備援/降本/斷鏈風險 | `supply-chain-expert` |
+| 提升回購/留存/救流失/做會員/訂閱/LTV | `growth-retention` |
+| 做官網/落地頁/結帳優化/網站提速/埋點/A-B | `web-engineer` |
+| 測會不會被買/概念/定價/文案/視覺驗證/打分 | `validation-panel`（再調度 consumers-*）|
 | 快速評估電路/快充/電池可行性 | `electronics-engineer` |
 | 完整電子開發（電源/電池/韌體/RF/認證分工）| `electronics-team` |
 | 外觀/機構/CMF/模具/散熱 | `mechanical-team` |
@@ -152,6 +159,9 @@
 | 產品中心 | `product-manager`（產品決策/PRD/路線圖）|
 | 資安中心 | `security-engineer`（裝置/韌體/資料安全，技術面；合約合規面交 legal-ip）|
 | 通路/業務中心 | `channel-sales`（marketplace 帳號、經銷批發、B2B、通路價格）＋ `operations-team`（出貨履約）|
+| 供應鏈中心 | `supply-chain-expert`（策略採購/供應商/備援/降本）＋ `operations-team`（下單/跟料/收貨）|
+| 成長中心 | `growth-retention`（再購/留存/LTV）＋ `data-analyst`（成效量化）＋ `web-engineer`（站台/埋點）|
+| 驗證關卡 | `validation-panel`（統一 1–5 rubric）→ 調度 `consumers-taiwan/usa/japan/europe` |
 | 行銷中心 | `marketing-team` ＋ 行銷工具（hook/listing/seo/EDM）|
 | 視覺中心 | `visual-team` / `animation-designer` |
 | 營運中心 | `operations-team` |
