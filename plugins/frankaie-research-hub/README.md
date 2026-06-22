@@ -21,7 +21,8 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 ### 旗艦單一專家（快速單兵諮詢 · 深度 SOP）
 > 與「專家團隊」的區別：旗艦＝一位專家快速判斷/單兵完整產出；團隊＝召集 5 位具名成員分工協作完整專案。觸發情境已在各 skill description 明確區隔，避免路由衝突。
 - `electronics-engineer` — 資深電子工程師（Anker 級）。單兵完整開發包（Spec + BOM + 里程碑）。
-- `animation-designer` — 資深動畫 / 視覺設計師（Native Union 級）。單兵創意包（Brief + 分鏡 + prompt）。
+- `animation-designer` — 資深動畫 / 視覺設計師（Native Union 級）。單兵創意包（Brief + 分鏡 + prompt）；專做影片 motion。
+- `3d-motion-designer` — 資深 3D / 網頁動態設計師（Apple 官網 / Native Union 級）。互動網頁 3D、scroll 動態、微互動，可串 Three.js Viewer 即時算繪 live 預覽。
 - `financial-analyst` — 資深產品財務分析師（CFO 視角）。成本/毛利/現金流/回本/投資評估，與 pricing-calculator 搭配。
 - `legal-ip` — 資深法務 / 智財顧問。專利迴避 FTO、合約紅線、商標、廣告與隱私合規（提示風險，非正式法律意見）。
 
@@ -49,6 +50,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `email-sequence-builder` — EDM 序列產生器。目標＋受眾階段 → 完整 email 自動化序列（時機 / 主旨 / 內文 / CTA）。
 - `competitor-comparison` — 競品比較表生成器。自家 vs 競品 → 加權比較表＋差異化定位與主打方向。
 - `seo-keyword-expander` — SEO 關鍵字擴展器。種子詞 → 分群分意圖的關鍵字地圖，供 Listing / SEO / 廣告使用。
+- `motion-spec-builder` — 網頁動態規格產生器。一個區塊 → keyframe 時間軸 + 緩動 + GSAP/Three.js 可貼程式碼 + 即時算繪預覽（`3d-motion-designer` 的執行下游）。
 
 ## 新增角色範本（SKILL.md frontmatter）
 
@@ -65,6 +67,7 @@ description: >
 
 ## 版本
 
+- v0.7.0 — 新增網頁互動設計能力：`3d-motion-designer`（Apple/Native Union 級網頁 3D/scroll/微互動，綁 Three.js Viewer 即時算繪）＋ 工具型 `motion-spec-builder`（動態規格 + GSAP/Three.js 可貼程式碼）。與 `animation-designer`（影片 motion）雙向交叉引用避免觸發重疊；共 25 個 skill。附 worked examples（充電器 Hero 製作包 + 全斷點規格、小露娜 Luna 無線充電盤製作包 + 全斷點規格，含 AI 消費者焦點小組打分）於各 skill 的 `examples/`。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
 - v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。
