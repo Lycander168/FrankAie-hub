@@ -140,5 +140,6 @@ description: >
 - **上游**：各角色團隊把產出寫進 Drive，本 skill 是它們的「共同閱覽窗口」。
 - **下游**：讀到的客服報告 → `review-miner`；競品/情報報告 → `competitor-comparison`；供應鏈/成本訊號 → `financial-analyst`。
 - **調度**：要把「讀到的多份報告」變成當日行動計畫，交 `hub-router` 統籌。
+- **手機閱讀**：要在手機 Drive 直接看（`.md` 行動版打不開）→ 交 `drive-md-to-gdoc` 轉成 Google Doc。
 
 > 提醒：本 skill 只做「瀏覽 / 讀取 / 彙整」，不替報告內容背書、不產生新報告；任何無法從檔案內容直接讀到的推論一律標 `【需查證】`，並附可回溯的來源檔名與連結。

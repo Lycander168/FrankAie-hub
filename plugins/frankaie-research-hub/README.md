@@ -50,6 +50,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `competitor-comparison` — 競品比較表生成器。自家 vs 競品 → 加權比較表＋差異化定位與主打方向。
 - `seo-keyword-expander` — SEO 關鍵字擴展器。種子詞 → 分群分意圖的關鍵字地圖，供 Listing / SEO / 廣告使用。
 - `drive-md-browser` — Google 雲端硬碟 Markdown 報告瀏覽器。用 Drive 工具列出 / 搜尋 / 讀取 / 彙整團隊每日產出的 `.md` 報告，回傳結構化索引與摘要。
+- `drive-md-to-gdoc` — Google 雲端硬碟 Markdown 轉 Google Doc。解「手機在 Drive 打不開 `.md`」痛點：把 `.md` 報告轉成手機原生可渲染的 Google Doc（標題/表格/粗體），回傳可在手機開啟的連結。
 
 ## 新增角色範本（SKILL.md frontmatter）
 
@@ -66,6 +67,7 @@ description: >
 
 ## 版本
 
+- v0.8.0 — 新增工具型 skill `drive-md-to-gdoc`（Google 雲端硬碟 Markdown 轉 Google Doc）：解「手機在 Drive 無法瀏覽 `.md`」痛點，把報告轉成手機原生可讀的 Google Doc。工具型 skill 增至 10 個、全站共 25 個 skill；同步更新 ROSTER 與 hub-router 路由。
 - v0.7.0 — 新增工具型 skill `drive-md-browser`（Google 雲端硬碟 Markdown 報告瀏覽器）：用 Drive 工具列出 / 搜尋 / 讀取 / 彙整團隊每日產出的 `.md` 報告。工具型 skill 增至 9 個、全站共 24 個 skill；同步更新 ROSTER 與 hub-router 路由。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
