@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 6 位支援專家（電子/視覺/產品/數據/財務/法務）＋ 8 個工具型 skill ＋ 2 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質）。
+> **支援陣容**：1 總機（hub-router）＋ 8 位支援專家（電子/視覺/產品/數據/資安/通路/財務/法務）＋ 8 個工具型 skill ＋ 2 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質）。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶與品質」。共 27 個 skill。
+> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶與品質」。共 29 個 skill。
 
 ---
 
@@ -93,6 +93,8 @@
 | `animation-designer` | 資深動畫/視覺設計師 — 單兵創意包（快速方向用，多人協作改 visual-team）|
 | `product-manager` | 資深產品經理 — 產品決策者：該不該做/做哪版/砍哪些功能/PRD/優先級裁決 |
 | `data-analyst` | 資深資料分析師 — 把流量/轉換/ROAS/評論等數據變成可決策洞察與指標盤 |
+| `security-engineer` | 資深資安/裝置安全 — 韌體/OTA/連網/DTC 站資安與資料隱私（防禦性，技術面）|
+| `channel-sales` | 資深通路/B2B 業務 — marketplace 帳號健康、經銷批發/B2B 開發、通路價格與鋪貨 |
 | `financial-analyst` | 資深財務分析師 — 成本/毛利/現金流/回本/投資評估 |
 | `legal-ip` | 資深法務/智財 — 專利迴避 FTO/合約紅線/商標/合規（提示風險，非正式法律意見）|
 
@@ -117,6 +119,8 @@
 | 不知道從何開始 / 整個專案怎麼跑 | `hub-router` |
 | 該不該做這產品 / 做哪版 / 砍功能 / 寫 PRD / 需求排序 | `product-manager` |
 | 看數據 / 轉換漏斗 / ROAS / A/B / 找掉量原因 / 做指標盤 | `data-analyst` |
+| 資安/韌體安全/OTA/資料隱私（含 App/連網產品）| `security-engineer` |
+| 鋪通路/找經銷批發/B2B 報價/marketplace 帳號健康 | `channel-sales` |
 | 快速評估電路/快充/電池可行性 | `electronics-engineer` |
 | 完整電子開發（電源/電池/韌體/RF/認證分工）| `electronics-team` |
 | 外觀/機構/CMF/模具/散熱 | `mechanical-team` |
@@ -146,6 +150,8 @@
 |----------------|----------------|
 | 數據中心 | `data-analyst`（行為/成效數據洞察）＋ `review-miner`、`consumers-*`（產生原始素材）|
 | 產品中心 | `product-manager`（產品決策/PRD/路線圖）|
+| 資安中心 | `security-engineer`（裝置/韌體/資料安全，技術面；合約合規面交 legal-ip）|
+| 通路/業務中心 | `channel-sales`（marketplace 帳號、經銷批發、B2B、通路價格）＋ `operations-team`（出貨履約）|
 | 行銷中心 | `marketing-team` ＋ 行銷工具（hook/listing/seo/EDM）|
 | 視覺中心 | `visual-team` / `animation-designer` |
 | 營運中心 | `operations-team` |

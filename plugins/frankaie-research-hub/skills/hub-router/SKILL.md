@@ -43,6 +43,8 @@ description: >
 | `animation-designer` | 只需一位資深視覺/動畫師快速出 brief / 分鏡 |
 | `product-manager` | 該不該做 / 做哪版 / 砍哪些功能 / 寫 PRD / 需求優先級裁決 |
 | `data-analyst` | 看轉換漏斗 / ROAS / A/B / 量化評論 / 找掉量原因 / 做指標盤 |
+| `security-engineer` | 含 App/韌體/連網或 DTC 站的資安、韌體/OTA 安全、資料隱私技術面 |
+| `channel-sales` | marketplace 帳號健康、經銷批發/B2B 開發、通路價格與鋪貨 |
 | `financial-analyst` | 成本/定價/毛利/現金流/投資評估 |
 | `legal-ip` | 合約/專利迴避/商標/法規合規風險 |
 
@@ -73,14 +75,17 @@ description: >
 0. 建檔     → planning-with-files（建立 task_plan/findings/progress，把計畫變可勾選、可恢復）
 1. 立項     → product-manager（裁決做什麼/做哪版）＋ financial-analyst（算帳）＋ consumers-*（需求驗證）＋ competitor-comparison
 2. 開發     → product-manager 出 PRD → electronics-team ＋ mechanical-team（並行）→ legal-ip（專利迴避）
+              ＋ security-engineer（若含 App/韌體/連網：安全需求寫進 PRD）
 3. 認證量產 → electronics-team(認證) ＋ operations-team（採購/量產）
 4. 上市素材 → visual-team ＋ marketing-team ＋ 工具（hook/listing/seo/humanizer）
+              ＋ channel-sales（選通路/鋪貨/帳號健康/B2B 開發）
 5. 上市前驗證→ consumers-*（素材/定價打分）
-6. 上架投放 → marketing-team ＋ operations-team（出貨）
+6. 上架投放 → marketing-team ＋ channel-sales（通路鋪設）＋ operations-team（出貨）
 7. 售後迭代 → cx-team ＋ review-miner ＋ data-analyst（量化成效/找問題）→（回饋 1.）
 
 ※ 每階段「產出後 / 交棒前」插入 quality-gate 審查；結案前做最後總驗收，通過才標 done。
 ※ data-analyst 可在 1（需求量化）、4–6（投放/轉換成效）、7（掉量根因）隨時被召來提供數據洞察。
+※ security-engineer 僅在產品含 App/韌體/連網或有自架 DTC 站時納入；純被動配件可略。
 ```
 
 ---
