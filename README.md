@@ -86,5 +86,7 @@ FrankAie-hub/
 
 ## 維護者文件
 
+- **作業指南（HUB 操作手冊）**：`docs/OPERATIONS_GUIDE.md` —— 怎麼用這 100 位角色＋工具，
+  把一個專案從「想法」跑到「上市與售後」的標準作業流程（含決策樹、7 站動線、實戰範例）。
 - **GitHub 操作指南**：`docs/GITHUB_GUIDE.md` —— 從 clone、開分支、commit、push 到開 PR
   與更新 marketplace 的完整照抄指令，適合第一次接觸 Git 的維護者。
