@@ -81,3 +81,10 @@ FrankAie-hub/
 4. commit、push，重新 `/plugin marketplace update frankaie-hub` 即可。
 
 詳見 `plugins/frankaie-research-hub/README.md`。
+
+---
+
+## 維護者文件
+
+- **GitHub 操作指南**：`docs/GITHUB_GUIDE.md` —— 從 clone、開分支、commit、push 到開 PR
+  與更新 marketplace 的完整照抄指令，適合第一次接觸 Git 的維護者。
