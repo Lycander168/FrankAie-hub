@@ -10,7 +10,7 @@ description: >
 # 競品比較表生成器（Competitor Comparison Builder）
 
 這是一個**工具型 skill**。功能：把自家產品與 3–5 個競品，整理成一張**可決策**的比較表，並萃取差異化定位與主打方向。
-和 `electronics-team`、`ecommerce-operator`、`marketing-team` 搭配 —— 不只列規格，更指出「我們贏在哪、該喊什麼」。
+和 `electronics-team`、`channel-sales`、`marketing-team` 搭配 —— 不只列規格，更指出「我們贏在哪、該喊什麼」。
 
 > 原則：比較表的價值不在「有幾欄」，而在最後一句「所以我們主打＿＿」。差異要對得上客戶在意的點。
 

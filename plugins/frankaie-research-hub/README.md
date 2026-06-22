@@ -74,8 +74,27 @@ description: >
 
 內文建議區塊順序：`Persona / 角色設定` → `三階段 SOP` → `輸出範本` → `與 LYCANDER GROUP 的協作介面` → `啟動方式`。
 
+## 格式選用指南（Pattern A / B / C）
+
+本 hub 依 skill 類型有三套內文格式，新增時請對號入座，保持一致：
+
+| Pattern | 適用 | 內文骨架 | 範例 |
+|---------|------|----------|------|
+| **A 專家型** | 單一資深專家（深度諮詢） | Persona → 三階段 SOP → 輸出範本 → 協作介面 → 啟動方式 | `product-manager`、`security-engineer`、`channel-sales` |
+| **B 工具型** | 執行具體產出的工具 | 何時用 → 需要的輸入 → 運作流程 → 輸出範本 → 實例演練 → 與團隊串接 | `listing-optimizer`、`pricing-calculator`、`ad-hook-writer` |
+| **C 團隊型** | 5 人具名團隊 | 團隊總覽(表) → 成員檔案(深描) → 三階段 SOP → 指名調用 → 協作介面 | `electronics-team`、`visual-team`、`cx-team` |
+
+> 基礎建設型（`planning-with-files`、`quality-gate`、`hub-router`）為特例：以「何時啟動 → 機制/守則 → 範本 → 協作 → 啟動」描述流程而非角色。
+
+共同必備（所有 Pattern）：
+1. frontmatter `description` 要有**明確觸發關鍵字**，並用 `⚠️` 標出與相近 skill 的分界（避免路由衝突）。
+2. 至少一份**輸出範本**。
+3. **防臆造守則**：無一手資料的主張一律標 `【需查證】`／`【需數據】`／`【假設】`。
+4. 引用其他 skill 時，名稱必須是**真實存在**的 skill（CI 會檢查）。
+
 ## 版本
 
+- v0.11.0 — 品質治理（全 skill 審計後）：修復 10 處壞引用（已不存在的 ecommerce-operator / sourcing-expert，改指向 `channel-sales`／`seo-keyword-expander`／`operations-team`）；hub-router 新增「觸發衝突仲裁表」；plugin README 新增「格式選用指南(Pattern A/B/C)」；根 README 計數/目錄樹更新；新增 `scripts/check_skills.py` 與 `.github/workflows/check-skills.yml`（CI 自動檢查引用完整性、skill 計數與版本一致性）。
 - v0.10.0 — 補強中優先角色缺口：新增 `security-engineer`（裝置/韌體/資料安全，防禦性技術面）與 `channel-sales`（marketplace 帳號健康/經銷批發/B2B/通路價格）；hub-router 動線於開發(安全需求)、上市/投放(通路鋪設)納入兩者；ROSTER 支援專家增至 8 位、新增資安中心與通路中心對照、總數更新為 29 個 skill。
 - v0.9.0 — 補強角色缺口（以 agency-agents 16 部門盤點後）：新增支援專家 `product-manager`（產品決策/PRD/優先級）與 `data-analyst`（行為成效數據洞察/指標盤）；hub-router 動線於立項/開發/售後納入兩者；ROSTER 與「中心」對照同步更新（產品中心、數據中心落地）。
 - v0.8.0 — 新增基礎建設 skill `quality-gate`（產出品質閘門 / 對抗式審查）：致命/重要/次要三級、HUB 專用審查維度、完成前驗證檢核表、收到審查意見的回應法；`hub-router` 每階段交棒前與結案前插入審查。改寫自 superpowers 的 code-review / verification 方法。

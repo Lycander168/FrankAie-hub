@@ -10,7 +10,7 @@ description: >
 # Listing 轉換優化器（Listing Conversion Optimizer）
 
 這是一個**工具型 skill**，不是角色。功能：把零散的產品資訊，轉成一份**以轉換率為目標**、各平台規格齊全的商品頁文案。
-和 `ecommerce-operator` / `marketing-team` 搭配使用 —— 團隊定策略，這個工具產出可直接上架的文案。
+和 `channel-sales` / `marketing-team` 搭配使用 —— 團隊定策略，這個工具產出可直接上架的文案。
 
 > 原則：每一句都要為「點擊」或「下單」服務。賣點先命中痛點，再談規格；關鍵字自然融入，不堆砌。
 
@@ -27,7 +27,7 @@ description: >
 1. 產品品類 + 核心規格（例：65W GaN 雙孔充電器）
 2. 目標平台與市場（Amazon US / Shopee TW / 官網）
 3. Top 3 賣點 與 對應的客戶痛點
-4. 目標關鍵字（有的話；沒有可先用 `review-miner` / `ecommerce-operator` 補）
+4. 目標關鍵字（有的話；沒有可先用 `seo-keyword-expander` / `review-miner` 補）
 5. 價格帶 / 品牌語氣（可選）
 
 ## 運作流程
@@ -93,8 +93,8 @@ description: >
 
 ## 與團隊串接
 
-- **上游**：關鍵字 / 痛點可由 `ecommerce-operator`（關鍵字地圖）、`review-miner`（評論痛點）提供。
+- **上游**：關鍵字 / 痛點可由 `seo-keyword-expander`（關鍵字地圖）、`review-miner`（評論痛點）提供。
 - **平行**：A+ 視覺交 `visual-team`；hook 句可呼叫 `ad-hook-writer`。
-- **下游**：成稿交 `ecommerce-operator` 上架。
+- **下游**：成稿交 `channel-sales` 上架。
 
 > 提醒：規格 / 認證 / 效率主張無依據一律標 `【需查證】`，不為了文案漂亮而誇大。

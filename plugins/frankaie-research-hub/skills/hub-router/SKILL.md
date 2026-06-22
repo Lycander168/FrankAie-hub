@@ -66,6 +66,21 @@ description: >
 | `planning-with-files` | 長專案/多角色的持久記憶：把作戰計畫落地成 `task_plan.md` / `findings.md` / `progress.md`，防 context 流失、支援多角色共享狀態與恢復 |
 | `quality-gate` | 產出品質閘門：每階段產出 / 交棒 / 結案前做對抗式審查（致命/重要/次要三級）＋ 完成前驗證，通過才放行 |
 
+## 觸發衝突仲裁表（同一需求可能誤觸多個 skill 時）
+
+> 多個 skill 的觸發詞會重疊。遇到下列關鍵字，依「先後 precedence」分流，避免搶答或漏接。
+
+| 重疊關鍵字 | 可能誤觸 | 仲裁規則（precedence）|
+|------------|----------|------------------------|
+| 定價 / pricing / 毛利 | pricing-calculator / financial-analyst / channel-sales / marketing-team | 先 `pricing-calculator`（算 unit economics）→ 要策略/現金流找 `financial-analyst` → 各通路 MAP/價差找 `channel-sales` → 促銷機制找 `marketing-team` |
+| 數據 / 分析 | data-analyst / review-miner / consumers-* | 行為/成效/漏斗/ROAS → `data-analyst`；評論文字 → `review-miner`；購買意願打分 → `consumers-*` |
+| 視覺 / 設計 | animation-designer / visual-team | 快速單支 brief/分鏡 → `animation-designer`；完整多人視覺專案（KV/動態/包裝/UI）→ `visual-team` |
+| 安全 / security | quality-gate / security-engineer / electronics-team / legal-ip | 產出審查 → `quality-gate`；韌體/連網/資料資安 → `security-engineer`；電氣安規 → `electronics-team`；法規合規條文 → `legal-ip` |
+| 新品上市 / GTM | hub-router / product-manager / marketing-team | 整體拆解排程 → `hub-router`；做什麼產品/PRD → `product-manager`；上市執行 → `marketing-team` |
+| 電子 / 硬體 | electronics-engineer / electronics-team | 一位專家快速判斷 → `electronics-engineer`；5 人分工完整開發 → `electronics-team` |
+
+> 通則：**單兵快速** vs **團隊完整** → 看規模；**算/查/審** vs **決策/執行** → 看動作性質。仍不確定就由本路由直接指派。
+
 ## 標準調度動線（新品從 0 到上市）
 
 > 大專案開跑前，先用 `planning-with-files` 把作戰計畫落地成 `task_plan.md`，

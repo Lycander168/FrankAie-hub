@@ -90,6 +90,6 @@ description: >
 
 - **上游**：初稿可來自 `listing-optimizer`、`ad-hook-writer`、`marketing-team`。
 - **平行**：可丟 `consumers-*` 小組確認「讀起來可信、想買嗎」。
-- **下游**：定稿交 `marketing-team` / `ecommerce-operator` 使用。
+- **下游**：定稿交 `marketing-team` / `channel-sales` 使用。
 
 > 提醒：去 AI 味是改「表達」不是改「事實」。任何規格 / 功效 / 認證主張保持原樣，不可為了通順而新增或放大。
