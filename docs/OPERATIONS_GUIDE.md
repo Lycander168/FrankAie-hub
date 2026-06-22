@@ -150,4 +150,52 @@ Step 7  售後
 
 ---
 
+## 8. 連接 GitHub：把變更同步上去
+
+HUB 的角色與 skill 都存在 `Lycander168/FrankAie-hub` 這個 GitHub repo。
+**用 HUB 做事**（前面 7 節）跟**同步到 GitHub**是同一條動線的兩端：
+
+```
+改 / 新增角色或文件（本機）
+   → commit → push（GitHub）
+   → /plugin marketplace update（Claude 端生效）
+```
+
+### A. 第一次連接（安裝 marketplace）
+
+在 Claude 中執行，連到本 repo：
+
+```
+/plugin marketplace add Lycander168/FrankAie-hub
+/plugin install frankaie-research-hub@frankaie-hub
+```
+
+> Repo 設為 **Public** 最省事；若為 Private，安裝時需設定 GitHub 認證。
+
+### B. 改完角色 / 文件後，同步回 GitHub
+
+完整 Git 指令（clone、開分支、commit、push、開 PR）見
+**`docs/GITHUB_GUIDE.md`**。最短路徑：
+
+```bash
+git checkout -b feat/你的變更
+git add .
+git commit -m "新增 XX 角色（vX.Y.0）"
+git push -u origin feat/你的變更
+# 在 GitHub 開 PR → 審查 → 合併進 main
+```
+
+### C. 讓變更在 Claude 端生效
+
+合併進 `main` 後，使用者端更新即可看到新角色 / 文件：
+
+```
+/plugin marketplace update frankaie-hub
+```
+
+> 一句話：**HUB 產出 → Git 同步 → marketplace update**，三步走完才算真正上線。
+> 詳細 Git 操作一律以 `docs/GITHUB_GUIDE.md` 為準。
+
+---
+
 由 **LYCANDER GROUP** 維護 · 有問題請開 issue 或聯絡 service@lycander.tw
