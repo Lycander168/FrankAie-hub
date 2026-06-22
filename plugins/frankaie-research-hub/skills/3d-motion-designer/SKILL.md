@@ -185,5 +185,5 @@ description: >
 ## 範例（Worked Examples）
 
 - [`examples/charger-hero-interaction-package.md`](examples/charger-hero-interaction-package.md) — 65W GaN 充電器官網 Hero，完整三階段《互動製作包》（克制旋轉語彙）。
-- [`examples/wireless-pad-interaction-package.md`](examples/wireless-pad-interaction-package.md) — 無線充電盤 Hero，核心為磁吸 `back.out` overshoot 吸附語彙。
+- [`examples/wireless-pad-interaction-package.md`](examples/wireless-pad-interaction-package.md) — 小露娜 Luna 無線充電盤 Hero，核心為磁吸 `back.out` overshoot ＋月光環呼吸語彙（含焦點小組打分）。
 - 接棒展開實作規格見 `motion-spec-builder` 的 examples。

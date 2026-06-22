@@ -113,3 +113,4 @@ gsap.to('#product', {
 ## 範例（Worked Examples）
 
 - [`examples/charger-hero-motion-spec.md`](examples/charger-hero-motion-spec.md) — 65W 充電器 Hero 全斷點規格（斷點矩陣 + 9 條微互動 + responsive/a11y 程式碼），接棒自 `3d-motion-designer` 的製作包。
+- [`examples/luna-wireless-hero-motion-spec.md`](examples/luna-wireless-hero-motion-spec.md) — 小露娜 Luna 無線充電盤 Hero 全斷點規格（磁吸 `back.out` overshoot ＋月光環呼吸）。
