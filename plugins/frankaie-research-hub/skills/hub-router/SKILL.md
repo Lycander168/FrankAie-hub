@@ -40,7 +40,8 @@ description: >
 | Skill | 何時找 |
 |-------|--------|
 | `electronics-engineer` | 只需一位資深電子工程師快速判斷 / 做單一完整開發包 |
-| `animation-designer` | 只需一位資深視覺/動畫師快速出 brief / 分鏡 |
+| `animation-designer` | 只需一位資深視覺/動畫師快速出 brief / 影片分鏡 |
+| `3d-motion-designer` | 要 Apple/Native Union 級網頁 3D / scroll 動態 / 微互動（可即時算繪）|
 | `financial-analyst` | 成本/定價/毛利/現金流/投資評估 |
 | `legal-ip` | 合約/專利迴避/商標/法規合規風險 |
 
@@ -55,6 +56,7 @@ description: >
 | `email-sequence-builder` | EDM 自動化序列 |
 | `competitor-comparison` | 競品比較與差異化 |
 | `seo-keyword-expander` | 關鍵字地圖 |
+| `motion-spec-builder` | 網頁動態規格 + GSAP/Three.js 可貼程式碼 + 即時算繪 |
 
 ## 標準調度動線（新品從 0 到上市）
 
@@ -63,6 +65,7 @@ description: >
 2. 開發     → electronics-team ＋ mechanical-team（並行）→ legal-ip（專利迴避）
 3. 認證量產 → electronics-team(認證) ＋ operations-team（採購/量產）
 4. 上市素材 → visual-team ＋ marketing-team ＋ 工具（hook/listing/seo/humanizer）
+              └ 官網/landing 互動：3d-motion-designer → motion-spec-builder（網頁 3D/scroll 動態）
 5. 上市前驗證→ consumers-*（素材/定價打分）
 6. 上架投放 → marketing-team ＋ operations-team（出貨）
 7. 售後迭代 → cx-team ＋ review-miner →（回饋 1.）

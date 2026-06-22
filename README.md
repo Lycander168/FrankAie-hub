@@ -17,7 +17,8 @@
 | 角色 skill | 定位（對標） | 三階段 SOP |
 |------------|--------------|------------|
 | `electronics-engineer` 資深電子工程師 | Anker 級 | 搜集市場資訊 → 驗證產品功能 → 開發對應產品 |
-| `animation-designer` 資深動畫 / 視覺設計師 | Native Union 級 | 搜集市場資訊 → 驗證視覺轉化率 → 設計對應圖像及影像 |
+| `animation-designer` 資深動畫 / 視覺設計師 | Native Union 級 | 搜集市場資訊 → 驗證視覺轉化率 → 設計對應圖像及影像（影片 motion）|
+| `3d-motion-designer` 資深 3D / 網頁動態設計師 | Apple 官網 / Native Union 級 | 搜集市場資訊 → 驗證互動轉化 → 設計並算繪對應 3D / 動態（綁 Three.js Viewer 即時算繪）|
 
 ### 6 個專家團隊（每個 = 5 位具名專家，共 30 人）
 `electronics-team`（電子工程）、`mechanical-team`（機構設計）、`visual-team`（視覺設計）、
@@ -46,7 +47,7 @@
    /plugin install frankaie-research-hub@frankaie-hub
    ```
 
-4. 重啟 session 後，兩個專家角色 skill 就會出現在 skill 清單，依描述關鍵字自動觸發。
+4. 重啟 session 後，所有專家角色與工具型 skill 就會出現在 skill 清單，依描述關鍵字自動觸發。
 
 > Repo 設為 **Public** 最省事；若設 Private，安裝時需設定 GitHub 認證。
 
@@ -64,11 +65,12 @@ FrankAie-hub/
       ├─ .claude-plugin/
       │  └─ plugin.json             ← plugin 基本資料
       ├─ README.md                  ← plugin 說明 + 新增角色教學
-      └─ skills/
-         ├─ electronics-engineer/
-         │  └─ SKILL.md             ← 資深電子工程師 AI
-         └─ animation-designer/
-            └─ SKILL.md             ← 資深動畫 / 視覺設計師 AI
+      └─ skills/                    ← 每個子資料夾一個 SKILL.md（自動探索）
+         ├─ electronics-engineer/   ← 資深電子工程師 AI
+         ├─ animation-designer/     ← 資深動畫 / 視覺設計師 AI（影片）
+         ├─ 3d-motion-designer/     ← 資深 3D / 網頁動態設計師 AI（綁 Three.js 算繪）
+         ├─ motion-spec-builder/    ← 網頁動態規格產生器（工具型）
+         └─ …（其餘團隊 / 消費者 / 工具型 skill）
 ```
 
 ---

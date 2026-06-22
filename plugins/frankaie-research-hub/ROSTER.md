@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 4 位支援專家（電子/視覺/財務/法務）＋ 8 個工具型 skill。
+> **支援陣容**：1 總機（hub-router）＋ 5 位支援專家（電子/視覺/3D網頁動態/財務/法務）＋ 9 個工具型 skill。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」。共 23 個 skill。
+> 總機負責「分流」、工具負責「執行產出」。共 25 個 skill。
 
 ---
 
@@ -90,7 +90,8 @@
 | skill | 角色 |
 |-------|------|
 | `electronics-engineer` | 資深電子工程師 — 單兵完整開發包（快速諮詢用，多人協作改 electronics-team）|
-| `animation-designer` | 資深動畫/視覺設計師 — 單兵創意包（快速方向用，多人協作改 visual-team）|
+| `animation-designer` | 資深動畫/視覺設計師 — 單兵創意包（影片 motion；快速方向用，多人協作改 visual-team）|
+| `3d-motion-designer` | 資深 3D/網頁動態設計師（Apple/Native Union 級）— 互動網頁 3D/scroll/微互動，可即時算繪 |
 | `financial-analyst` | 資深財務分析師 — 成本/毛利/現金流/回本/投資評估 |
 | `legal-ip` | 資深法務/智財 — 專利迴避 FTO/合約紅線/商標/合規（提示風險，非正式法律意見）|
 
@@ -105,6 +106,7 @@
 | `email-sequence-builder` | EDM 自動化序列 |
 | `competitor-comparison` | 競品加權比較＋差異化定位 |
 | `seo-keyword-expander` | 分群分意圖關鍵字地圖 |
+| `motion-spec-builder` | 網頁動態規格＋GSAP/Three.js 可貼程式碼＋即時算繪 |
 
 ---
 
@@ -116,7 +118,9 @@
 | 快速評估電路/快充/電池可行性 | `electronics-engineer` |
 | 完整電子開發（電源/電池/韌體/RF/認證分工）| `electronics-team` |
 | 外觀/機構/CMF/模具/散熱 | `mechanical-team` |
-| 快速要視覺方向 / 一支分鏡 | `animation-designer` |
+| 快速要視覺方向 / 一支影片分鏡 | `animation-designer` |
+| Apple/Native Union 級網頁 3D / scroll 動態 / 微互動 | `3d-motion-designer` |
+| 要動畫規格 / 可貼 GSAP·Three.js 程式碼 | `motion-spec-builder` |
 | 完整視覺專案（KV/動態/包裝/UI 分工）| `visual-team` |
 | 品牌/廣告/社群/文案/通路 | `marketing-team` |
 | 採購/物流/報關/量產/補貨 | `operations-team` |
@@ -142,7 +146,7 @@
 |----------------|----------------|
 | 數據中心 | 概念性外部數據源（可用 `review-miner`、`consumers-*` 產生洞察）|
 | 行銷中心 | `marketing-team` ＋ 行銷工具（hook/listing/seo/EDM）|
-| 視覺中心 | `visual-team` / `animation-designer` |
+| 視覺中心 | `visual-team` / `animation-designer`（影片）/ `3d-motion-designer`（網頁 3D/互動）|
 | 營運中心 | `operations-team` |
 | 財務中心 | `financial-analyst` ＋ `pricing-calculator` |
 | 法務 | `legal-ip` |
@@ -183,4 +187,4 @@
 | 6 | `marketing-team` ＋ `operations-team` | 投放＋出貨 | 上市 |
 | 7 | `cx-team` ＋ `review-miner` | 服務＋評論回饋 → 回饋第 2 步改版 | 迭代輸入 |
 
-> 這就是 23 個 skill 協作的完整閉環：**分流 → 開發 → 認證量產 → 素材 → 驗證 → 上市 → 售後迭代**。
+> 這就是 25 個 skill 協作的完整閉環：**分流 → 開發 → 認證量產 → 素材（含官網互動）→ 驗證 → 上市 → 售後迭代**。
