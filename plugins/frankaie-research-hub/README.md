@@ -67,7 +67,7 @@ description: >
 
 ## 版本
 
-- v0.7.0 — 新增網頁互動設計能力：`3d-motion-designer`（Apple/Native Union 級網頁 3D/scroll/微互動，綁 Three.js Viewer 即時算繪）＋ 工具型 `motion-spec-builder`（動態規格 + GSAP/Three.js 可貼程式碼）。與 `animation-designer`（影片 motion）雙向交叉引用避免觸發重疊；共 25 個 skill。
+- v0.7.0 — 新增網頁互動設計能力：`3d-motion-designer`（Apple/Native Union 級網頁 3D/scroll/微互動，綁 Three.js Viewer 即時算繪）＋ 工具型 `motion-spec-builder`（動態規格 + GSAP/Three.js 可貼程式碼）。與 `animation-designer`（影片 motion）雙向交叉引用避免觸發重疊；共 25 個 skill。附 worked examples（充電器 Hero 製作包 + 全斷點規格、無線充電盤製作包）於各 skill 的 `examples/`。
 - v0.6.0 — 一致性與可發現性收尾：ROSTER 升級為完整索引（含「需求→召喚誰」路由表、「中心↔skill」對照、端到端實例）；統一寫死的版本 footer。
 - v0.5.0 — 結構優化：新增 `hub-router`（總機路由）、`financial-analyst`、`legal-ip`；修正旗艦 vs 團隊的觸發詞重疊；8 個工具型 skill 各補 worked example。
 - v0.4.0 — 再新增 4 個工具型 skill：pricing-calculator、email-sequence-builder、competitor-comparison、seo-keyword-expander（工具型共 8 個）。

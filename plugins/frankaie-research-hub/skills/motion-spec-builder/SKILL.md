@@ -107,3 +107,9 @@ gsap.to('#product', {
 - **下游**：規格 + 程式碼交前端工程實作；可丟 `consumers-*` 對體驗打分；成效回 `marketing-team`。
 
 > 提醒：規格要能直接落地且跑得順；動畫不得犧牲效能與可及性，所有實測數字標【需實測】。
+
+---
+
+## 範例（Worked Examples）
+
+- [`examples/charger-hero-motion-spec.md`](examples/charger-hero-motion-spec.md) — 65W 充電器 Hero 全斷點規格（斷點矩陣 + 9 條微互動 + responsive/a11y 程式碼），接棒自 `3d-motion-designer` 的製作包。

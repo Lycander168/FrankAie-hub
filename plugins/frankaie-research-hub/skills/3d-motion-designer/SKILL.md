@@ -179,3 +179,11 @@ description: >
 當使用者給一個互動需求（例：「幫 65W 充電器做一個 Apple 官網那種 hero 3D 展示頁」），預設從 **Stage 1** 開始，逐階段詢問是否進入下一階段。若使用者只要單一階段（例：只要 hero 灰模預覽），直接執行該階段並套用對應範本；需要即時算繪時走「Three.js Viewer 使用」。
 
 > 提醒：原創為先，標竿站只談動態方向不複製實作；每個動態決策都要回得到「轉化假設 ＋ 效能預算 ＋ 可及性底線」三條線。
+
+---
+
+## 範例（Worked Examples）
+
+- [`examples/charger-hero-interaction-package.md`](examples/charger-hero-interaction-package.md) — 65W GaN 充電器官網 Hero，完整三階段《互動製作包》（克制旋轉語彙）。
+- [`examples/wireless-pad-interaction-package.md`](examples/wireless-pad-interaction-package.md) — 無線充電盤 Hero，核心為磁吸 `back.out` overshoot 吸附語彙。
+- 接棒展開實作規格見 `motion-spec-builder` 的 examples。
