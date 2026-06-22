@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 4 位支援專家（電子/視覺/財務/法務）＋ 8 個工具型 skill。
+> **支援陣容**：1 總機（hub-router）＋ 4 位支援專家（電子/視覺/財務/法務）＋ 10 個工具型 skill。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」。共 23 個 skill。
+> 總機負責「分流」、工具負責「執行產出」。共 25 個 skill。
 
 ---
 
@@ -105,6 +105,8 @@
 | `email-sequence-builder` | EDM 自動化序列 |
 | `competitor-comparison` | 競品加權比較＋差異化定位 |
 | `seo-keyword-expander` | 分群分意圖關鍵字地圖 |
+| `drive-md-browser` | Google 雲端硬碟 .md 報告瀏覽 / 讀取 / 彙整 |
+| `drive-md-to-gdoc` | 把 Drive 的 .md 轉成手機可讀的 Google Doc |
 
 ---
 
@@ -131,6 +133,8 @@
 | 做 EDM 序列 | `email-sequence-builder` |
 | 競品比較 | `competitor-comparison` |
 | 擴充關鍵字 | `seo-keyword-expander` |
+| 瀏覽/讀取雲端硬碟上的 .md 報告 | `drive-md-browser` |
+| 手機看不到 Drive 的 md / 轉成手機可讀 | `drive-md-to-gdoc` |
 
 ---
 
@@ -183,4 +187,6 @@
 | 6 | `marketing-team` ＋ `operations-team` | 投放＋出貨 | 上市 |
 | 7 | `cx-team` ＋ `review-miner` | 服務＋評論回饋 → 回饋第 2 步改版 | 迭代輸入 |
 
-> 這就是 23 個 skill 協作的完整閉環：**分流 → 開發 → 認證量產 → 素材 → 驗證 → 上市 → 售後迭代**。
+> 這就是 25 個 skill 協作的完整閉環：**分流 → 開發 → 認證量產 → 素材 → 驗證 → 上市 → 售後迭代**，
+> 各團隊產出的 .md 報告可隨時用 `drive-md-browser` 在雲端硬碟回看與彙整，並用 `drive-md-to-gdoc`
+> 轉成手機可讀的 Google Doc 隨身查閱。
