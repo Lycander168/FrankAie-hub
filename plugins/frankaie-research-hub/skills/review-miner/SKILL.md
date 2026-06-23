@@ -10,7 +10,7 @@ description: >
 # 評論痛點萃取器（Review Miner）
 
 這是一個**工具型 skill**。功能：把一堆雜亂的評論 / Q&A / 退貨原因，整理成**量化、可行動**的洞察：客戶最痛什麼、最愛什麼、我們的切入機會在哪。
-是 `electronics-team`、`marketing-team`、`ecommerce-operator`、`cx-team` 的共用情報來源。
+是 `electronics-team`、`marketing-team`、`channel-sales`、`cx-team` 的共用情報來源。
 
 > 原則：洞察要可量化、可行動。不是「大家覺得不錯」，而是「38% 一星集中在發熱，對應我們的散熱賣點」。
 

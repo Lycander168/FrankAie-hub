@@ -10,7 +10,7 @@ description: >
 # 定價試算器（Pricing Calculator）
 
 這是一個**工具型 skill**。功能：把產品成本、平台費用、廣告與物流，整理成清楚的**單位經濟**，算出每個售價的真實毛利、損益兩平點與可承受廣告比，並給定價建議。
-和 `ecommerce-operator`、`operations-team`、`marketing-team` 搭配 —— 先算得清楚，才敢投錢。
+和 `channel-sales`、`operations-team`、`marketing-team` 搭配 —— 先算得清楚，才敢投錢。
 
 > 原則：定價不是「成本×倍數」，而是「在目標毛利下，這個價撐不撐得起廣告與通路抽成」。每個數字要能回溯。
 
@@ -97,8 +97,8 @@ description: >
 
 ## 與團隊串接
 
-- **上游**：落地成本由 `sourcing-expert` / `operations-team` 提供；市場價格帶由 `ecommerce-operator` 提供。
+- **上游**：落地成本由 `operations-team` 提供；市場價格帶由 `channel-sales` / `competitor-comparison` 提供。
 - **平行**：目標廣告比與 `marketing-team` 對齊。
-- **下游**：定價結論交 `ecommerce-operator` 上架、`operations-team` 採購備貨。
+- **下游**：定價結論交 `channel-sales` 上架、`operations-team` 採購備貨。
 
 > 提醒：成本 / 費率無一手報價一律標 `【需查證】` 或 `【假設】`，並把假設值列清楚，方便日後替換真實數字。

@@ -10,7 +10,7 @@ description: >
 # SEO 關鍵字擴展器（SEO Keyword Expander）
 
 這是一個**工具型 skill**。功能：給一個產品或種子關鍵字，擴展出**有結構**的關鍵字清單 —— 分主詞 / 流量詞 / 長尾 / 防禦詞，標搜尋意圖與用途，直接餵給 Listing、官網 SEO 或廣告。
-和 `ecommerce-operator`、`listing-optimizer`、`marketing-team` 搭配。
+和 `channel-sales`、`listing-optimizer`、`marketing-team` 搭配。
 
 > 原則：關鍵字不是越多越好，而是「分對群、放對位置」。每個詞要知道它要去標題、內文、後台還是廣告。
 
@@ -93,7 +93,7 @@ description: >
 ## 與團隊串接
 
 - **平行**：清單直接餵 `listing-optimizer`（放對位置）、`ad-hook-writer`（語意靈感）。
-- **驗證**：交易型詞的真實搜尋量交 `ecommerce-operator` 用後台 / 工具補。
+- **驗證**：交易型詞的真實搜尋量交 `channel-sales` 用後台 / 工具補。
 - **下游**：SEO 主題交 `marketing-team` 排內容行事曆。
 
 > 提醒：搜尋量 / 競爭度無一手後台或工具來源一律標 `【需查證】`，相關性可由語意判斷但需註明非實測數據。
