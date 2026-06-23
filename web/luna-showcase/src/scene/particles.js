@@ -68,9 +68,12 @@ export class Particles {
     this._speed = speed;
     this._phase = phase;
     this._pos = pos;
+    this._col = col;
+    this._baseCol = col.slice(); // 原始色，能量上升時依高度衰減後可還原
+    this._colDirty = false;
 
     const mat = new THREE.PointsMaterial({
-      size: 0.085,
+      size: 0.07,
       map: makeDotTexture(),
       vertexColors: true,
       transparent: true,
@@ -99,25 +102,54 @@ export class Particles {
     const spd = this._speed;
     const ph = this._phase;
     const spread = this.spread;
+    const riseAmt = this.rise;
+    const rising = riseAmt > 0.001;
+    const CLIMB = 5.0; // 爬升高度（越大越往上飄）
+    const col = this._col;
+    const base = this._baseCol;
 
     for (let i = 0; i < this.count; i++) {
       const i3 = i * 3;
       // 收束時半徑趨近一個小核心；散落時拉到完整半徑
       const r = THREE.MathUtils.lerp(0.25, rad[i], spread);
       const drift = Math.sin(t * spd[i] + ph[i]) * 0.18 * spread;
-      const rise = this.rise * ((t * spd[i] * 0.6 + ph[i]) % 3.0); // 向上爬升（能量/蒸氣）
 
-      pos[i3] = dir[i3] * (r + drift);
-      pos[i3 + 1] = dir[i3 + 1] * (r + drift) + rise;
-      pos[i3 + 2] = dir[i3 + 2] * (r + drift);
+      let y = dir[i3 + 1] * (r + drift);
+      // 水平擴張係數（上升時略往外散，像煙柱）
+      let spreadX = 1;
+
+      if (rising) {
+        const climb = (t * spd[i] * 0.7 + ph[i]) % 1.0; // 0→1 循環
+        y += riseAmt * climb * CLIMB; // 向上爬升（能量/蒸氣）
+        spreadX = 1 + riseAmt * climb * 0.4;
+        // 越高越淡（additive blending：色值越小越透）
+        const fade = 1 - riseAmt * climb;
+        col[i3] = base[i3] * fade;
+        col[i3 + 1] = base[i3 + 1] * fade;
+        col[i3 + 2] = base[i3 + 2] * fade;
+      }
+
+      pos[i3] = dir[i3] * (r + drift) * spreadX;
+      pos[i3 + 1] = y;
+      pos[i3 + 2] = dir[i3 + 2] * (r + drift) * spreadX;
     }
     this.points.geometry.attributes.position.needsUpdate = true;
+
+    if (rising) {
+      this.points.geometry.attributes.color.needsUpdate = true;
+      this._colDirty = true;
+    } else if (this._colDirty) {
+      // 上升結束 → 還原原始色（只做一次）
+      col.set(base);
+      this.points.geometry.attributes.color.needsUpdate = true;
+      this._colDirty = false;
+    }
     // 平滑 opacity
     this.material.opacity += (this.opacity - this.material.opacity) * Math.min(1, dt * 4);
     this.points.rotation.y += dt * 0.04 * (0.4 + spread);
   }
 
   setQuality(low) {
-    this.material.size = low ? 0.07 : 0.085;
+    this.material.size = low ? 0.058 : 0.07;
   }
 }

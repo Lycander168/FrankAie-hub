@@ -64,7 +64,10 @@ export class Scene {
     this.model = new LunaModel();
     this.group.add(this.model.root);
 
-    this.particles = new Particles({ count: reducedMotion ? 500 : 1400 });
+    // 顆粒數依螢幕寬度調整：桌機更密，手機適度降載
+    const isSmall = window.innerWidth < 760;
+    const particleCount = reducedMotion ? 600 : isSmall ? 1600 : 2600;
+    this.particles = new Particles({ count: particleCount });
     this.group.add(this.particles.points);
 
     // 後製：Bloom 光暈
@@ -124,10 +127,10 @@ export class Scene {
     const pOpacity = kf(p, [
       [0.0, 0.5],
       [0.3, 0.95],
-      [0.62, 0.6],
-      [0.72, 0.9],
-      [0.85, 0.25],
-      [1.0, 0.1],
+      [0.6, 0.75],
+      [0.72, 1.0],
+      [0.85, 0.4],
+      [1.0, 0.12],
     ]);
     // 發光：assemble 末段啟動 → glow 章節達峰 → 之後維持微亮
     const glow = kf(p, [
@@ -136,12 +139,12 @@ export class Scene {
       [0.78, 0.7],
       [1.0, 0.55],
     ]);
-    // 能量上升（取代蒸氣）
+    // 能量上升（取代蒸氣）—— 加強且拉長，尾段不歸零
     const rise = kf(p, [
-      [0.6, 0.0],
-      [0.7, 0.5],
-      [0.8, 0.25],
-      [1.0, 0.0],
+      [0.55, 0.0],
+      [0.68, 1.0],
+      [0.82, 0.6],
+      [1.0, 0.2],
     ]);
 
     this.model.setAssembly(assembly);

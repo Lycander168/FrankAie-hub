@@ -43,7 +43,8 @@ a { color: inherit; }
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 18px clamp(18px, 4vw, 48px);
+  padding: calc(18px + env(safe-area-inset-top)) calc(clamp(18px, 4vw, 48px) + env(safe-area-inset-right))
+    18px calc(clamp(18px, 4vw, 48px) + env(safe-area-inset-left));
   mix-blend-mode: difference;
 }
 .brand { font-family: var(--display); letter-spacing: 0.32em; font-size: 14px; text-decoration: none; }
@@ -186,7 +187,7 @@ a { color: inherit; }
 .foot {
   position: relative; z-index: 2;
   display: flex; justify-content: space-between;
-  padding: 28px clamp(18px, 4vw, 48px);
+  padding: 28px clamp(18px, 4vw, 48px) calc(28px + env(safe-area-inset-bottom));
   font-size: 12px; letter-spacing: 0.1em; color: var(--muted);
   border-top: 1px solid var(--line);
 }
@@ -203,11 +204,33 @@ a { color: inherit; }
 .loader__text { font-family: var(--display); letter-spacing: 0.5em; font-size: 14px; color: var(--muted); }
 @keyframes pulse { 0%, 100% { transform: scale(0.7); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
 
-/* 手機（來源為直式）：文字置中、規格單欄 */
+/* 手機（來源為直式）：產品置中露出，文字錨定下方 + 底部 scrim */
 @media (max-width: 760px) {
-  .align-left .chapter__inner, .align-right .chapter__inner { max-width: 100%; margin: 0 auto; text-align: center; }
+  /* 文字錨定下三分之一，讓中央 3D 產品在上方完整露出（Hero 仍置中）*/
+  .chapter:not([data-anim='hero']):not([data-anim='cta']) {
+    align-items: flex-end;
+    padding-bottom: calc(14vh + env(safe-area-inset-bottom));
+  }
+  .align-left .chapter__inner,
+  .align-right .chapter__inner { max-width: 100%; margin: 0 auto; text-align: center; }
   .align-right { text-align: center; }
-  .specs { grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+
+  /* 底部漸層 scrim：文字壓在深色上不糊（放在內容章節，不含 hero/cta）*/
+  .chapter:not([data-anim='hero']):not([data-anim='cta'])::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 52%;
+    background: linear-gradient(to top, rgba(5, 6, 10, 0.88) 8%, rgba(5, 6, 10, 0) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .chapter__inner { position: relative; }
+
+  /* 字級略收，避免長英文標題溢出 */
+  .serif-italic { font-size: clamp(30px, 8.5vw, 46px); }
+  .display { font-size: clamp(44px, 16vw, 84px); }
+  .specs { grid-template-columns: 1fr 1fr; gap: 14px 18px; }
 }
 
 /* 無障礙：降低動態 */
