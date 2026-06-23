@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+
+# 大型 CAD 原始檔不入庫（執行用的是已轉好的 public/models/luna.glb）
+# 轉檔指令見 README。原始 STEP 由設計端保管。
+assets/source/*.STEP
+assets/source/*.step

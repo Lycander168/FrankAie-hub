@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#05060a" />
+    <title>小露娜 LUNA — LYCANDER</title>
+    <meta
+      name="description"
+      content="小露娜 LUNA｜LYCANDER 3C 配件。散落、匯聚、發光 —— 捲動，看它成形。"
+    />
+
+    <!-- 免費 Google Fonts：中文襯線 + 英文編排感斜體襯線 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Playfair+Display:ital,wght@0,500;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body>
+    <!-- 固定背景：Three.js 3D 場景（散落→匯聚→發光） -->
+    <canvas id="scene" aria-hidden="true"></canvas>
+
+    <!-- 載入遮罩 -->
+    <div id="loader" class="loader">
+      <div class="loader__dot"></div>
+      <span class="loader__text">LUNA</span>
+    </div>
+
+    <!-- 進度條（閱讀動線提示） -->
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+    <header class="topbar">
+      <a class="brand" href="https://www.lycander.tw" aria-label="LYCANDER">LYCANDER</a>
+      <span class="brand__sub">小露娜 · LUNA</span>
+    </header>
+
+    <main id="story">
+      <!-- 章節由 JS 依 content/copy.js 注入文字；此處保留結構與資料屬性 -->
+
+      <section class="chapter" data-chapter="0" data-anim="hero">
+        <div class="chapter__inner align-center">
+          <p class="eyebrow" data-eyebrow></p>
+          <h1 class="display" data-title></h1>
+          <p class="lede" data-sub></p>
+          <div class="scroll-cue" aria-hidden="true"><span></span>向下捲動</div>
+        </div>
+      </section>
+
+      <section class="chapter" data-chapter="1" data-anim="scatter">
+        <div class="chapter__inner align-left">
+          <h2 class="serif-italic" data-title></h2>
+          <p class="body" data-sub></p>
+        </div>
+      </section>
+
+      <section class="chapter" data-chapter="2" data-anim="assemble">
+        <div class="chapter__inner align-left">
+          <h2 class="serif-italic" data-title></h2>
+          <p class="body" data-sub></p>
+        </div>
+      </section>
+
+      <section class="chapter" data-chapter="3" data-anim="glow">
+        <div class="chapter__inner align-right">
+          <h2 class="serif-italic" data-title></h2>
+          <p class="body" data-sub></p>
+        </div>
+      </section>
+
+      <section class="chapter" data-chapter="4" data-anim="specs">
+        <div class="chapter__inner align-left">
+          <h2 class="serif-italic" data-title></h2>
+          <ul class="specs" data-specs></ul>
+        </div>
+      </section>
+
+      <section class="chapter" data-chapter="5" data-anim="cta">
+        <div class="chapter__inner align-center">
+          <p class="eyebrow" data-eyebrow></p>
+          <h2 class="wordmark" data-title></h2>
+          <p class="lede" data-sub></p>
+
+          <!-- 商品卡：資料由 SHOPLINE 資料層注入（現為 mock） -->
+          <div class="buybox" id="buybox" hidden>
+            <div class="buybox__price">
+              <span id="price"></span>
+              <s id="compare"></s>
+            </div>
+            <div class="buybox__variants" id="variants"></div>
+            <a class="btn" id="cta" href="#" rel="noopener">加入購物車</a>
+            <p class="buybox__note" id="stock"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>© <span id="year"></span> LYCANDER GROUP</span>
+      <span class="foot__src" id="datasrc">資料來源：mock</span>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

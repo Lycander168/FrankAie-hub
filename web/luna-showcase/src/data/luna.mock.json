@@ -1,0 +1,20 @@
+{
+  "handle": "lycander-luna-mag-qi22二代25w認證-3-in1攜帶型無線充電器",
+  "title": "小露娜 LUNA Mag Qi22 二代 · 25W 認證 3-in-1 攜帶型無線充電器",
+  "vendor": "LYCANDER",
+  "currency": "TWD",
+  "price": 1280,
+  "compareAtPrice": 1580,
+  "available": true,
+  "inventory": 37,
+  "url": "https://www.lycander.tw/products/lycander-luna-mag-qi22二代25w認證-3-in1攜帶型無線充電器",
+  "_note": "價格/庫存為 mock 示意值；提供 SHOPLINE Storefront token 後由 API 自動覆蓋為真實資料。",
+  "images": [
+    { "src": "https://placehold.co/1200x1200/0b0d14/e9e4d6?text=LUNA+Mag+Qi22", "alt": "小露娜 LUNA Mag Qi22 二代" }
+  ],
+  "variants": [
+    { "id": "luna-moonwhite", "title": "月白 Moonwhite", "available": true, "price": 1280 },
+    { "id": "luna-eclipse", "title": "蝕黑 Eclipse", "available": true, "price": 1280 },
+    { "id": "luna-aurora", "title": "極光 Aurora", "available": false, "price": 1380 }
+  ]
+}

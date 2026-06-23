@@ -1,0 +1,217 @@
+:root {
+  --bg: #05060a;
+  --ink: #ece6d9;
+  --muted: #9b958a;
+  --gold: #ffcf8a;
+  --line: rgba(236, 230, 217, 0.14);
+  --serif: 'Noto Serif TC', 'Songti TC', serif;
+  --display: 'Playfair Display', 'Noto Serif TC', serif;
+  --maxw: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+
+body {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+
+/* 固定全螢幕 3D 背景 */
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  display: block;
+  /* 暗角讓主體更聚焦 */
+  background: radial-gradient(120% 80% at 50% 38%, #0b0e16 0%, #05060a 60%, #030308 100%);
+}
+
+/* 內容層 */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 18px clamp(18px, 4vw, 48px);
+  mix-blend-mode: difference;
+}
+.brand { font-family: var(--display); letter-spacing: 0.32em; font-size: 14px; text-decoration: none; }
+.brand__sub { font-size: 11px; letter-spacing: 0.28em; color: var(--muted); text-transform: uppercase; }
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 6;
+  background: rgba(255, 255, 255, 0.06);
+}
+.progress span {
+  display: block;
+  height: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--gold), #fff);
+}
+
+#story { position: relative; z-index: 2; }
+
+.chapter {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  padding: clamp(24px, 6vw, 90px);
+  align-items: center;
+}
+.chapter__inner { width: 100%; max-width: var(--maxw); margin: 0 auto; }
+.align-center { text-align: center; }
+.align-center .chapter__inner { display: flex; flex-direction: column; align-items: center; }
+.align-right { text-align: right; }
+.align-right .chapter__inner { margin-left: auto; }
+.align-left .chapter__inner { max-width: 40ch; }
+
+.eyebrow {
+  font-family: var(--display);
+  letter-spacing: 0.42em;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 18px;
+}
+
+.display {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(48px, 12vw, 132px);
+  line-height: 0.98;
+  margin: 0;
+  letter-spacing: 0.02em;
+  text-shadow: 0 8px 60px rgba(0, 0, 0, 0.6);
+}
+
+.serif-italic {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(34px, 6vw, 76px);
+  line-height: 1.05;
+  margin: 0 0 22px;
+  text-shadow: 0 6px 40px rgba(0, 0, 0, 0.55);
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(56px, 16vw, 180px);
+  letter-spacing: 0.16em;
+  margin: 0 0 6px;
+  background: linear-gradient(180deg, #fff 0%, var(--gold) 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lede { font-size: clamp(16px, 2.2vw, 22px); color: var(--ink); opacity: 0.92; margin: 8px 0 0; }
+.body { font-size: clamp(15px, 2vw, 19px); color: var(--muted); margin: 0; }
+
+/* 規格 */
+.specs { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 40px; }
+.specs li { border-top: 1px solid var(--line); padding-top: 14px; }
+.specs b { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(26px, 4vw, 40px); color: var(--ink); }
+.specs span { font-size: 14px; color: var(--muted); }
+
+/* 商品卡 / CTA */
+.buybox {
+  margin-top: 34px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 30px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(10, 12, 18, 0.55);
+  backdrop-filter: blur(8px);
+}
+.buybox__price { display: flex; align-items: baseline; gap: 12px; }
+.buybox__price span { font-family: var(--display); font-size: 30px; font-weight: 600; }
+.buybox__price s { color: var(--muted); font-size: 16px; }
+.buybox__variants { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.chip {
+  font-family: var(--serif);
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.chip.is-active { border-color: var(--gold); color: var(--gold); }
+.chip:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 15px 46px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff, var(--gold));
+  color: #1a1205;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 40px rgba(255, 207, 138, 0.25);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 16px 50px rgba(255, 207, 138, 0.4); }
+.btn.is-disabled { background: #2a2c33; color: var(--muted); pointer-events: none; box-shadow: none; }
+.buybox__note { margin: 0; font-size: 13px; color: var(--muted); }
+
+/* 捲動提示 */
+.scroll-cue { margin-top: 48px; font-size: 12px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+.scroll-cue span { display: block; width: 1px; height: 42px; margin: 0 auto 12px; background: linear-gradient(var(--gold), transparent); animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 0%, 100% { opacity: 0.3; transform: scaleY(0.5); } 50% { opacity: 1; transform: scaleY(1); } }
+
+/* 頁尾 */
+.foot {
+  position: relative; z-index: 2;
+  display: flex; justify-content: space-between;
+  padding: 28px clamp(18px, 4vw, 48px);
+  font-size: 12px; letter-spacing: 0.1em; color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* 載入遮罩 */
+.loader {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  background: var(--bg);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.loader.is-hidden { opacity: 0; visibility: hidden; }
+.loader__dot { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 30px var(--gold); animation: pulse 1.4s ease-in-out infinite; }
+.loader__text { font-family: var(--display); letter-spacing: 0.5em; font-size: 14px; color: var(--muted); }
+@keyframes pulse { 0%, 100% { transform: scale(0.7); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+
+/* 手機（來源為直式）：文字置中、規格單欄 */
+@media (max-width: 760px) {
+  .align-left .chapter__inner, .align-right .chapter__inner { max-width: 100%; margin: 0 auto; text-align: center; }
+  .align-right { text-align: center; }
+  .specs { grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+}
+
+/* 無障礙：降低動態 */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue span { animation: none; }
+  .loader__dot { animation: none; }
+}
