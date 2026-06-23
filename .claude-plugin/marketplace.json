@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "LYCANDER AI RESEARCH HUB — 100 位 AI 角色虛擬公司：30 位專家（6 團隊）＋ 70 位 AI 消費者（4 市場），另含 8 位支援專家（電子/視覺/產品/數據/資安/通路/財務/法務）、工具型 skill，以及 planning-with-files（持久記憶）與 quality-gate（產出品質閘門）兩項基礎建設，依「搜集市場資訊 → 驗證 → 開發/設計」三階段 SOP 協作。",
-    "version": "0.12.0"
+    "version": "0.13.0"
   },
   "plugins": [
     {

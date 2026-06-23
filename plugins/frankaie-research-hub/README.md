@@ -39,6 +39,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `marketing-team` — 行銷企劃團隊（CMO、廣告投手、社群/KOL、文案、通路）
 - `operations-team` — 營運執行團隊（營運主管、採購、物流、報關、補貨）
 - `cx-team` — 售後客服團隊（CX 主管、線上客服、RMA、口碑、會員）
+- `tw-stock-experts` — 台股投研團隊（10 人）：總經/配置、ETF 指數、高股息、價值、技術、籌碼、產業/科技、量化、風險/避險、行為紀律。專評台股持倉健康度、每日開盤/盤中提醒與三情境最佳投組。⚠️ 教育/模擬推估，非投資建議。
 
 ### AI 消費者測試小組（每個 skill = 一個市場的虛擬受眾）
 - `consumers-taiwan`（22 人）/ `consumers-usa`（18 人）/ `consumers-japan`（15 人）/ `consumers-europe`（15 人）
@@ -98,6 +99,7 @@ description: >
 
 ## 版本
 
+- v0.13.0 — 新增投研垂直 `tw-stock-experts`（10 位 20 年資歷台股投資專家的團隊型 skill）：總經/配置、ETF 指數、高股息、價值、技術、籌碼、產業/科技、量化、風險/避險、行為紀律十大流派；提供持倉健康度卡、開盤前晨報/盤中快訊/盤後檢視提醒範本、三情境最佳投組建議，並以一組真實台股 ETF 持倉（9 檔）做端到端 worked example（健康度→近三月模擬→交叉驗證除錯→最佳投組）。全程強制「教育/模擬推估、非投資建議」免責與 `【假設】`/`【需查證】`/`【需數據】` 標記，驗證階段串接 `quality-gate`/`validation-panel` 做交叉驗證。skill 數 33 → 34。
 - v0.12.0 — 衝刺品質分數（WS1–WS4）：① hub-router 加端到端 worked example ＋「第一次使用」指引；② CI `check_skills.py` 升級為**結構強制**（name=資料夾、description、輸出範本、防臆造守則）＋ 新增 `skills/_TEMPLATE/`（Pattern A/B/C 範本）；③ 補 3 垂直角色 `supply-chain-expert`/`growth-retention`/`web-engineer`；④ 招牌 `validation-panel`（統一 1–5 購買意願 rubric 的 AI 消費者驗證關卡）＋ 4 個 consumers-* 補「模擬非真實數據」聲明。skill 數 29 → 33。
 - v0.11.0 — 品質治理（全 skill 審計後）：修復 10 處壞引用（已不存在的 ecommerce-operator / sourcing-expert，改指向 `channel-sales`／`seo-keyword-expander`／`operations-team`）；hub-router 新增「觸發衝突仲裁表」；plugin README 新增「格式選用指南(Pattern A/B/C)」；根 README 計數/目錄樹更新；新增 `scripts/check_skills.py` 與 `.github/workflows/check-skills.yml`（CI 自動檢查引用完整性、skill 計數與版本一致性）。
 - v0.10.0 — 補強中優先角色缺口：新增 `security-engineer`（裝置/韌體/資料安全，防禦性技術面）與 `channel-sales`（marketplace 帳號健康/經銷批發/B2B/通路價格）；hub-router 動線於開發(安全需求)、上市/投放(通路鋪設)納入兩者；ROSTER 支援專家增至 8 位、新增資安中心與通路中心對照、總數更新為 29 個 skill。

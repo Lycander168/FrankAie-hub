@@ -8,7 +8,7 @@
 
 ---
 
-## 編制：100 位 AI 角色 ＋ 支援陣容（共 33 個 skill）
+## 編制：100 位 AI 角色 ＋ 支援陣容（共 34 個 skill）
 
 **核心 100 人 = 30 位團隊專家（6 團隊）＋ 70 位 AI 消費者（4 市場）**，
 另有總機、支援專家、工具與基礎建設。完整名冊見
@@ -17,6 +17,9 @@
 ### 6 個專家團隊（每個 = 5 位具名專家，共 30 人）
 `electronics-team`（電子工程）、`mechanical-team`（機構設計）、`visual-team`（視覺設計）、
 `marketing-team`（行銷企劃）、`operations-team`（營運執行）、`cx-team`（售後客服）。
+
+### 投研團隊（10 人）
+`tw-stock-experts` — 10 位 20 年資歷台股投資專家（總經/配置、ETF 指數、高股息、價值、技術、籌碼、產業/科技、量化、風險/避險、行為紀律），專評持倉健康度、每日開盤/盤中提醒與三情境最佳投組。⚠️ 教育/模擬推估，非投資建議。
 
 ### 4 個 AI 消費者市場小組（共 70 人）
 `consumers-taiwan`（22）、`consumers-usa`（18）、`consumers-japan`（15）、`consumers-europe`（15）。
@@ -55,7 +58,7 @@
    /plugin install frankaie-research-hub@frankaie-hub
    ```
 
-4. 重啟 session 後，33 個 skill 就會出現在清單，依各自 description 的觸發關鍵字自動觸發；
+4. 重啟 session 後，34 個 skill 就會出現在清單，依各自 description 的觸發關鍵字自動觸發；
    不確定該找誰時先呼叫 `hub-router` 由總機分流。
 
 > Repo 設為 **Public** 最省事；若設 Private，安裝時需設定 GitHub 認證。
@@ -78,11 +81,12 @@ FrankAie-hub/
       ├─ .claude-plugin/
       │  └─ plugin.json             ← plugin 基本資料
       ├─ README.md                  ← plugin 說明 + 新增角色教學 + 格式選用指南
-      ├─ ROSTER.md                  ← 完整編制名冊 & 路由表（33 個 skill）
-      └─ skills/                    ← 33 個 skill，每個一個資料夾 + SKILL.md
+      ├─ ROSTER.md                  ← 完整編制名冊 & 路由表（34 個 skill）
+      └─ skills/                    ← 34 個 skill，每個一個資料夾 + SKILL.md
          ├─ _TEMPLATE/              ← 新增 skill 範本（Pattern A/B/C）
          ├─ hub-router/             ← 總機路由
          ├─ electronics-team/ … cx-team/        ← 6 專家團隊
+         ├─ tw-stock-experts/       ← 台股投研團隊（10 人，教育/模擬非投資建議）
          ├─ consumers-taiwan/ … consumers-europe/ ← 4 AI 消費者小組
          ├─ product-manager/ data-analyst/ …    ← 支援專家
          ├─ listing-optimizer/ …                ← 工具型
