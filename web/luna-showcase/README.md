@@ -52,6 +52,8 @@ public/models/luna.glb  小露娜 3D 模型（由 STEP 轉檔）
 
 **動線（捲動章節）**：Hero → 散落（痛點）→ 匯聚（工藝）→ 發光（體驗）→ 規格（信任）→ 品牌字卡 + 購買（轉換）。
 
+> 微調動畫請看 **[`TUNING.md`](./TUNING.md)** —— 逐章節參數對照表 + 常見調整食譜。
+
 ---
 
 ## 串接 SHOPLINE（先 mock，後 live）
