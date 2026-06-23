@@ -23,7 +23,8 @@ export class LunaModel {
     try {
       const loader = new GLTFLoader();
       const draco = new DRACOLoader();
-      draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+      // 內建解碼器（public/draco/），不依賴外部 CDN，嵌入官網時自足
+      draco.setDecoderPath('./draco/');
       loader.setDRACOLoader(draco);
       const gltf = await loader.loadAsync(url);
       this._ingest(gltf.scene);
