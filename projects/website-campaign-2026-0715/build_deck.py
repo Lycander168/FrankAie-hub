@@ -10,16 +10,24 @@ from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
+from pptx.oxml.ns import qn
+from lxml import etree
 import os
 
-# ---------- 品牌色 ----------
-NAVY   = RGBColor(0x1B, 0x2A, 0x4A)   # 科技深藍（主）
-ORANGE = RGBColor(0xFF, 0x7A, 0x29)   # 暑假活力橙（accent）
+# ---------- 北歐風配色（冷調 minimal）----------
+# 命名沿用原常數，數值改為低彩度自然色；body 程式不需逐行改色。
 WHITE  = RGBColor(0xFF, 0xFF, 0xFF)
-LIGHT  = RGBColor(0xF2, 0xF4, 0xF8)   # 淺灰底
-GREY   = RGBColor(0x5A, 0x63, 0x72)   # 次要文字
-DARK   = RGBColor(0x22, 0x27, 0x30)   # 內文深色
-TEAL   = RGBColor(0x18, 0x9A, 0xB4)   # 輔助
+BASE   = RGBColor(0xF4, 0xF6, 0xF7)   # 柔白（封面/底）
+NAVY   = RGBColor(0x37, 0x43, 0x4D)   # INK 石板（主：標題/深色塊）
+DARK   = RGBColor(0x2F, 0x37, 0x3E)   # 內文深字
+ORANGE = RGBColor(0xBD, 0x9A, 0x57)   # 暖赭 accent（kicker/重點/深底上的字）
+TEAL   = RGBColor(0x6E, 0x92, 0xA8)   # 靛藍 accent（次要冷色）
+LIGHT  = RGBColor(0xEC, 0xEF, 0xF1)   # PANEL 淺灰
+SAND   = RGBColor(0xE7, 0xE1, 0xD6)   # 暖中性點綴
+GREY   = RGBColor(0x8A, 0x93, 0x9B)   # 註解/footer
+HEADERFILL = RGBColor(0xDC, 0xE6, 0xEC)  # 表頭：淡靛藍
+ZEBRA  = RGBColor(0xF5, 0xF7, 0xF8)   # 列間極淡
+BORDER = "C2CCD4"                     # hairline 細框線（hex）
 
 EMU_W, EMU_H = Inches(13.333), Inches(7.5)   # 16:9
 
@@ -71,12 +79,13 @@ def chip(s, x, y, w, text, fill, txtcolor=WHITE, size=12):
     return sp
 
 def header(s, kicker, title):
-    rect(s, 0, 0, EMU_W, Inches(1.15), NAVY)
-    rect(s, 0, Inches(1.15), EMU_W, Inches(0.08), ORANGE)
-    textbox(s, Inches(0.6), Inches(0.18), Inches(12), Inches(0.4),
-            [(kicker, 12, True, ORANGE)])
-    textbox(s, Inches(0.6), Inches(0.44), Inches(12), Inches(0.7),
-            [(title, 26, True, WHITE)])
+    # 北歐極簡：無深色橫帶，留白＋細 accent 短線
+    textbox(s, Inches(0.62), Inches(0.34), Inches(12), Inches(0.36),
+            [(kicker, 11.5, True, ORANGE)])
+    textbox(s, Inches(0.6), Inches(0.6), Inches(12), Inches(0.66),
+            [(title, 25, True, NAVY)])
+    rect(s, Inches(0.64), Inches(1.2), Inches(0.85), Inches(0.045), ORANGE)   # 短 accent 線
+    rect(s, Inches(0.64), Inches(1.255), Inches(12.05), Inches(0.013), LIGHT)  # 淡 hairline
 
 def footer(s, idx):
     textbox(s, Inches(0.6), Inches(7.05), Inches(8), Inches(0.4),
@@ -86,8 +95,8 @@ def footer(s, idx):
 
 def placeholder(s, x, y, w, h, label="商品圖\n（置入官方圖）"):
     sp = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, w, h)
-    sp.fill.solid(); sp.fill.fore_color.rgb = LIGHT
-    sp.line.color.rgb = GREY; sp.line.width = Pt(1)
+    sp.fill.solid(); sp.fill.fore_color.rgb = BASE
+    sp.line.color.rgb = RGBColor(0xC2, 0xCC, 0xD4); sp.line.width = Pt(0.75)
     sp.line.dash_style = 2 if hasattr(sp.line, "dash_style") else None
     sp.shadow.inherit = False
     tf = sp.text_frame; tf.word_wrap = True
@@ -98,11 +107,25 @@ def placeholder(s, x, y, w, h, label="商品圖\n（置入官方圖）"):
         f = r.font; f.size = Pt(11); f.color.rgb = GREY; f.name = FONT
     return sp
 
-def table(s, x, y, w, h, data, col_w=None, header_fill=NAVY, fs=11, hfs=11,
+def _border(cell, color=BORDER, w_emu=9525, sides=("L", "R", "T", "B")):
+    """加 hairline 細框線（北歐通透表格）。ln* 須排在 tcPr 最前，符合 schema。"""
+    tag = {"L": "a:lnL", "R": "a:lnR", "T": "a:lnT", "B": "a:lnB"}
+    tcPr = cell._tc.get_or_add_tcPr()
+    for sd in reversed(sides):           # 反序插入 → 最終順序 L,R,T,B
+        t = tag[sd]
+        for el in tcPr.findall(qn(t)):
+            tcPr.remove(el)
+        ln = etree.Element(qn(t)); ln.set("w", str(w_emu)); ln.set("cap", "flat")
+        sf = etree.SubElement(ln, qn("a:solidFill"))
+        etree.SubElement(sf, qn("a:srgbClr")).set("val", color)
+        tcPr.insert(0, ln)
+
+def table(s, x, y, w, h, data, col_w=None, header_fill=HEADERFILL, fs=11, hfs=11,
           zebra=True, align_first_left=True):
     rows, cols = len(data), len(data[0])
     gtbl = s.shapes.add_table(rows, cols, x, y, w, h).table
     gtbl.first_row = True; gtbl.horz_banding = False
+    # 關閉內建表格樣式的粗外框/底色，改用自訂 hairline
     if col_w:
         total = sum(col_w)
         for j, cw in enumerate(col_w):
@@ -110,8 +133,8 @@ def table(s, x, y, w, h, data, col_w=None, header_fill=NAVY, fs=11, hfs=11,
     for i, row in enumerate(data):
         for j, val in enumerate(row):
             c = gtbl.cell(i, j)
-            c.margin_left = Pt(5); c.margin_right = Pt(5)
-            c.margin_top = Pt(2); c.margin_bottom = Pt(2)
+            c.margin_left = Pt(6); c.margin_right = Pt(6)
+            c.margin_top = Pt(3); c.margin_bottom = Pt(3)
             c.vertical_anchor = MSO_ANCHOR.MIDDLE
             tf = c.text_frame; tf.word_wrap = True
             p = tf.paragraphs[0]
@@ -120,10 +143,11 @@ def table(s, x, y, w, h, data, col_w=None, header_fill=NAVY, fs=11, hfs=11,
             f = r.font; f.name = FONT
             if i == 0:
                 c.fill.solid(); c.fill.fore_color.rgb = header_fill
-                f.size = Pt(hfs); f.bold = True; f.color.rgb = WHITE
+                f.size = Pt(hfs); f.bold = True; f.color.rgb = NAVY
             else:
-                c.fill.solid(); c.fill.fore_color.rgb = WHITE if (not zebra or i % 2 == 1) else LIGHT
+                c.fill.solid(); c.fill.fore_color.rgb = WHITE if (not zebra or i % 2 == 1) else ZEBRA
                 f.size = Pt(fs); f.bold = False; f.color.rgb = DARK
+            _border(c)
     return gtbl
 
 
@@ -131,20 +155,22 @@ def table(s, x, y, w, h, data, col_w=None, header_fill=NAVY, fs=11, hfs=11,
 # 1. 封面
 # ============================================================
 s = slide()
-rect(s, 0, 0, EMU_W, EMU_H, NAVY)
-rect(s, 0, Inches(5.0), EMU_W, Inches(0.14), ORANGE)
-# 裝飾圓
-c1 = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(10.4), Inches(-1.2), Inches(4.2), Inches(4.2))
-c1.fill.solid(); c1.fill.fore_color.rgb = TEAL; c1.line.fill.background(); c1.shadow.inherit = False
-c2 = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(11.6), Inches(4.6), Inches(3.4), Inches(3.4))
-c2.fill.solid(); c2.fill.fore_color.rgb = ORANGE; c2.line.fill.background(); c2.shadow.inherit = False
-chip(s, Inches(0.9), Inches(1.5), Inches(2.6), "會員招募中 ｜ 2026 暑假", ORANGE)
-textbox(s, Inches(0.9), Inches(2.2), Inches(11), Inches(2.2),
-        [("官網全站活動企劃", 48, True, WHITE, 6),
-         ("Wokyis 關聯配件　×　LYCANDER 暑假活動", 24, True, RGBColor(0xCF,0xDA,0xEC), 6)])
-textbox(s, Inches(0.9), Inches(5.4), Inches(11), Inches(1.4),
-        [("上線日期：2026 / 7 / 15　｜　暑假主檔 7/15–8/31", 16, True, WHITE, 4),
-         ("交付對象：行銷公司　｜　炫輝國際 Shinetech / LYCANDER", 13, False, RGBColor(0xB7,0xC4,0xDA), 4)])
+rect(s, 0, 0, EMU_W, EMU_H, BASE)
+# 同色系超淡裝飾圓（tone-on-tone，低對比）
+c1 = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(9.7), Inches(-1.6), Inches(5.0), Inches(5.0))
+c1.fill.solid(); c1.fill.fore_color.rgb = LIGHT; c1.line.fill.background(); c1.shadow.inherit = False
+c2 = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(11.2), Inches(4.4), Inches(3.6), Inches(3.6))
+c2.fill.solid(); c2.fill.fore_color.rgb = SAND; c2.line.fill.background(); c2.shadow.inherit = False
+# 細 accent 直線（左側）
+rect(s, Inches(0.9), Inches(2.35), Inches(0.05), Inches(1.5), ORANGE)
+chip(s, Inches(1.15), Inches(1.5), Inches(2.7), "會員招募中 ｜ 2026 暑假", TEAL)
+textbox(s, Inches(1.15), Inches(2.3), Inches(10.5), Inches(2.0),
+        [("官網全站活動企劃", 46, True, NAVY, 8),
+         ("Wokyis 關聯配件　×　LYCANDER 暑假活動", 23, True, TEAL, 6)])
+rect(s, Inches(1.15), Inches(5.05), Inches(4.2), Inches(0.02), RGBColor(0xC2, 0xCC, 0xD4))
+textbox(s, Inches(1.15), Inches(5.3), Inches(11), Inches(1.4),
+        [("上線日期：2026 / 7 / 15　｜　暑假主檔 7/15–8/31", 16, True, NAVY, 5),
+         ("交付對象：行銷公司　｜　炫輝國際 Shinetech / LYCANDER", 13, False, GREY, 4)])
 
 # ============================================================
 # 2. 活動總覽
@@ -396,13 +422,14 @@ for i, t in enumerate(["「暑假升級你的桌面 — 會員招募中」",
             [(t, 15, True, DARK)], anchor=MSO_ANCHOR.MIDDLE)
 # 主色
 textbox(s, Inches(0.6), Inches(3.15), Inches(12), Inches(0.4), [("品牌主色", 14, True, NAVY)])
-for i, (name, col, hexv) in enumerate([("科技深藍", NAVY, "#1B2A4A"), ("活力橙", ORANGE, "#FF7A29"),
-                                       ("輔助青", TEAL, "#189AB4"), ("淺灰底", LIGHT, "#F2F4F8")]):
+for i, (name, col, hexv) in enumerate([("石板 INK", NAVY, "#37434D"), ("暖赭 Accent", ORANGE, "#BD9A57"),
+                                       ("靛藍 Accent", TEAL, "#6E92A8"), ("柔白底", BASE, "#F4F6F7")]):
     x = Inches(0.6+i*3.05)
     sw = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, Inches(3.6), Inches(2.85), Inches(0.7))
-    sw.fill.solid(); sw.fill.fore_color.rgb = col; sw.line.color.rgb = GREY; sw.line.width = Pt(0.5)
+    sw.fill.solid(); sw.fill.fore_color.rgb = col
+    sw.line.color.rgb = RGBColor(0xC2, 0xCC, 0xD4); sw.line.width = Pt(0.75)
     sw.shadow.inherit = False
-    tc = WHITE if name != "淺灰底" else DARK
+    tc = DARK if name == "柔白底" else WHITE
     textbox(s, x+Inches(0.15), Inches(3.7), Inches(2.6), Inches(0.5),
             [(f"{name}  {hexv}", 12, True, tc)], anchor=MSO_ANCHOR.MIDDLE)
 # Banner 文案
