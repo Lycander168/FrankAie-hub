@@ -50,6 +50,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 
 - `listing-optimizer` — Listing 轉換優化器。產品資訊＋關鍵字 → 轉換導向的標題 / 五點 / A+ / 後台關鍵字。
 - `ad-hook-writer` — 廣告 Hook 生成器。一個賣點 → 8 種框架的前三秒 hook ＋ 短影音開場分鏡。
+- `ig-carousel-factory` — IG 輪播工廠。一個賣點 → 一整組品牌一致的 IG 輪播（共享 BASE 風格 + 逐頁 prompt + caption + 發文時段）＋ 程式化批量生成樣板（一鍵換 BASE 切風格）。
 - `copy-humanizer` — 文案去 AI 味潤稿器。把生硬文案改自然、貼品牌語氣，並附改動清單（不改事實）。
 - `review-miner` — 評論痛點萃取器。雜亂評論 → 量化痛點 / 讚點 ＋ 產品改善方向與賣點機會。
 - `pricing-calculator` — 定價試算器。成本＋通路費用 → 各售價毛利 / break-even ACOS / 情境比較與定價建議。
@@ -98,6 +99,7 @@ description: >
 
 ## 版本
 
+- v0.13.0 — 新增工具型 skill `ig-carousel-factory`（IG 輪播工廠）：把「程式化批量 IG 輪播生成」工作流（一個檔案＝一整組輪播企劃、共享 `BASE` 風格一鍵換皮、並行批量生圖＋自動 caption）在地化整合進 HUB；串接 `ad-hook-writer`（封面 hook）/`copy-humanizer`（caption 去 AI 味）/`visual-team`·`animation-designer`（風格分鏡）/`validation-panel`（虛擬受眾打分）/`marketing-team`（發文日曆）。ROSTER 工具型 8→9、路由表與「行銷中心」對照同步、skill 數 33→34。
 - v0.12.0 — 衝刺品質分數（WS1–WS4）：① hub-router 加端到端 worked example ＋「第一次使用」指引；② CI `check_skills.py` 升級為**結構強制**（name=資料夾、description、輸出範本、防臆造守則）＋ 新增 `skills/_TEMPLATE/`（Pattern A/B/C 範本）；③ 補 3 垂直角色 `supply-chain-expert`/`growth-retention`/`web-engineer`；④ 招牌 `validation-panel`（統一 1–5 購買意願 rubric 的 AI 消費者驗證關卡）＋ 4 個 consumers-* 補「模擬非真實數據」聲明。skill 數 29 → 33。
 - v0.11.0 — 品質治理（全 skill 審計後）：修復 10 處壞引用（已不存在的 ecommerce-operator / sourcing-expert，改指向 `channel-sales`／`seo-keyword-expander`／`operations-team`）；hub-router 新增「觸發衝突仲裁表」；plugin README 新增「格式選用指南(Pattern A/B/C)」；根 README 計數/目錄樹更新；新增 `scripts/check_skills.py` 與 `.github/workflows/check-skills.yml`（CI 自動檢查引用完整性、skill 計數與版本一致性）。
 - v0.10.0 — 補強中優先角色缺口：新增 `security-engineer`（裝置/韌體/資料安全，防禦性技術面）與 `channel-sales`（marketplace 帳號健康/經銷批發/B2B/通路價格）；hub-router 動線於開發(安全需求)、上市/投放(通路鋪設)納入兩者；ROSTER 支援專家增至 8 位、新增資安中心與通路中心對照、總數更新為 29 個 skill。

@@ -1,7 +1,7 @@
 {
   "name": "frankaie-research-hub",
-  "version": "0.12.0",
-  "description": "LYCANDER AI RESEARCH HUB — 100 位 AI 角色虛擬公司（30 位專家 6 團隊＋70 位 AI 消費者 4 市場）＋ hub-router 總機路由 ＋ 8 位支援專家（電子/視覺/產品 PM/數據分析/資安/通路 B2B/財務/法務）＋ 8 個工具型 skill（Listing 優化、廣告 hook、文案去 AI 味、評論痛點、定價試算、EDM 序列、競品比較、SEO 關鍵字）＋ 基礎建設 skill：planning-with-files（task_plan/findings/progress 三檔持久記憶、多角色共享狀態）、quality-gate（致命/重要/次要三級對抗式審查＋完成前驗證）。團隊依『搜集市場資訊 → 驗證 → 開發/設計』三階段 SOP 協作。",
+  "version": "0.13.0",
+  "description": "LYCANDER AI RESEARCH HUB — 100 位 AI 角色虛擬公司（30 位專家 6 團隊＋70 位 AI 消費者 4 市場）＋ hub-router 總機路由 ＋ 8 位支援專家（電子/視覺/產品 PM/數據分析/資安/通路 B2B/財務/法務）＋ 9 個工具型 skill（Listing 優化、廣告 hook、IG 輪播工廠、文案去 AI 味、評論痛點、定價試算、EDM 序列、競品比較、SEO 關鍵字）＋ 基礎建設 skill：planning-with-files（task_plan/findings/progress 三檔持久記憶、多角色共享狀態）、quality-gate（致命/重要/次要三級對抗式審查＋完成前驗證）。團隊依『搜集市場資訊 → 驗證 → 開發/設計』三階段 SOP 協作。",
   "author": {
     "name": "LYCANDER GROUP",
     "email": "service@lycander.tw"

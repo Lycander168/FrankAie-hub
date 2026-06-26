@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 11 位支援專家（電子/視覺/產品/數據/資安/通路/供應鏈/成長/網站/財務/法務）＋ 8 個工具型 skill ＋ 3 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質 / validation-panel 驗證）。
+> **支援陣容**：1 總機（hub-router）＋ 11 位支援專家（電子/視覺/產品/數據/資安/通路/供應鏈/成長/網站/財務/法務）＋ 9 個工具型 skill ＋ 3 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質 / validation-panel 驗證）。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶/品質/驗證」。共 33 個 skill。
+> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶/品質/驗證」。共 34 個 skill。
 
 ---
 
@@ -106,6 +106,7 @@
 |-------|------|
 | `listing-optimizer` | 轉換導向 Listing（標題/五點/A+/後台關鍵字）|
 | `ad-hook-writer` | 廣告 hook（8 框架）＋ 短影音開場分鏡 |
+| `ig-carousel-factory` | IG 輪播工廠：一賣點 → 整組品牌一致輪播（逐頁 prompt＋caption＋發文時段）＋批量生成樣板 |
 | `copy-humanizer` | 去 AI 味文案（保留事實＋改動清單）|
 | `review-miner` | 評論痛點/讚點萃取 → 改善與賣點機會 |
 | `pricing-calculator` | 定價/毛利/break-even/情境試算 |
@@ -141,6 +142,7 @@
 | 測產品/定價/文案會不會被買 | `consumers-taiwan/usa/japan/europe` |
 | 寫 Listing | `listing-optimizer` |
 | 寫廣告 hook | `ad-hook-writer` |
+| 做一整組 IG 輪播 / 批量貼文 / 排發文時段 | `ig-carousel-factory` |
 | 文案去 AI 味 | `copy-humanizer` |
 | 分析評論找痛點/賣點 | `review-miner` |
 | 做 EDM 序列 | `email-sequence-builder` |
@@ -162,7 +164,7 @@
 | 供應鏈中心 | `supply-chain-expert`（策略採購/供應商/備援/降本）＋ `operations-team`（下單/跟料/收貨）|
 | 成長中心 | `growth-retention`（再購/留存/LTV）＋ `data-analyst`（成效量化）＋ `web-engineer`（站台/埋點）|
 | 驗證關卡 | `validation-panel`（統一 1–5 rubric）→ 調度 `consumers-taiwan/usa/japan/europe` |
-| 行銷中心 | `marketing-team` ＋ 行銷工具（hook/listing/seo/EDM）|
+| 行銷中心 | `marketing-team` ＋ 行銷工具（hook/listing/seo/EDM/ig-carousel-factory）|
 | 視覺中心 | `visual-team` / `animation-designer` |
 | 營運中心 | `operations-team` |
 | 財務中心 | `financial-analyst` ＋ `pricing-calculator` |
