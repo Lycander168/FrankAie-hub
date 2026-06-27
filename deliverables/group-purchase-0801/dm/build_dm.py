@@ -14,11 +14,45 @@
 """
 
 import os
+import glob
 import subprocess
 import html as _html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ASSETS = os.path.join(HERE, "assets")
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+
+# 各產品對應的圖檔關鍵字（檔名含其一即視為該產品商品圖）
+IMG_KEYS = {
+    "Wokyis M5": ["wokyis", "m5"],
+    "LUNA Mag 小露娜": ["luna", "mag", "lycander"],
+    "Sharge Disk Pro": ["sharge", "disk", "pro"],
+}
+IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif")
+
+
+def find_img(name):
+    """在 assets/ 內依關鍵字找出該產品商品圖；找不到回傳 None。"""
+    if not os.path.isdir(ASSETS):
+        return None
+    keys = IMG_KEYS.get(name, [])
+    files = [f for f in sorted(glob.glob(os.path.join(ASSETS, "*")))
+             if f.lower().endswith(IMG_EXT)]
+    for f in files:
+        base = os.path.basename(f).lower()
+        if any(k in base for k in keys):
+            return f
+    return None
+
+
+def img_box(name, cls, label):
+    """有商品圖→以 cover 背景填滿；否則維持虛線佔位框。"""
+    path = find_img(name)
+    if path:
+        return ("<div class='%s' style=\"background-image:url('file://%s');"
+                "background-size:cover;background-position:center;border:none\"></div>"
+                % (cls, path))
+    return "<div class='%s ph'>%s</div>" % (cls, esc(label))
 
 W, H = 1080, 1350
 FONT = "'WenQuanYi Zen Hei','Noto Sans CJK TC',sans-serif"
@@ -122,7 +156,7 @@ def hero_html():
         cards += (
             "<div class='card'>"
             "<div class='bar' style='background:%s'></div>"
-            "<div class='thumb ph'>產品圖</div>"
+            "" + img_box(p["name"], "thumb", "產品圖") +
             "<div class='ci'><div class='bd' style='color:%s'>%s</div>"
             "<div class='nm'>%s</div><div class='tg'>%s</div></div>"
             "</div>"
@@ -187,7 +221,7 @@ def product_html(p):
         "</div>"
         "<div class='name'>%s</div>"
         "<div class='tag'>%s</div>"
-        "<div class='hero ph'>產品圖 / KV 置入處</div>"
+        "" + img_box(p["name"], "hero", "產品圖 / KV 置入處") +
         "<div class='chips'>%s</div>"
         "<div class='spec'>%s</div>"
         "<div class='foot'>"

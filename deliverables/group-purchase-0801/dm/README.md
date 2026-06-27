@@ -17,6 +17,21 @@
 python3 build_dm.py     # 於本資料夾執行；用內建 Chromium 渲染 PNG
 ```
 
+## 從 Dropbox API 抓商品圖（自動套圖）
+`fetch_dropbox.py` 以 Dropbox 官方 API 下載商品圖到 `assets/`，`build_dm.py` 會依檔名關鍵字
+（wokyis / luna·mag·lycander / sharge·disk·pro）自動把圖套進對應 DM 的佔位框。
+
+```bash
+# token 由環境變數提供，不寫入檔案、不進 repo
+DROPBOX_TOKEN=sl.xxxxx python3 fetch_dropbox.py --path "/團購/8月商品圖"     # 資料夾路徑
+DROPBOX_TOKEN=sl.xxxxx python3 fetch_dropbox.py --link "https://www.dropbox.com/scl/fo/...?rlkey=..."  # 共享連結
+python3 build_dm.py     # 套圖並重出 4 張 DM
+```
+
+- **取得 token**：Dropbox App Console 建立 app → 產生 access token，scope 需含
+  `files.metadata.read`、`files.content.read`（用共享連結另加 `sharing.read`）。
+- `assets/`（原始圖）已列入 `.gitignore`，不進 repo；最終 DM 已內嵌圖片即為交付物。
+
 ## ⚠️ 交付前待補
 1. **團購價／拆帳**：DM 上標「即將公布」，數字確認後改 `build_dm.py` 內 `PRODUCTS` 或 HTML 再重生成。
 2. **產品圖／KV**：每張留有虛線「產品圖置入處」佔位框，請以實際商品圖替換（改 HTML 的 `.ph`/`.thumb` 區塊，
