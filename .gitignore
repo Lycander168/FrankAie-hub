@@ -1,0 +1,5 @@
+# Local, per-machine Claude Code settings (permission grants etc.) — not shared
+.claude/settings.local.json
+
+# OS noise
+.DS_Store
