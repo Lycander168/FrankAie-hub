@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYCANDER GROUP × 團購合作提案｜2026 Q3</title>
+<style>
+  :root{
+    --bg:#0E1420;            /* 夜空藍黑 */
+    --slide:#131B2B;         /* 投影片底 */
+    --card:#1A2438;          /* 卡片 */
+    --card-2:#16203300;
+    --ink:#EEF1F7;           /* 主文字 */
+    --muted:#9AA5BC;         /* 次要文字 */
+    --faint:#6B7690;         /* 更淡 */
+    --line:rgba(154,165,188,.22);
+    --accent:#E5B54F;        /* 月相金 */
+    --accent-ink:#0E1420;
+    --accent-soft:rgba(229,181,79,.14);
+    --pending-bg:rgba(229,181,79,.12);
+    --pending-ink:#E5B54F;
+    --shadow:0 18px 50px rgba(4,8,16,.55);
+  }
+  @media print{
+    :root{
+      --bg:#FFFFFF; --slide:#FFFFFF; --card:#F4F6FA;
+      --ink:#1A2233; --muted:#4C566C; --faint:#77809A;
+      --line:rgba(26,34,51,.18);
+      --accent:#A67C1E; --accent-ink:#FFFFFF;
+      --accent-soft:rgba(166,124,30,.10);
+      --pending-bg:rgba(166,124,30,.10); --pending-ink:#8A6512;
+      --shadow:none;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-snap-type:y proximity}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{display:flex;flex-direction:column;align-items:center;gap:4vh;padding:4vh 2vw}
+  .slide{
+    width:min(1200px,94vw);
+    aspect-ratio:16/9;
+    container-type:inline-size;
+    background:var(--slide);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    scroll-snap-align:center;
+    position:relative;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .slide-inner{flex:1;display:flex;flex-direction:column;padding:5.2cqi 6cqi 4.2cqi;min-height:0}
+  .slide-foot{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:0 6cqi 2.6cqi;
+    font-size:1.15cqi;color:var(--faint);letter-spacing:.14em;
+  }
+  .slide-foot .no{font-variant-numeric:tabular-nums}
+
+  .eyebrow{
+    font-size:1.35cqi;font-weight:700;letter-spacing:.24em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:1.6cqi;
+  }
+  h1{font-size:6.2cqi;font-weight:800;line-height:1.18;text-wrap:balance}
+  h2{font-size:3.6cqi;font-weight:800;line-height:1.25;text-wrap:balance;margin-bottom:2.6cqi}
+  h3{font-size:2cqi;font-weight:700;margin-bottom:1cqi}
+  p,li{font-size:1.75cqi;color:var(--muted)}
+  strong{color:var(--ink);font-weight:700}
+  a{color:var(--accent);text-decoration:none;word-break:break-all}
+  ul{list-style:none}
+  ul.dots li{padding-left:1.9cqi;position:relative;margin-bottom:1.2cqi}
+  ul.dots li::before{content:"";position:absolute;left:0;top:.85cqi;width:.75cqi;height:.75cqi;border-radius:50%;background:var(--accent)}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2.4cqi;align-items:start}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.8cqi}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:2.2cqi 2.4cqi;
+  }
+  .card h3{color:var(--ink)}
+  .card p{font-size:1.55cqi}
+  .kpi{border-top:3px solid var(--accent)}
+  .kpi .big{font-size:3.4cqi;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+  .kpi .lbl{font-size:1.35cqi;color:var(--muted);margin-top:.6cqi}
+
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+  table{width:100%;border-collapse:collapse;font-size:1.5cqi}
+  th{
+    text-align:left;font-weight:700;color:var(--accent);
+    background:var(--accent-soft);
+    padding:1.2cqi 1.6cqi;white-space:nowrap;letter-spacing:.04em;
+  }
+  td{
+    padding:1.15cqi 1.6cqi;border-top:1px solid var(--line);
+    color:var(--muted);font-variant-numeric:tabular-nums;vertical-align:top;
+  }
+  td b,td strong{color:var(--ink)}
+  .pill{
+    display:inline-block;background:var(--pending-bg);color:var(--pending-ink);
+    border:1px solid var(--pending-ink);border-radius:99px;
+    font-size:1.2cqi;font-weight:700;padding:.25cqi 1cqi;white-space:nowrap;letter-spacing:.05em;
+  }
+  .note{font-size:1.35cqi;color:var(--faint);margin-top:1.6cqi}
+  /* 大表格頁的緊湊模式 */
+  .dense h2{margin-bottom:1.6cqi}
+  .dense .eyebrow,.dense .section-tag{margin-bottom:1.1cqi}
+  .dense table{font-size:1.32cqi}
+  .dense th{padding:.9cqi 1.4cqi}
+  .dense td{padding:.8cqi 1.4cqi}
+  .dense .pill{font-size:1.05cqi;padding:.2cqi .9cqi}
+  .dense .note{margin-top:1.1cqi;font-size:1.25cqi}
+  .src{font-size:1.45cqi;color:var(--muted);margin-bottom:1cqi}
+
+  /* 封面 */
+  .cover .slide-inner{justify-content:center;position:relative}
+  .cover h1{max-width:60cqi}
+  .moon{
+    position:absolute;right:6cqi;top:7cqi;width:17cqi;height:17cqi;border-radius:50%;
+    background:radial-gradient(circle at 34% 32%, #F3D68C 0%, var(--accent) 46%, #8A6512 100%);
+    box-shadow:0 0 8cqi rgba(229,181,79,.35);
+    opacity:.92;
+  }
+  .moon::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 72% 60%, transparent 55%, rgba(14,20,32,.35) 76%);
+  }
+  .cover .tagline{font-size:2.1cqi;color:var(--muted);margin-top:2.4cqi;max-width:60cqi}
+  .cover .meta{margin-top:4.2cqi;display:flex;gap:3.4cqi;font-size:1.5cqi;color:var(--faint)}
+  .cover .meta b{color:var(--ink);display:block;font-size:1.7cqi;margin-top:.3cqi}
+  .brandline{font-size:1.6cqi;font-weight:700;letter-spacing:.34em;color:var(--accent);margin-bottom:2.4cqi}
+
+  .section-tag{
+    display:inline-block;background:var(--accent);color:var(--accent-ink);
+    font-weight:800;font-size:1.4cqi;letter-spacing:.1em;
+    padding:.4cqi 1.4cqi;border-radius:4px;margin-bottom:1.8cqi;
+  }
+  .split{display:grid;grid-template-columns:1.15fr .85fr;gap:2.8cqi;align-items:start;min-height:0}
+
+  .hint{
+    position:fixed;right:16px;bottom:14px;z-index:9;
+    font-size:12px;color:var(--faint);background:var(--slide);
+    border:1px solid var(--line);border-radius:99px;padding:6px 14px;
+  }
+  @media (max-width:760px){
+    .slide{aspect-ratio:auto;min-height:0}
+    .grid-2,.grid-4,.split{grid-template-columns:1fr}
+  }
+  @media print{
+    .deck{padding:0;gap:0}
+    .slide{
+      width:100%;aspect-ratio:auto;min-height:100vh;
+      border:none;border-radius:0;box-shadow:none;
+      break-after:page;
+    }
+    .hint{display:none}
+    body{background:#fff}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 01 封面 -->
+  <section id="s01" class="slide cover">
+    <div class="slide-inner">
+      <div class="moon" aria-hidden="true"></div>
+      <div class="brandline">LYCANDER GROUP</div>
+      <h1>團購合作提案<br>四大主打商品 × 多入組方案</h1>
+      <p class="tagline">嘖嘖募資實績 × 國際品牌代理 × 授權親子商品——為全台團購公司與團購主準備的一站式開團提案。</p>
+      <div class="meta">
+        <div>提案對象<b>全台知名團購公司及團購主</b></div>
+        <div>檔期<b>2026 Q3–Q4</b></div>
+        <div>聯絡窗口<b>service@lycander.tw</b></div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">01</span></div>
+  </section>
+
+  <!-- 02 提案摘要 -->
+  <section id="s02" class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Executive Summary</div>
+      <h2>一頁看懂本次提案</h2>
+      <div class="grid-4">
+        <div class="card kpi"><div class="big">4</div><div class="lbl">主打商品：小露娜／Wokyis M5／SHARGE Disk Pro／Nettec 兒童牙刷</div></div>
+        <div class="card kpi"><div class="big">3＋1</div><div class="lbl">3C 科技 ＋ 親子生活，一次覆蓋兩大黃金客群</div></div>
+        <div class="card kpi"><div class="big">嘖嘖</div><div class="lbl">三項商品皆有嘖嘖募資實績可直接引用開團</div></div>
+        <div class="card kpi"><div class="big">多入組</div><div class="lbl">每品備妥單入＋多入組，另有跨產品主題組合</div></div>
+      </div>
+      <p style="margin-top:2.6cqi">合作模式採<strong>批售供貨</strong>或<strong>分潤抽成</strong>雙軌，MOQ 與價格階梯詳見「合作條件」頁；所有標示 <span class="pill">提報前確認</span> 之欄位為保留給雙方議定的彈性空間。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">02</span></div>
+  </section>
+
+  <!-- 03 關於 LYCANDER -->
+  <section id="s03" class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">About Us</div>
+      <h2>關於 LYCANDER</h2>
+      <div class="grid-2">
+        <div>
+          <ul class="dots">
+            <li><strong>自有品牌</strong>：LYCANDER（小露娜 LUNA Mag、OLIKA 系列充電產品）</li>
+            <li><strong>國際品牌台灣通路</strong>：Wokyis（M5 擴充座）、SHARGE 閃極（Disk Pro）</li>
+            <li><strong>授權合作</strong>：Nettec 優樂兒童電動牙刷</li>
+            <li><strong>既有通路</strong>：lycander.tw 官網、嘖嘖募資、PackUp；Nettec 已上架 momo／蝦皮／全家行動購／博客來／樂天</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>我們提供團購主</h3>
+          <ul class="dots">
+            <li>現貨供應與彈性出貨（代發／整批）</li>
+            <li>台灣在地保固與售後客服</li>
+            <li>完整行銷素材包與開團文案支援</li>
+            <li>開團期間專屬窗口即時對接</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">03</span></div>
+  </section>
+
+  <!-- 04 為什麼適合開團 -->
+  <section id="s04" class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Why Group-Buy</div>
+      <h2>為什麼這四支商品適合開團</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1｜募資實績可背書</h3>
+          <p>嘖嘖專案頁銷售數字可直接引用於開團文案——例：Wokyis M5 嘖嘖 <strong>807 人次贊助</strong>、2026/4/15 達標。</p>
+        </div>
+        <div class="card">
+          <h3>2｜賣點一句話就能轉述</h3>
+          <p>「一秒展開的口袋充電站」「復古造型 13 合 1 擴充座」「全球首款主動散熱 PSSD」「迪士尼／三麗鷗授權牙刷」。</p>
+        </div>
+        <div class="card">
+          <h3>3｜客群互補、雙線開團</h3>
+          <p>3C 打上班族與果粉，牙刷打媽媽社群；同一檔期可雙線操作，擴大觸及不互搶。</p>
+        </div>
+        <div class="card">
+          <h3>4｜多入組拉高客單</h3>
+          <p>雙入／三入／家庭組湊單門檻低，符合團購「揪團湊件」習性，客單價與成團率同步提升。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">04</span></div>
+  </section>
+
+  <!-- 05 產品線總覽 -->
+  <section id="s05" class="slide dense">
+    <div class="slide-inner">
+      <div class="eyebrow">Product Portfolio</div>
+      <h2>產品線總覽</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>產品</th><th>定位</th><th>目標客群</th><th>建議售價（公開查證）</th><th>銷售背書</th></tr></thead>
+          <tbody>
+            <tr><td><b>LYCANDER 小露娜</b></td><td>口袋型三合一無線充電站</td><td>果粉、通勤、出差旅行</td><td><span class="pill">提報前確認</span></td><td>嘖嘖 luna-mag</td></tr>
+            <tr><td><b>Wokyis M5</b></td><td>13合1 迷你螢幕擴充座</td><td>Mac mini／桌面美學族</td><td>標準版參考 NT$5,980</td><td>嘖嘖 807 人次贊助</td></tr>
+            <tr><td><b>SHARGE Disk Pro</b></td><td>主動散熱 PSSD＋5合1 Hub</td><td>攝影師、剪輯師</td><td>美國官網 US$269 起</td><td>嘖嘖＋國際媒體評測</td></tr>
+            <tr><td><b>Nettec 兒童電動牙刷</b></td><td>2–12 歲音波電動牙刷</td><td>家長、親子社群</td><td>NT$790／890／1,580</td><td>momo／蝦皮／全家上架</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">價格為公開通路查證之參考值；團購價與供貨價依「合作條件」頁價格階梯另議。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">05</span></div>
+  </section>
+
+  <!-- 06 小露娜 亮點 -->
+  <section id="s06" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品一</div>
+      <h2>LYCANDER 小露娜（LUNA Mag）<br>口袋型無線充電站——一秒展開，電就到</h2>
+      <div class="grid-2">
+        <ul class="dots">
+          <li><strong>三合一同充</strong>：手機＋耳機＋手錶一座搞定</li>
+          <li>次世代 <strong>Qi2.2</strong> 無線充電標準，充電速度較前代提升約 <strong>70%</strong></li>
+          <li><strong>口袋型摺疊</strong>設計，一秒展開即用；出差旅行免帶三條線</li>
+          <li>LYCANDER 自有品牌，台灣在地保固與售後</li>
+        </ul>
+        <div class="card">
+          <h3>完整規格</h3>
+          <p>尺寸／重量／各埠瓦數配置：<span class="pill">待填：以嘖嘖專案頁為準</span></p>
+          <p class="note">嘖嘖專案：<a href="https://www.zeczec.com/projects/luna-mag">zeczec.com/projects/luna-mag</a><br>募資金額／贊助人數請於提報當日以專案頁即時數字截圖引用。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">06</span></div>
+  </section>
+
+  <!-- 07 小露娜 價格方案 -->
+  <section id="s07" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品一</div>
+      <h2>小露娜｜團購價格方案（多入組預留）</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>方案</th><th>內容</th><th>建議售價</th><th>團購價（建議 78–85 折）</th><th>團購主毛利空間</th></tr></thead>
+          <tbody>
+            <tr><td><b>單入</b></td><td>LUNA Mag ×1</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>雙入組</b></td><td>×2（自用＋送禮）</td><td>單入 ×2</td><td>雙入再降 3–5%</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>三入團購組</b></td><td>×3（辦公室揪團）</td><td>單入 ×3</td><td>三入再降 5–8%</td><td><span class="pill">提報前確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">折扣區間為市場慣例之建議結構；實際團購底價由 LYCANDER 於提報前確認填入，開團期間享全通路價格保護。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">07</span></div>
+  </section>
+
+  <!-- 08 M5 亮點 -->
+  <section id="s08" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品二</div>
+      <h2>Wokyis M5｜13 合 1 迷你螢幕擴充座<br>復古外觀，裡面全是現代武裝</h2>
+      <div class="grid-2">
+        <ul class="dots">
+          <li>復古經典電腦造型＋<strong>5 吋 HD 螢幕</strong>，桌面即是話題</li>
+          <li><strong>13 合 1</strong> 連接埠；專為 <strong>Mac mini</strong> 設計，相容 MacBook Air/Pro 與 Windows</li>
+          <li>M.2 NVMe SSD 擴充槽（最高支援 <strong>8TB</strong>，內建散熱風扇）</li>
+        </ul>
+        <div>
+          <div class="card" style="margin-bottom:1.8cqi">
+            <h3>標準版｜USB-C 10Gbps</h3>
+            <p>日常高速外接與文書效率首選</p>
+          </div>
+          <div class="card">
+            <h3>專業版｜Thunderbolt 5 80Gbps</h3>
+            <p>8K@60Hz DisplayPort 輸出，專業剪輯與高速 SSD 讀寫</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">08</span></div>
+  </section>
+
+  <!-- 09 M5 背書 -->
+  <section id="s09" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品二</div>
+      <h2>Wokyis M5｜銷售實績與背書</h2>
+      <div class="grid-4">
+        <div class="card kpi"><div class="big">807</div><div class="lbl">嘖嘖贊助人次（796 位獨立贊助者）</div></div>
+        <div class="card kpi"><div class="big">4/15</div><div class="lbl">2026 年嘖嘖達標日</div></div>
+        <div class="card kpi"><div class="big">KS</div><div class="lbl">同步 Kickstarter 國際上線</div></div>
+        <div class="card kpi"><div class="big">$5,980</div><div class="lbl">標準版市售參考價（NT，lycander.tw／PackUp 販售中）</div></div>
+      </div>
+      <p style="margin-top:2.6cqi" class="src">嘖嘖專案：<a href="https://www.zeczec.com/projects/wokyis">zeczec.com/projects/wokyis</a>（常見問答 /faqs）</p>
+      <p class="note">總集資金額：<span class="pill">待填：嘖嘖頁面即時數字</span>——提報當日截圖引用，數字最有說服力。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">09</span></div>
+  </section>
+
+  <!-- 10 M5 價格方案 -->
+  <section id="s10" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品二</div>
+      <h2>Wokyis M5｜團購價格方案（多入組預留）</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>方案</th><th>內容</th><th>建議售價</th><th>團購價（建議 78–85 折）</th><th>團購主毛利空間</th></tr></thead>
+          <tbody>
+            <tr><td><b>標準版單入</b></td><td>M5（10Gbps）×1</td><td>NT$5,980（參考）</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>專業版單入</b></td><td>M5（TB5 80Gbps）×1</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>雙入辦公組</b></td><td>標準版 ×2</td><td>NT$11,960（參考）</td><td>雙入再降 3–5%</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>SSD 升級組</b></td><td>M5 ＋ SSD（容量另議）</td><td><span class="pill">提報前確認</span></td><td>組合價另議</td><td><span class="pill">提報前確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">10</span></div>
+  </section>
+
+  <!-- 11 Disk Pro 亮點 -->
+  <section id="s11" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品三</div>
+      <h2>SHARGE Disk Pro<br>全球首款主動散熱 PSSD＋5 合 1 Hub</h2>
+      <div class="grid-2">
+        <ul class="dots">
+          <li><strong>全球首款主動散熱</strong>行動固態硬碟：渦輪風扇 <strong>7,000–10,000 RPM</strong> 自動調速</li>
+          <li>持續寫入 480GB 以上仍維持 <strong>50°C 以下</strong>，長時間傳輸不掉速</li>
+          <li><strong>10Gbps</strong> 高速傳輸；容量 <strong>1TB／2TB／4TB</strong></li>
+          <li>5 合 1 多埠 Hub（含 <strong>HDMI 2.1</strong>，支援 8K）</li>
+          <li><strong>150g 磁吸</strong>便攜；iPhone ProRes 直錄、iPad 即時備份、Mac/Windows 擴充皆適用</li>
+        </ul>
+        <div class="card">
+          <h3>一機四用</h3>
+          <p>儲存＋擴充＋外接螢幕＋供電——創作者出門只帶一顆。</p>
+          <p class="note">嘖嘖檔期曾祭出 VIP100 折扣碼＋HDMI 2.1 8K 認證線贈品，開團贈品操作有前例可循。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">11</span></div>
+  </section>
+
+  <!-- 12 Disk Pro 背書 -->
+  <section id="s12" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品三</div>
+      <h2>SHARGE Disk Pro｜銷售實績與背書</h2>
+      <div class="grid-4">
+        <div class="card kpi"><div class="big">首款</div><div class="lbl">全球第一款主動散熱 PSSD，品類開創者</div></div>
+        <div class="card kpi"><div class="big">媒體</div><div class="lbl">Tom's Hardware（2TB 版）、PetaPixel 國際評測</div></div>
+        <div class="card kpi"><div class="big">US$269</div><div class="lbl">美國官網起售價（1TB），國際定價可對照</div></div>
+        <div class="card kpi"><div class="big">3 梯次</div><div class="lbl">嘖嘖出貨梯次 3/25、4/15、4/25，交付紀錄透明</div></div>
+      </div>
+      <p style="margin-top:2.6cqi" class="src">嘖嘖專案：<a href="https://www.zeczec.com/projects/disk-pro">zeczec.com/projects/disk-pro</a>（贊助者留言 /comments 可作口碑引用）</p>
+      <p class="note">募資金額／贊助人數：<span class="pill">待填：嘖嘖頁面即時數字</span></p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">12</span></div>
+  </section>
+
+  <!-- 13 Disk Pro 價格方案 -->
+  <section id="s13" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品三</div>
+      <h2>SHARGE Disk Pro｜團購價格方案（多入組預留）</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>方案</th><th>內容</th><th>建議售價</th><th>團購價（建議 78–85 折）</th><th>團購主毛利空間</th></tr></thead>
+          <tbody>
+            <tr><td><b>1TB 單入</b></td><td>Disk Pro 1TB ×1</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>2TB 單入</b></td><td>Disk Pro 2TB ×1</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>4TB 單入</b></td><td>Disk Pro 4TB ×1</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>創作者雙入組</b></td><td>2TB ×2（工作＋備份）</td><td><span class="pill">提報前確認</span></td><td>雙入再降 3–5%</td><td><span class="pill">提報前確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">台灣售價與各容量團購底價由 LYCANDER 依原廠供貨條件於提報前確認。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">13</span></div>
+  </section>
+
+  <!-- 14 Nettec 亮點 -->
+  <section id="s14" class="slide">
+    <div class="slide-inner">
+      <div class="section-tag">產品四</div>
+      <h2>Nettec 授權兒童電動牙刷<br>優樂 NETTEC——展開小朋友的牙齒冒險故事</h2>
+      <div class="grid-2">
+        <ul class="dots">
+          <li><strong>U 型矽膠刷頭</strong>音波電動牙刷，適用 <strong>2–12 歲</strong>，多段清潔模式</li>
+          <li><strong>迪士尼授權款</strong>：小熊維尼、三眼怪、史迪奇、獅子王</li>
+          <li><strong>三麗鷗授權款</strong>：酷洛米、大耳狗</li>
+          <li>經典恐龍造型款（綠／粉）、輕巧攜帶型（黑／白／粉）</li>
+          <li>已上架 <strong>momo、蝦皮、全家行動購、博客來、樂天</strong>——通路口碑可查</li>
+        </ul>
+        <div class="card">
+          <h3>長線價值：耗材回購</h3>
+          <p>首團賣主機、回購團賣替換刷頭——適合固定班表的團購社群，一支商品吃兩種檔期。</p>
+          <p class="note">官網：<a href="https://www.nettec.com.tw">www.nettec.com.tw</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">14</span></div>
+  </section>
+
+  <!-- 15 Nettec 價格方案 -->
+  <section id="s15" class="slide dense">
+    <div class="slide-inner">
+      <div class="section-tag">產品四</div>
+      <h2>Nettec 兒童牙刷｜團購價格方案（多入組預留）</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>方案</th><th>內容</th><th>建議售價</th><th>團購價（建議 78–85 折）</th><th>團購主毛利空間</th></tr></thead>
+          <tbody>
+            <tr><td><b>攜帶型單入</b></td><td>攜帶型電動牙刷 ×1</td><td>NT$790</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>恐龍款單入</b></td><td>U 型恐龍造型 ×1</td><td>NT$890</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>授權款單入</b></td><td>迪士尼授權款 ×1</td><td>NT$1,580</td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>兄弟姊妹 2 入組</b></td><td>恐龍款 ×2（雙色）</td><td>NT$1,780</td><td>2 入再降 3–5%</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>親子家庭組</b></td><td>授權款 ×2 ＋ 替換刷頭組</td><td><span class="pill">提報前確認</span></td><td>組合價另議</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>刷頭耗材加購</b></td><td>替換刷頭（回購型）</td><td><span class="pill">待填：官網耗材價</span></td><td><span class="pill">提報前確認</span></td><td><span class="pill">提報前確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">15</span></div>
+  </section>
+
+  <!-- 16 跨產品多入組 -->
+  <section id="s16" class="slide dense">
+    <div class="slide-inner">
+      <div class="eyebrow">Bundle Matrix</div>
+      <h2>跨產品多入組總表（主題組合提報）</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>主題組合</th><th>內容</th><th>訴求</th><th>組合價</th></tr></thead>
+          <tbody>
+            <tr><td><b>桌面工作站組</b></td><td>Wokyis M5 ＋ Disk Pro</td><td>Mac mini 桌面一次升級到位</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>出門帶電組</b></td><td>小露娜 ×2</td><td>家裡一座、包包一座</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>創作者全配組</b></td><td>M5 專業版 ＋ Disk Pro 2TB ＋ 小露娜</td><td>剪輯師／攝影師整套帶走</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>親子潔牙組</b></td><td>Nettec 授權款 ×2 ＋ 刷頭耗材</td><td>二寶家庭一次買齊</td><td><span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>全家超值箱</b></td><td>小露娜 ＋ Nettec ×2</td><td>爸媽的 3C＋孩子的牙刷，一團全包</td><td><span class="pill">提報前確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">組合折扣邏輯建議：組合價 ≦ 各品團購價加總再降 3–8%；以「送耗材／配件」取代破價，保護各品單售價格帶。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">16</span></div>
+  </section>
+
+  <!-- 17 合作條件 -->
+  <section id="s17" class="slide dense">
+    <div class="slide-inner">
+      <div class="eyebrow">Terms</div>
+      <h2>合作條件（價格階梯）</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>條件</th><th>內容</th></tr></thead>
+          <tbody>
+            <tr><td><b>合作模式</b></td><td>A. 批售供貨（買斷）／ B. 分潤抽成（代收代付），依團購主慣例擇一</td></tr>
+            <tr><td><b>價格階梯</b></td><td>建議售價 → 團購價（建議 78–85 折）→ 批發／供貨價 <span class="pill">提報前確認</span></td></tr>
+            <tr><td><b>MOQ</b></td><td>各品項最低開團量 <span class="pill">提報前確認</span>；多入組可合併計算</td></tr>
+            <tr><td><b>價格保護（MAP）</b></td><td>開團期間全通路不破團購價；檔期錯開既有通路促銷</td></tr>
+            <tr><td><b>出貨</b></td><td>現貨品項下單後 X 個工作天出貨 <span class="pill">提報前確認</span>；可代發或整批出</td></tr>
+            <tr><td><b>售後保固</b></td><td>台灣在地保固；開團期間專屬客服窗口</td></tr>
+            <tr><td><b>對帳</b></td><td>團後 X 天內對帳結算 <span class="pill">提報前確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">17</span></div>
+  </section>
+
+  <!-- 18 開團支援 -->
+  <section id="s18" class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Support</div>
+      <h2>開團支援</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>素材支援</h3>
+          <ul class="dots">
+            <li>產品圖庫＋開箱短影音</li>
+            <li>開團文案包（含嘖嘖實績截圖授權）</li>
+            <li>FAQ 客服懶人包，降低小編負擔</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>活動支援</h3>
+          <ul class="dots">
+            <li>直播帶貨：出借樣品、品牌方連線說明</li>
+            <li>KOL 合作可談，分潤機制彈性</li>
+            <li>開團 SOP 對接：選品 → 定價 → 素材 → 上架 → 出貨 → 對帳</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">18</span></div>
+  </section>
+
+  <!-- 19 檔期建議 -->
+  <section id="s19" class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Calendar</div>
+      <h2>2026 Q3–Q4 檔期建議</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>檔期</th><th>主推商品</th><th>理由</th></tr></thead>
+          <tbody>
+            <tr><td><b>8 月｜開學季</b></td><td>Nettec 兒童牙刷、多入親子組</td><td>開學前家長採買潮</td></tr>
+            <tr><td><b>9 月｜新機潮</b></td><td>小露娜、SHARGE Disk Pro</td><td>iPhone 新機發表帶動配件與 ProRes 儲存需求</td></tr>
+            <tr><td><b>11 月｜雙 11</b></td><td>全品項＋跨產品組合</td><td>年度最大檔，多入組主打</td></tr>
+            <tr><td><b>12 月｜聖誕年末</b></td><td>Wokyis M5、授權款牙刷</td><td>造型商品送禮需求</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">19</span></div>
+  </section>
+
+  <!-- 20 資料來源 -->
+  <section id="s20" class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Sources</div>
+      <h2>資料來源</h2>
+      <p class="src">嘖嘖｜LUNA Mag 小露娜：<a href="https://www.zeczec.com/projects/luna-mag">https://www.zeczec.com/projects/luna-mag</a></p>
+      <p class="src">嘖嘖｜Wokyis M5：<a href="https://www.zeczec.com/projects/wokyis">https://www.zeczec.com/projects/wokyis</a>（常見問答 /faqs）</p>
+      <p class="src">嘖嘖｜SHARGE Disk Pro：<a href="https://www.zeczec.com/projects/disk-pro">https://www.zeczec.com/projects/disk-pro</a>（留言 /comments）</p>
+      <p class="src">優樂 NETTEC 官網：<a href="https://www.nettec.com.tw">https://www.nettec.com.tw</a></p>
+      <p class="src">輔助來源：SHARGE 官網（sharge.com/products/disk-pro）、Tom's Hardware 與 PetaPixel 評測、lycander.tw、PackUp、momo／蝦皮／全家行動購／博客來 商品頁</p>
+      <p class="note">引用原則：對外提報時，嘖嘖募資金額與贊助人數請以專案頁當日即時數字截圖為準；本簡報僅收錄已查證之公開資訊，未查證欄位一律標示待填。</p>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">20</span></div>
+  </section>
+
+  <!-- 21 聯絡頁 -->
+  <section id="s21" class="slide cover">
+    <div class="slide-inner">
+      <div class="moon" aria-hidden="true"></div>
+      <div class="brandline">LYCANDER GROUP</div>
+      <h1>期待與您<br>在 2026 Q3 一起開團</h1>
+      <div class="meta">
+        <div>Email<b>service@lycander.tw</b></div>
+        <div>官網<b>www.lycander.tw</b></div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>LYCANDER GROUP × 團購合作提案</span><span class="no">21</span></div>
+  </section>
+
+</div>
+
+<div class="hint" id="hint">← → 或 PgUp/PgDn 翻頁｜Ctrl+P 列印成 PDF（自動轉淺色）</div>
+
+<script>
+(function(){
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  function current(){
+    var mid=window.innerHeight/2,best=0,bestD=Infinity;
+    slides.forEach(function(s,i){
+      var r=s.getBoundingClientRect(),c=r.top+r.height/2,d=Math.abs(c-mid);
+      if(d<bestD){bestD=d;best=i;}
+    });
+    return best;
+  }
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[i].scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(current()+1);}
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();go(current()-1);}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+})();
+</script>
+</body>
+</html>
