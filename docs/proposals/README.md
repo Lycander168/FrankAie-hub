@@ -7,4 +7,7 @@
 
 | 文件 | 說明 |
 |---|---|
-| `2026-07-lycander-group-buy-deck.{html,md}` | LYCANDER GROUP × 全台團購公司/團購主 四大商品團購合作提案（小露娜、Wokyis M5、SHARGE Disk Pro、Nettec 兒童牙刷；含多入組方案） |
+| `2026-07-lycander-group-buy-deck.{html,md,pptx}` | LYCANDER GROUP × 全台團購公司/團購主 四大商品團購合作提案（小露娜、Wokyis M5、SHARGE Disk Pro、Nettec 兒童牙刷；含多入組方案） |
+| `build_pptx.py` | PPTX 產生器（`python3 build_pptx.py` 重新產出同名 .pptx；需 `pip install python-pptx`） |
+
+PPTX 為原生可編輯格式（文字/表格皆可改），指定字體「Microsoft JhengHei」，於 Windows/Office 開啟即正常顯示。
