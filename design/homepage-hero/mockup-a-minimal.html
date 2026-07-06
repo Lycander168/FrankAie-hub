@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>Hero 改版 A — 保守微調版（構圖不動，只收斂層級）</title>
+<style>
+  :root{
+    --purple:      #6C4FA1; /* 品牌紫（logo 取色）— CTA 專用 */
+    --purple-deep: #5B4691; /* 深紫 — H1 標題 */
+    --gold:        #8A6A1F; /* 金 — 全畫面只用一處 */
+    --ink:         #3A3F4A; /* 深灰 — 內文 */
+    --muted:       #6B7280; /* 灰 — 說明文字 */
+    --card:        rgba(255,255,255,.78);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"WenQuanYi Zen Hei","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;}
+
+  .hero{
+    position:relative; width:1920px; height:860px; overflow:hidden;
+    background:
+      radial-gradient(900px 600px at 78% 18%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%),
+      radial-gradient(1100px 700px at 12% 85%, rgba(255,255,255,.35), rgba(255,255,255,0) 55%),
+      linear-gradient(118deg,#E3EAF4 0%, #D5DFEE 46%, #C7D3E6 100%);
+  }
+  /* 葉影氛圍（近似原圖），刻意壓很淡，不搶主體 */
+  .leaf{position:absolute;border-radius:50% 50% 45% 55%/60% 45% 55% 40%;
+        background:rgba(120,140,175,.10);filter:blur(28px)}
+  .leaf.l1{width:520px;height:220px;left:60px;top:40px;transform:rotate(-24deg)}
+  .leaf.l2{width:420px;height:180px;left:420px;top:210px;transform:rotate(-38deg)}
+  .leaf.l3{width:560px;height:230px;right:120px;top:60px;transform:rotate(20deg)}
+
+  /* ── 產品照佔位（照片素材維持原樣，此處僅示意位置）────── */
+  .ph{position:absolute;border:2px dashed rgba(107,114,128,.4);border-radius:24px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+      color:rgba(107,114,128,.75);font-size:19px;letter-spacing:2px;text-align:center;line-height:1.6;
+      background:rgba(255,255,255,.16)}
+  .ph small{font-size:14px;letter-spacing:1px;opacity:.8}
+  .ph-main{left:700px;top:60px;width:400px;height:460px;border-radius:190px 190px 32px 32px}
+  .ph-podium{position:absolute;left:600px;top:480px;width:620px;height:210px;border-radius:50%;
+      background:radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.6), rgba(214,224,238,.2) 70%);
+      filter:blur(2px)}
+
+  /* 三個小產品 = 佔位框＋名稱合為一個單元（減少漂浮元素） */
+  .prod{position:absolute;top:598px;width:220px;height:210px;
+      border:2px dashed rgba(107,114,128,.4);border-radius:18px;
+      background:rgba(255,255,255,.16);
+      display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:14px}
+  .prod .pic{flex:1;display:flex;align-items:center;justify-content:center;
+      color:rgba(107,114,128,.6);font-size:15px;letter-spacing:1px}
+  .prod .name{background:rgba(255,255,255,.85);border-radius:10px;padding:8px 16px;
+      font-size:19px;font-weight:600;color:var(--ink);letter-spacing:1px;text-align:center;line-height:1.4;
+      box-shadow:0 3px 10px rgba(90,105,140,.12)}
+  .p1{left:640px}.p2{left:880px}.p3{left:1120px}
+
+  /* ── 左欄文字（位置同原版，層級收斂為 3 層）───────────── */
+  .copy{position:absolute;left:170px;top:225px;width:790px}
+  .eyebrow{
+    display:inline-block;font-size:25px;font-weight:500;letter-spacing:6px;
+    color:var(--muted);padding-bottom:16px;
+  }
+  h1{
+    font-size:74px;line-height:1.25;font-weight:700;color:var(--purple-deep);
+    letter-spacing:3px;margin-bottom:20px;white-space:nowrap;
+  }
+  .sub{
+    font-size:42px;font-weight:700;color:var(--ink);letter-spacing:6px;margin-bottom:16px;
+  }
+  .sub .gold{color:var(--gold)}
+  .note{font-size:24px;color:var(--muted);letter-spacing:3px}
+
+  /* ── 右欄：數據卡 → CTA → 數據卡（同原版上下結構）──────── */
+  .stat{
+    position:absolute;right:130px;width:460px;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.9);border-radius:18px;
+    padding:24px 30px;box-shadow:0 8px 28px rgba(90,105,140,.14);
+  }
+  .stat.s1{top:130px}
+  .stat.s2{top:495px}
+  .stat .tag{
+    display:inline-block;font-size:16px;font-weight:600;color:var(--purple);
+    border:1.5px solid var(--purple);border-radius:999px;padding:3px 13px;
+    letter-spacing:2px;margin-bottom:10px;
+  }
+  .stat .name{font-size:25px;font-weight:700;color:var(--ink);letter-spacing:2px;margin-bottom:4px}
+  .stat .num{font-size:42px;font-weight:800;color:var(--purple-deep);letter-spacing:1px}
+  .stat .num small{font-size:20px;font-weight:600;color:var(--muted);letter-spacing:2px;margin-right:10px}
+
+  /* CTA：位置同原版（第一張數據卡下方），全畫面唯一飽和實色塊 */
+  .cta{
+    position:absolute;right:130px;top:380px;width:460px;
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    background:var(--purple);color:#fff;
+    font-size:29px;font-weight:700;letter-spacing:6px;
+    padding:24px 0;border-radius:16px;
+    box-shadow:0 10px 30px rgba(108,79,161,.38);
+  }
+  .cta .arrow{font-size:25px;letter-spacing:0}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div>
+
+  <div class="ph-podium"></div>
+  <div class="ph ph-main">產品主圖<small>（維持原素材）</small></div>
+
+  <div class="copy">
+    <span class="eyebrow">支持者口碑見證</span>
+    <h1>噴噴熱賣 募資好物</h1>
+    <div class="sub"><span class="gold">人氣</span>排行榜</div>
+    <div class="note">集氣敲碗，限量再登場！</div>
+  </div>
+
+  <div class="stat s1">
+    <span class="tag">人氣熱銷</span>
+    <div class="name">LUNA Mag</div>
+    <div class="num"><small>募資總人數</small>1,010 人</div>
+  </div>
+
+  <div class="cta">募資熱銷商品<span class="arrow">→</span></div>
+
+  <div class="stat s2">
+    <span class="tag">募資金榜</span>
+    <div class="name">散熱多埠集線</div>
+    <div class="num"><small>募資金額</small>$5,194,681</div>
+  </div>
+
+  <div class="prod p1"><div class="pic">（產品照）</div><div class="name">Wokyis M5<br>迷你螢幕擴充</div></div>
+  <div class="prod p2"><div class="pic">（產品照）</div><div class="name">智慧無線<br>充電極光屋</div></div>
+  <div class="prod p3"><div class="pic">（產品照）</div><div class="name">SSD外接盒<br>魔術Cube</div></div>
+</div>
+</body>
+</html>
