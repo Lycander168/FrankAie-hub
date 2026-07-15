@@ -31,6 +31,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `web-engineer` — 資深前端 / DTC 站工程。官網/落地頁、結帳優化、效能(Core Web Vitals)、追蹤埋點、A/B 基建。與 visual-team（設計稿）、data-analyst（分析）分工。
 - `financial-analyst` — 資深產品財務分析師（CFO 視角）。成本/毛利/現金流/回本/投資評估，與 pricing-calculator 搭配。
 - `legal-ip` — 資深法務 / 智財顧問。專利迴避 FTO、合約紅線、商標、廣告與隱私合規（提示風險，非正式法律意見）。
+- `hr-onboarding` — 資深人資 / 組織發展顧問。新人報到流程（Day 0→Day 1→Week 1）、30/60/90 試用期目標（OKR 式）、mentor 制度與 GROUP OS 導入學習地圖。與 hub-router 分工（它調度「產品專案」，本角色設計「人」的入職與成長路徑）。
 
 ### 專家團隊（每個 skill = 5 位具名專家）
 - `electronics-team` — 電子工程團隊（電源/快充、電池安全、韌體、RF/無線、測試認證）
@@ -98,6 +99,7 @@ description: >
 
 ## 版本
 
+- v0.13.0 — 新增支援專家 `hr-onboarding`（資深人資/組織發展）：新人報到流程 checklist、30/60/90 試用期目標範本（OKR 式）、GROUP OS 學習地圖，並附「電商營運助理」實例演練（去識別化）；ROSTER 支援專家增至 12 位、新增人資中心對照與路由列，skill 數 33 → 34。
 - v0.12.0 — 衝刺品質分數（WS1–WS4）：① hub-router 加端到端 worked example ＋「第一次使用」指引；② CI `check_skills.py` 升級為**結構強制**（name=資料夾、description、輸出範本、防臆造守則）＋ 新增 `skills/_TEMPLATE/`（Pattern A/B/C 範本）；③ 補 3 垂直角色 `supply-chain-expert`/`growth-retention`/`web-engineer`；④ 招牌 `validation-panel`（統一 1–5 購買意願 rubric 的 AI 消費者驗證關卡）＋ 4 個 consumers-* 補「模擬非真實數據」聲明。skill 數 29 → 33。
 - v0.11.0 — 品質治理（全 skill 審計後）：修復 10 處壞引用（已不存在的 ecommerce-operator / sourcing-expert，改指向 `channel-sales`／`seo-keyword-expander`／`operations-team`）；hub-router 新增「觸發衝突仲裁表」；plugin README 新增「格式選用指南(Pattern A/B/C)」；根 README 計數/目錄樹更新；新增 `scripts/check_skills.py` 與 `.github/workflows/check-skills.yml`（CI 自動檢查引用完整性、skill 計數與版本一致性）。
 - v0.10.0 — 補強中優先角色缺口：新增 `security-engineer`（裝置/韌體/資料安全，防禦性技術面）與 `channel-sales`（marketplace 帳號健康/經銷批發/B2B/通路價格）；hub-router 動線於開發(安全需求)、上市/投放(通路鋪設)納入兩者；ROSTER 支援專家增至 8 位、新增資安中心與通路中心對照、總數更新為 29 個 skill。
