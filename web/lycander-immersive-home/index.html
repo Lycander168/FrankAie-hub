@@ -1,0 +1,572 @@
+<!-- ============================================================
+  LYCANDER 沈浸式滾動品牌首頁 v1.0(Shopline 自訂頁面可貼上版)
+  使用方式:Shopline 後台 → 自訂頁面 → HTML 原始碼模式 → 全選貼上
+  換圖:搜尋「[換圖]」註解,把 <img> 的 src 換成 Shopline 媒體庫網址
+  換連結:搜尋「[換連結]」註解,把 href 換成實際商品/分類頁網址
+  詳細說明見同目錄 README.md
+============================================================ -->
+<style>
+/* ---------- Brand tokens(全部掛在 .lyc-page,不污染全域) ---------- */
+.lyc-page {
+  --lyc-bg: #fafafa;
+  --lyc-surface: #ffffff;
+  --lyc-ink: #1a1a1a;
+  --lyc-ink-soft: #595959;
+  --lyc-line: #e5e5e5;
+  --lyc-accent: #2b2b2b;
+  --lyc-warm: #f5f3f0;
+  --lyc-dark: #1d1d1f;
+  --lyc-header-h: 64px;        /* Shopline 主題頁首高度,依實際主題調整 */
+  --lyc-radius: 20px;
+  --lyc-max-w: 1200px;
+  --lyc-space: clamp(3.5rem, 9vw, 7rem);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: var(--lyc-ink);
+  background: var(--lyc-bg);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 局部 reset(抵禦主題全域樣式,不碰 body/html) ---------- */
+.lyc-page, .lyc-page * { box-sizing: border-box; margin: 0; padding: 0; }
+.lyc-page img { max-width: 100%; height: auto; display: block; border: 0; }
+.lyc-page a { color: inherit; text-decoration: none; }
+.lyc-page h2, .lyc-page h3 { font-weight: 700; line-height: 1.3; }
+.lyc-page p { color: var(--lyc-ink-soft); }
+
+.lyc-inner {
+  max-width: var(--lyc-max-w);
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 4vw, 2.5rem);
+  padding-right: clamp(1.25rem, 4vw, 2.5rem);
+}
+.lyc-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--lyc-ink-soft);
+  margin-bottom: 1rem;
+}
+.lyc-h2 {
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+/* ============ Scene 0 — Hero ============ */
+.lyc-hero {
+  position: relative;
+  min-height: calc(100svh - var(--lyc-header-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, #ffffff 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #f4f4f4 0%, var(--lyc-bg) 100%);
+}
+@supports not (min-height: 100svh) {
+  .lyc-hero { min-height: calc(100vh - var(--lyc-header-h)); }
+}
+.lyc-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M120 0H0v120' fill='none' stroke='%23e8e8e8' stroke-width='1'/%3E%3C/svg%3E");
+  opacity: 0.55;
+  pointer-events: none;
+}
+.lyc-hero-content { position: relative; padding: 4rem 1.5rem; }
+.lyc-hero-brand {
+  font-size: clamp(2.6rem, 9vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: clamp(0.18em, 2vw, 0.3em);
+  margin-right: calc(clamp(0.18em, 2vw, 0.3em) * -1); /* 抵銷末字 letter-spacing,置中不偏移 */
+  line-height: 1.15;
+  color: var(--lyc-ink);
+}
+.lyc-hero-sub {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  color: var(--lyc-ink-soft);
+  letter-spacing: 0.08em;
+}
+.lyc-hero-sub em {
+  font-style: normal;
+  color: var(--lyc-ink);
+  font-weight: 600;
+}
+.lyc-hero-en {
+  margin-top: 0.6rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+.lyc-hero-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 26px;
+  border-right: 2px solid #9a9a9a;
+  border-bottom: 2px solid #9a9a9a;
+  rotate: 45deg;
+  animation: lyc-bounce 2.2s ease-in-out infinite;
+}
+@keyframes lyc-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.85; }
+  50%      { transform: translateX(-50%) translateY(10px); opacity: 0.35; }
+}
+
+/* ============ Scene 1 — 品牌故事(desktop sticky 左欄) ============ */
+.lyc-story { padding: var(--lyc-space) 0; background: var(--lyc-surface); }
+.lyc-story-grid { display: grid; gap: 2.5rem; }
+.lyc-story-visual img { border-radius: var(--lyc-radius); }
+.lyc-story-blocks { display: grid; gap: clamp(2rem, 6vw, 4.5rem); }
+.lyc-story-block h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 0.6rem; }
+.lyc-story-block p { max-width: 34em; }
+.lyc-story-num {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: #a0a0a0;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 900px) {
+  .lyc-story-grid { grid-template-columns: 5fr 6fr; gap: 4rem; align-items: start; }
+  .lyc-story-visual { position: sticky; top: calc(var(--lyc-header-h) + 2rem); }
+  .lyc-story-blocks { padding-top: 1rem; }
+}
+
+/* ============ Scene 2 — 產品 Showcase(stacked sticky cards) ============ */
+.lyc-showcase { padding: var(--lyc-space) 0; }
+.lyc-showcase-head { text-align: center; margin-bottom: clamp(2rem, 6vw, 4rem); }
+.lyc-stack { display: grid; gap: 1.25rem; }
+.lyc-card {
+  position: sticky;
+  top: calc(var(--lyc-header-h) + 1.25rem);
+  background: var(--lyc-surface);
+  border: 1px solid var(--lyc-line);
+  border-radius: var(--lyc-radius);
+  overflow: hidden;
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.18);
+  display: grid;
+}
+/* 每張卡 sticky 偏移遞增,形成翻卡層次 */
+.lyc-card:nth-child(2) { top: calc(var(--lyc-header-h) + 2.25rem); }
+.lyc-card:nth-child(3) { top: calc(var(--lyc-header-h) + 3.25rem); }
+.lyc-card:nth-child(4) { top: calc(var(--lyc-header-h) + 4.25rem); }
+.lyc-card-media { background: #f0f0f0; }
+.lyc-card-media img { width: 100%; height: 100%; object-fit: cover; }
+.lyc-card-body { padding: clamp(1.5rem, 4vw, 2.75rem); align-self: center; }
+.lyc-card-model {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  margin-bottom: 0.7rem;
+}
+.lyc-card-title { font-size: clamp(1.35rem, 3.4vw, 1.9rem); margin-bottom: 0.7rem; }
+.lyc-card-desc { margin-bottom: 1.4rem; max-width: 30em; }
+.lyc-card-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+.lyc-card-tags li {
+  font-size: 0.8rem;
+  color: var(--lyc-ink-soft);
+  border: 1px solid var(--lyc-line);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  background: var(--lyc-bg);
+}
+.lyc-page .lyc-link {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--lyc-ink);
+  border-bottom: 2px solid var(--lyc-ink);
+  padding-bottom: 2px;
+  transition: opacity 0.25s ease;
+}
+.lyc-page .lyc-link:hover { opacity: 0.55; }
+@media (min-width: 768px) {
+  .lyc-card { grid-template-columns: 1fr 1fr; min-height: 420px; }
+  .lyc-card:nth-child(even) .lyc-card-media { order: 2; }
+}
+
+/* ============ Scene 3 — 周邊配件橫向帶 ============ */
+.lyc-band { padding: var(--lyc-space) 0; background: var(--lyc-surface); }
+.lyc-band-head { margin-bottom: 2rem; }
+.lyc-band-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(78%, 320px);
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding: 0.25rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.lyc-band-card {
+  scroll-snap-align: center;
+  background: var(--lyc-bg);
+  border: 1px solid var(--lyc-line);
+  border-radius: var(--lyc-radius);
+  overflow: hidden;
+}
+.lyc-band-card img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.lyc-band-card-body { padding: 1.25rem 1.4rem 1.6rem; }
+.lyc-band-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+.lyc-band-card p { font-size: 0.92rem; }
+@media (min-width: 900px) {
+  .lyc-band-track {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: unset;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    max-width: var(--lyc-max-w);
+    margin: 0 auto;
+    gap: 1.5rem;
+  }
+}
+
+/* ============ Scene 4 — 永續與品牌價值 ============ */
+.lyc-values { padding: var(--lyc-space) 0; background: var(--lyc-warm); }
+.lyc-values-head { text-align: center; margin-bottom: clamp(2rem, 6vw, 3.5rem); }
+.lyc-values-grid { display: grid; gap: 1.25rem; }
+.lyc-value {
+  background: var(--lyc-surface);
+  border: 1px solid var(--lyc-line);
+  border-radius: var(--lyc-radius);
+  padding: 2rem 1.75rem;
+}
+.lyc-value-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--lyc-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1.1rem;
+}
+.lyc-value h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.lyc-value p { font-size: 0.95rem; }
+@media (min-width: 768px) {
+  .lyc-values-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+}
+
+/* ============ Scene 5 — CTA 收尾 ============ */
+.lyc-cta {
+  background: var(--lyc-dark);
+  color: #f5f5f5;
+  text-align: center;
+  padding: calc(var(--lyc-space) * 1.1) 0;
+}
+.lyc-cta .lyc-eyebrow { color: #9a9a9a; }
+.lyc-cta-title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.1rem;
+  color: #ffffff;
+}
+.lyc-cta-sub { color: #b5b5b5; max-width: 32em; margin: 0 auto 2.2rem; }
+.lyc-page .lyc-cta-btn {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--lyc-ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 2.6rem;
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.lyc-page .lyc-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -16px rgba(255, 255, 255, 0.45);
+}
+.lyc-cta-contact { margin-top: 2.6rem; font-size: 0.9rem; color: #8f8f8f; line-height: 2; }
+.lyc-page .lyc-cta-contact a { color: #d5d5d5; border-bottom: 1px solid #555; }
+
+/* ============ 進場 reveal(僅在 JS 成功執行時啟用初始隱藏) ============ */
+.lyc-page.lyc-js .lyc-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lyc-page.lyc-js .lyc-reveal.is-in { opacity: 1; transform: none; }
+.lyc-page.lyc-js .lyc-reveal:nth-child(2) { transition-delay: 0.08s; }
+.lyc-page.lyc-js .lyc-reveal:nth-child(3) { transition-delay: 0.16s; }
+
+/* ============ 漸進增強:CSS scroll-driven animations(Chrome/Edge 115+) ============ */
+@supports (animation-timeline: view()) {
+  .lyc-hero-grid {
+    animation: lyc-hero-drift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100svh;
+  }
+  @keyframes lyc-hero-drift {
+    to { transform: translateY(-12%); opacity: 0.15; }
+  }
+  .lyc-card {
+    animation: lyc-card-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+  @keyframes lyc-card-in {
+    from { transform: scale(0.965); }
+    to   { transform: scale(1); }
+  }
+}
+
+/* ============ 尊重減少動態偏好 ============ */
+@media (prefers-reduced-motion: reduce) {
+  .lyc-page *, .lyc-page *::before, .lyc-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .lyc-page.lyc-js .lyc-reveal { opacity: 1; transform: none; }
+}
+</style>
+
+<div class="lyc-page">
+
+  <!-- ===== Scene 0:Hero 開場 ===== -->
+  <section class="lyc-hero" aria-label="品牌開場">
+    <div class="lyc-hero-grid" aria-hidden="true"></div>
+    <div class="lyc-hero-content">
+      <h2 class="lyc-hero-brand">LYCANDER</h2>
+      <p class="lyc-hero-sub"><em>Ly</em>,音樂的和諧 × <em>Cander</em>,清澈純粹</p>
+      <p class="lyc-hero-en">Harmony in Every Detail</p>
+    </div>
+    <span class="lyc-hero-arrow" aria-hidden="true"></span>
+  </section>
+
+  <!-- ===== Scene 1:品牌故事 ===== -->
+  <section class="lyc-story" aria-label="品牌故事">
+    <div class="lyc-inner lyc-story-grid">
+      <div class="lyc-story-visual">
+        <!-- [換圖] 品牌形象照(工作桌情境/產品群像),建議 1000×1250 直式 -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='1250'%3E%3Crect width='1000' height='1250' fill='%23ececec'/%3E%3Crect x='24' y='24' width='952' height='1202' fill='none' stroke='%23cfcfcf' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='500' y='610' text-anchor='middle' font-family='sans-serif' font-size='40' fill='%23999'%3E品牌形象照%3C/text%3E%3Ctext x='500' y='665' text-anchor='middle' font-family='sans-serif' font-size='28' fill='%23aaa'%3E建議 1000×1250%3C/text%3E%3C/svg%3E"
+             alt="LYCANDER 品牌形象" width="1000" height="1250">
+      </div>
+      <div class="lyc-story-blocks">
+        <div class="lyc-story-block lyc-reveal">
+          <span class="lyc-story-num">01 — ORIGIN</span>
+          <h3>一個名字,兩種純粹</h3>
+          <p>「Ly」象徵音樂的和諧,「Cander」代表清澈與純粹。LYCANDER 相信好的設計如同好的樂章——每個細節各安其位,合奏出日常裡安靜而確實的美好。</p>
+        </div>
+        <div class="lyc-story-block lyc-reveal">
+          <span class="lyc-story-num">02 — CRAFT</span>
+          <h3>為現代生活而設計</h3>
+          <p>從筆電包的每一層防護,到充電器的每一次穩定輸出,我們把「剛剛好的講究」放進 3C 配件,讓科技融入生活,而不是打擾生活。</p>
+        </div>
+        <div class="lyc-story-block lyc-reveal">
+          <span class="lyc-story-num">03 — TAIWAN</span>
+          <h3>來自台灣的日常提案</h3>
+          <p>LYCANDER 從台灣出發,以在地服務與對美好生活的追求,陪你把工作與生活的每一天,過得更從容。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scene 2:產品 Showcase(翻卡沈浸區) ===== -->
+  <section class="lyc-showcase" aria-label="精選產品">
+    <div class="lyc-inner">
+      <div class="lyc-showcase-head">
+        <span class="lyc-eyebrow">Signature Collection</span>
+        <h2 class="lyc-h2">往下捲動,認識四位日常夥伴</h2>
+      </div>
+      <div class="lyc-stack">
+
+        <article class="lyc-card">
+          <div class="lyc-card-media">
+            <!-- [換圖] Contrastin 筆電支架包產品圖,建議 1200×900 -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'%3E%3Crect width='1200' height='900' fill='%23e9e9e9'/%3E%3Ctext x='600' y='435' text-anchor='middle' font-family='sans-serif' font-size='44' fill='%23999'%3ECONTRASTIN 產品圖%3C/text%3E%3Ctext x='600' y='495' text-anchor='middle' font-family='sans-serif' font-size='30' fill='%23aaa'%3E建議 1200×900%3C/text%3E%3C/svg%3E"
+                 alt="Contrastin 筆電支架包" width="1200" height="900">
+          </div>
+          <div class="lyc-card-body">
+            <p class="lyc-card-model">Contrastin</p>
+            <h3 class="lyc-card-title">筆電支架包</h3>
+            <p class="lyc-card-desc">七層防護結構,包身展開即是穩固支架。一個包,同時照顧你的筆電與你的頸椎。</p>
+            <ul class="lyc-card-tags">
+              <li>7 層防護</li><li>可折支架</li><li>輕量通勤</li>
+            </ul>
+            <!-- [換連結] Contrastin 商品頁 -->
+            <a class="lyc-link" href="https://www.lycander.tw/contrastin">了解更多 →</a>
+          </div>
+        </article>
+
+        <article class="lyc-card">
+          <div class="lyc-card-media">
+            <!-- [換圖] OLIKA W3 三合一磁吸無線充電器產品圖,建議 1200×900 -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'%3E%3Crect width='1200' height='900' fill='%23e9e9e9'/%3E%3Ctext x='600' y='435' text-anchor='middle' font-family='sans-serif' font-size='44' fill='%23999'%3EOLIKA W3 產品圖%3C/text%3E%3Ctext x='600' y='495' text-anchor='middle' font-family='sans-serif' font-size='30' fill='%23aaa'%3E建議 1200×900%3C/text%3E%3C/svg%3E"
+                 alt="OLIKA W3 三合一磁吸無線充電器" width="1200" height="900">
+          </div>
+          <div class="lyc-card-body">
+            <p class="lyc-card-model">OLIKA W3</p>
+            <h3 class="lyc-card-title">三合一磁吸無線充電器</h3>
+            <p class="lyc-card-desc">手機、耳機、手錶,一座搞定。磁吸即定位,睡前放上去,醒來全滿電。</p>
+            <ul class="lyc-card-tags">
+              <li>Qi2 磁吸</li><li>三裝置同充</li><li>床頭桌面兩相宜</li>
+            </ul>
+            <!-- [換連結] OLIKA W3 商品頁 -->
+            <a class="lyc-link" href="https://www.lycander.tw/shop">了解更多 →</a>
+          </div>
+        </article>
+
+        <article class="lyc-card">
+          <div class="lyc-card-media">
+            <!-- [換圖] HALFTER iPad 鍵盤保護套產品圖,建議 1200×900 -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'%3E%3Crect width='1200' height='900' fill='%23e9e9e9'/%3E%3Ctext x='600' y='435' text-anchor='middle' font-family='sans-serif' font-size='44' fill='%23999'%3EHALFTER 產品圖%3C/text%3E%3Ctext x='600' y='495' text-anchor='middle' font-family='sans-serif' font-size='30' fill='%23aaa'%3E建議 1200×900%3C/text%3E%3C/svg%3E"
+                 alt="HALFTER iPad 觸控羽量藍牙鍵盤防震保護套" width="1200" height="900">
+          </div>
+          <div class="lyc-card-body">
+            <p class="lyc-card-model">HALFTER</p>
+            <h3 class="lyc-card-title">iPad 觸控藍牙鍵盤保護套</h3>
+            <p class="lyc-card-desc">羽量機身、防震保護、觸控板一應俱全,讓 iPad 隨時切換成你的行動工作站。</p>
+            <ul class="lyc-card-tags">
+              <li>羽量設計</li><li>防震保護</li><li>觸控板</li>
+            </ul>
+            <!-- [換連結] HALFTER 商品頁 -->
+            <a class="lyc-link" href="https://www.lycander.tw/store/products/k1">了解更多 →</a>
+          </div>
+        </article>
+
+        <article class="lyc-card">
+          <div class="lyc-card-media">
+            <!-- [換圖] iSlim 筆電包產品圖,建議 1200×900 -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'%3E%3Crect width='1200' height='900' fill='%23e9e9e9'/%3E%3Ctext x='600' y='435' text-anchor='middle' font-family='sans-serif' font-size='44' fill='%23999'%3EiSlim 產品圖%3C/text%3E%3Ctext x='600' y='495' text-anchor='middle' font-family='sans-serif' font-size='30' fill='%23aaa'%3E建議 1200×900%3C/text%3E%3C/svg%3E"
+                 alt="iSlim 筆電包" width="1200" height="900">
+          </div>
+          <div class="lyc-card-body">
+            <p class="lyc-card-model">iSlim</p>
+            <h3 class="lyc-card-title">極簡筆電包</h3>
+            <p class="lyc-card-desc">貼身剪裁、質感面料,13 吋筆電與 MacBook 的日常最佳拍檔,薄得剛好、護得徹底。</p>
+            <ul class="lyc-card-tags">
+              <li>極簡外型</li><li>貼身保護</li><li>13 吋適用</li>
+            </ul>
+            <!-- [換連結] iSlim 商品頁 -->
+            <a class="lyc-link" href="https://www.lycander.tw/shop">了解更多 →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scene 3:周邊配件橫向帶 ===== -->
+  <section class="lyc-band" aria-label="周邊配件">
+    <div class="lyc-inner lyc-band-head">
+      <span class="lyc-eyebrow">Essentials</span>
+      <h2 class="lyc-h2">桌面上的小事,也值得講究</h2>
+    </div>
+    <div class="lyc-band-track" tabindex="0" role="group" aria-label="配件清單(可左右捲動)">
+      <article class="lyc-band-card lyc-reveal">
+        <!-- [換圖] GaN 充電器產品圖,建議 800×600 -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23e9e9e9'/%3E%3Ctext x='400' y='290' text-anchor='middle' font-family='sans-serif' font-size='34' fill='%23999'%3EGaN 充電器圖%3C/text%3E%3Ctext x='400' y='335' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23aaa'%3E建議 800×600%3C/text%3E%3C/svg%3E"
+             alt="GaN 氮化鎵充電器" width="800" height="600">
+        <div class="lyc-band-card-body">
+          <h3>GaN 充電器</h3>
+          <p>小體積大功率,一顆帶著走,筆電手機都餵飽。</p>
+        </div>
+      </article>
+      <article class="lyc-band-card lyc-reveal">
+        <!-- [換圖] HDMI 8K 傳輸線產品圖,建議 800×600 -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23e9e9e9'/%3E%3Ctext x='400' y='290' text-anchor='middle' font-family='sans-serif' font-size='34' fill='%23999'%3EHDMI 8K 線材圖%3C/text%3E%3Ctext x='400' y='335' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23aaa'%3E建議 800×600%3C/text%3E%3C/svg%3E"
+             alt="HDMI 8K 傳輸線" width="800" height="600">
+        <div class="lyc-band-card-body">
+          <h3>HDMI 8K 傳輸線</h3>
+          <p>畫質不打折的穩定傳輸,追劇簡報都清晰。</p>
+        </div>
+      </article>
+      <article class="lyc-band-card lyc-reveal">
+        <!-- [換圖] Mini PC 擴充座產品圖,建議 800×600 -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23e9e9e9'/%3E%3Ctext x='400' y='290' text-anchor='middle' font-family='sans-serif' font-size='34' fill='%23999'%3EMini PC 擴充座圖%3C/text%3E%3Ctext x='400' y='335' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23aaa'%3E建議 800×600%3C/text%3E%3C/svg%3E"
+             alt="Mini PC 擴充座" width="800" height="600">
+        <div class="lyc-band-card-body">
+          <h3>Mini PC 擴充座</h3>
+          <p>為 Mac mini 而生,桌面整潔、接口齊全。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Scene 4:永續與品牌價值 ===== -->
+  <section class="lyc-values" aria-label="品牌承諾">
+    <div class="lyc-inner">
+      <div class="lyc-values-head">
+        <span class="lyc-eyebrow">Our Promise</span>
+        <h2 class="lyc-h2">好設計,也要對世界溫柔</h2>
+      </div>
+      <div class="lyc-values-grid">
+        <div class="lyc-value lyc-reveal">
+          <span class="lyc-value-icon" aria-hidden="true">🌱</span>
+          <h3>環境永續</h3>
+          <p>從選材到包裝,盡可能減少對環境的負擔,讓每一次購買都更安心。</p>
+        </div>
+        <div class="lyc-value lyc-reveal">
+          <span class="lyc-value-icon" aria-hidden="true">◻︎</span>
+          <h3>質感工藝</h3>
+          <p>白與灰的極簡語彙、經得起細看的做工,低調卻在細節裡見真章。</p>
+        </div>
+        <div class="lyc-value lyc-reveal">
+          <span class="lyc-value-icon" aria-hidden="true">☏</span>
+          <h3>在地服務</h3>
+          <p>台灣在地團隊,售前售後都找得到人,問題不過夜。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scene 5:CTA 收尾 ===== -->
+  <section class="lyc-cta" aria-label="前往選購">
+    <div class="lyc-inner">
+      <span class="lyc-eyebrow">Shop LYCANDER</span>
+      <h2 class="lyc-cta-title">把剛剛好的講究,帶進日常</h2>
+      <p class="lyc-cta-sub">從筆電包到充電座,LYCANDER 全系列選物,現在就逛逛。</p>
+      <!-- [換連結] 主要導購連結(可換成商店分類頁) -->
+      <a class="lyc-cta-btn" href="https://www.lycander.tw/shop">進入 LYCANDER 選物</a>
+      <p class="lyc-cta-contact">
+        客服信箱 <a href="mailto:service@lycander.tw">service@lycander.tw</a><br>
+        客服專線 <a href="tel:+886222748555">02-2274-8555</a>(週一至週五 10:00–17:00)
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var page = document.querySelector('.lyc-page');
+  if (!page || !('IntersectionObserver' in window)) return; /* 無支援 → 不加 class,內容照常全顯示 */
+  var items = page.querySelectorAll('.lyc-reveal');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  page.classList.add('lyc-js');
+  if (reduced) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
