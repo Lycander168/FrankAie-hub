@@ -46,7 +46,8 @@
 
 ```html
 <img src="https://cdn.shoplineapp.com/......jpg"
-     alt="Contrastin 筆電支架包" width="1200" height="900">
+     alt="Contrastin 筆電支架包" width="1200" height="900"
+     loading="lazy" decoding="async">
 ```
 
 ## 換連結清單(搜尋 `[換連結]` 註解)
@@ -83,7 +84,26 @@
 | 視差 / 卡片縮放加強 | CSS scroll-driven animations(`@supports` 包裹) | Chrome / Edge 115+;其他瀏覽器自動忽略 |
 | 減少動態 | `prefers-reduced-motion` | 系統開啟時關閉全部動畫 |
 
+## 疑難排解
+
+- **翻卡效果沒有出現(卡片不會釘住)**:代表主題把貼上的內容包進了設有
+  `overflow: hidden / auto` 的容器(這會停用 `position: sticky`)。
+  請確認自訂頁面容器沒有這類設定,或聯絡 Shopline 客服詢問該頁面版型;
+  即使 sticky 失效,頁面仍會以一般滾動完整顯示,不會破版。
+- **Hero 開場高度不對(太高或被頁首蓋住)**:調整 `--lyc-header-h` 為貴店
+  主題實際頁首高度。
+- **手機橫向或矮螢幕沒有翻卡效果**:這是刻意設計——視窗高度不足 700px 時
+  改為一般滾動,避免卡片內容被蓋住無法閱讀。
+
 ## 驗證紀錄(2026-07)
 
-- Playwright + Chromium 實測 8 種情境:直開/模擬 Shopline 殼(60px sticky 頁首+全域主題樣式干擾)× 手機 390×844 / 桌機 1440×900 × JS 停用 × 減少動態 —— 全數通過:無 console 錯誤、無水平溢出、no-JS 內容完整、reduced-motion 正常。
-- 另經 4 向工程交叉審查(Shopline 相容性 / RWD 正確性 / 無障礙 / 效能體積),發現之問題已修正。
+- Playwright + Chromium 實測 8 種情境:直開/模擬 Shopline 殼(60px sticky 頁首+全域主題樣式干擾)× 手機 390×844 / 桌機 1440×900 × JS 停用 × 減少動態 —— 全數通過:無 console 錯誤、無水平溢出、no-JS 內容完整、reduced-motion 正常。另補測 320×568 / 375×667 極窄與短視窗:無溢出、卡片正確降級。
+- 4 向工程交叉審查(Shopline 相容性 / RWD 正確性 / 無障礙 / 效能體積)發現並已修正:
+  - CTA 按鈕文字被內部 reset 蓋色(特異度)→ 元件 selector 加 `.lyc-page` 前綴
+  - 小字對比不足(WCAG AA):產品型號、故事編號 → `#767676`,hero 英文標語 → `#6e6e6e`
+  - 四個「了解更多」連結文字相同 → 各加 `aria-label` 區分
+  - 品牌故事區缺自己的 `<h2>` → 補上標題
+  - hero 字級/字距在 ≤320px 可能溢出 → 調降 `clamp()` 下限
+  - 短視窗(<700px 高)sticky 卡片底部內容會被蓋住 → 降級為一般滾動
+  - 8 張圖片加 `loading="lazy" decoding="async"`
+  - heading/段落 margin 防主題覆寫、`:focus-visible` 焦點框、英文標語 `lang="en"`
