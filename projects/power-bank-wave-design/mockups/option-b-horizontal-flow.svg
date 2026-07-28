@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 620" font-family="'PingFang TC','Noto Sans TC',sans-serif">
+  <defs>
+    <linearGradient id="bodyB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EDE7DA"/>
+      <stop offset="1" stop-color="#DDD6C6"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="620" fill="#FAF8F4"/>
+  <text x="200" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#3A362E">方案 B｜橫向流水波（Horizontal Flow）</text>
+
+  <!-- body -->
+  <rect x="70" y="60" width="260" height="440" rx="58" fill="url(#bodyB)" stroke="#C4BBA6" stroke-width="2"/>
+
+  <!-- horizontal gentle waves aligned with grip -->
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#C6BDA8" stroke-width="18" opacity="0.9">
+      <path d="M105,160 C140,148 170,172 200,160 S 260,148 295,160"/>
+      <path d="M105,215 C140,203 170,227 200,215 S 260,203 295,215"/>
+      <path d="M105,270 C140,258 170,282 200,270 S 260,258 295,270"/>
+      <path d="M105,325 C140,313 170,337 200,325 S 260,313 295,325"/>
+      <path d="M105,380 C140,368 170,392 200,380 S 260,368 295,380"/>
+      <path d="M105,435 C140,423 170,447 200,435 S 260,423 295,435"/>
+    </g>
+    <g stroke="#F4EFE3" stroke-width="4" opacity="0.9">
+      <path d="M105,156 C140,144 170,168 200,156 S 260,144 295,156"/>
+      <path d="M105,211 C140,199 170,223 200,211 S 260,199 295,211"/>
+      <path d="M105,266 C140,254 170,278 200,266 S 260,254 295,266"/>
+      <path d="M105,321 C140,309 170,333 200,321 S 260,309 295,321"/>
+      <path d="M105,376 C140,364 170,388 200,376 S 260,364 295,376"/>
+      <path d="M105,431 C140,419 170,443 200,431 S 260,419 295,431"/>
+    </g>
+  </g>
+
+  <!-- LED display -->
+  <rect x="272" y="86" width="42" height="26" rx="8" fill="#14161A"/>
+  <text x="293" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#5FD4FF">86</text>
+
+  <!-- annotations -->
+  <g font-size="12" fill="#2F6B3A">
+    <text x="200" y="536" text-anchor="middle">✔ 波谷即指位：橫向握持防滑，高低差 ≤1mm 無勾感</text>
+    <text x="200" y="556" text-anchor="middle">✔ 「水波」語意零負擔 → 大眾直覺理解為防滑紋</text>
+  </g>
+  <text x="200" y="586" text-anchor="middle" font-size="12" fill="#6B6455">定位：大眾市場安全牌｜辨識度需靠配色與數顯窗補強</text>
+</svg>

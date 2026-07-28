@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 620" font-family="'PingFang TC','Noto Sans TC',sans-serif">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EDE7DA"/>
+      <stop offset="1" stop-color="#D9D2C2"/>
+    </linearGradient>
+    <linearGradient id="grooveDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9C947F"/>
+      <stop offset="1" stop-color="#B5AC97"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="620" fill="#FAF8F4"/>
+  <text x="200" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#3A362E">原設計｜深雕蛇形迴紋</text>
+
+  <!-- body -->
+  <rect x="70" y="60" width="260" height="440" rx="58" fill="url(#body)" stroke="#C4BBA6" stroke-width="2"/>
+
+  <!-- deep serpentine groove: dark base + inner shadow + bottom highlight -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M140,150 H235 a37,37 0 0 1 0,74 H165 a37,37 0 0 0 0,74 H235 a37,37 0 0 1 0,74 H165 a37,37 0 0 0 0,74 H245"
+          stroke="url(#grooveDeep)" stroke-width="44"/>
+    <path d="M140,150 H235 a37,37 0 0 1 0,74 H165 a37,37 0 0 0 0,74 H235 a37,37 0 0 1 0,74 H165 a37,37 0 0 0 0,74 H245"
+          stroke="#857D69" stroke-width="30" opacity="0.75"/>
+    <path d="M140,158 H235 a34,34 0 0 1 0,64 H165 a34,34 0 0 0 0,64 H235 a34,34 0 0 1 0,64 H165 a34,34 0 0 0 0,64 H245"
+          stroke="#F2EDE1" stroke-width="6" opacity="0.8"/>
+  </g>
+
+  <!-- LED display -->
+  <rect x="272" y="86" width="42" height="26" rx="8" fill="#14161A"/>
+  <text x="293" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#5FD4FF">86</text>
+
+  <!-- annotations -->
+  <g font-size="12" fill="#8A2E2E">
+    <text x="200" y="536" text-anchor="middle">⚠ 深溝 2.5–3mm・窄底：藏汙／絨屑焦慮</text>
+    <text x="200" y="556" text-anchor="middle">⚠ 迴紋＋深陰影 → 被誤讀為「電熱片」</text>
+  </g>
+  <text x="200" y="586" text-anchor="middle" font-size="12" fill="#6B6455">台灣焦點小組：平均 3.1／5（設計族 4.2・保守族 2.0）</text>
+</svg>
