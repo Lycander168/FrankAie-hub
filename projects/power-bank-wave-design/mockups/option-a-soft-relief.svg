@@ -6,7 +6,7 @@
     </linearGradient>
   </defs>
   <rect width="400" height="620" fill="#FAF8F4"/>
-  <text x="200" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#3A362E">方案 A｜淺浮雕柔波（Soft Relief）</text>
+  <text x="200" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#3A362E">方案 A｜淺浮雕柔波（Soft Relief）★</text>
 
   <!-- body -->
   <rect x="70" y="60" width="260" height="440" rx="58" fill="url(#bodyA)" stroke="#C4BBA6" stroke-width="2"/>
@@ -30,5 +30,5 @@
     <text x="200" y="536" text-anchor="middle">✔ 溝深 ≤1.2mm・大 R 淺盤底：一擦即淨</text>
     <text x="200" y="556" text-anchor="middle">✔ 低陰影對比 → 消除「電熱片」聯想，保留迴紋識別</text>
   </g>
-  <text x="200" y="586" text-anchor="middle" font-size="12" fill="#6B6455">定位：最小改動保留原味｜適合與原深雕版並行雙版本</text>
+  <text x="200" y="586" text-anchor="middle" font-size="12" fill="#6B6455">定位：大眾主力推薦｜防滑握位＋迴紋導流散熱敘事，與原深雕版並行雙版本</text>
 </svg>
