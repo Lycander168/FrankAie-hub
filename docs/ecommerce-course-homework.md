@@ -11,6 +11,7 @@
 >
 > 單品深潛範例:[LYCANDER 5in1 Hub 作業單](./ecommerce-course-homework-5in1-hub.md)
 > (第 1 週的示範作業單,也是期末深潛週的完整模板)。
+> 可直接發放的學員版作業單:[第 1 週作業單(5in1 Hub)](./assignments/week1-5in1-hub.md)。
 
 ---
 
