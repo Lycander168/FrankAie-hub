@@ -1,13 +1,37 @@
 ═══════════════════════════════════════════════════════
 員工工作手冊上線通知 — 群發郵件文稿
-發信人:Frankie(營運管理)|副本:Aaron
-收件人:全體同仁
+發信人:Frankie(營運管理)Frankie@lycander.tw
 ═══════════════════════════════════════════════════════
 
 【使用說明】
 1. 寄送前,先把下方「■」記號處替換成實際內容(雲端路徑、日期)
 2. 附件請帶上:員工工作手冊.xlsx、正航ERP使用流程.pptx
 3. 寄出後,建議在 LINE 群發一則簡短提醒(見文末)
+
+
+───────────────────────────────────────────────────────
+■ 收件人(可直接複製貼上)
+───────────────────────────────────────────────────────
+
+【收件者 To】
+
+maggie@lycander.tw, Tina@lycander.tw, Aries@lycander.tw, Abby@lycander.tw, Una@lycander.tw
+
+【副本 Cc】
+
+Aaron@lycander.jp
+
+
+【對照表】
+
+職稱          現任者     信箱
+負責人        Aaron      Aaron@lycander.jp        (副本)
+營運管理      Frankie    Frankie@lycander.tw      (發信人)
+後勤行政      Maggie     maggie@lycander.tw
+電商營運      Aries      Aries@lycander.tw
+美工設計      Tina       Tina@lycander.tw
+倉儲          Abby       Abby@lycander.tw
+行政協助      Una        Una@lycander.tw
 
 
 ───────────────────────────────────────────────────────
