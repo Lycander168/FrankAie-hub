@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電商營運 × Claude Code 上手指南</title>
+<style>
+  :root {
+    --ink:#1f2a37; --muted:#5b6b7c; --accent:#1c5d99; --accent-soft:#eaf2f9;
+    --warn-bg:#fdf3e7; --warn-border:#e8a33d; --danger:#b3402f; --ok:#2e7d55;
+    --line:#d9e1e8; --card:#f7f9fb; --code-bg:#1e2a36;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);background:#eef1f4;
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;font-size:15px}
+  .page{max-width:880px;margin:0 auto;background:#fff;padding:52px 60px 72px;
+    box-shadow:0 2px 24px rgba(31,42,55,.08)}
+  header.doc{border-bottom:3px solid var(--accent);padding-bottom:18px;margin-bottom:28px}
+  h1{font-size:27px;margin:0 0 8px;line-height:1.4}
+  .meta{color:var(--muted);font-size:13px}
+  h2{font-size:20px;color:var(--accent);border-left:5px solid var(--accent);
+    padding-left:12px;margin:42px 0 14px}
+  h3{font-size:16.5px;margin:24px 0 10px}
+  p{margin:10px 0}
+  code{background:#eef2f6;padding:2px 6px;border-radius:3px;font-size:13.5px;
+    font-family:"SF Mono",Consolas,monospace;color:#0f4c81}
+  pre{background:var(--code-bg);color:#e6eef5;padding:14px 18px;border-radius:6px;
+    overflow-x:auto;font-size:13.5px;line-height:1.6;
+    font-family:"SF Mono",Consolas,monospace;margin:12px 0}
+  pre code{background:none;color:inherit;padding:0}
+  table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:13.8px}
+  th{background:var(--accent);color:#fff;text-align:left;padding:8px 12px;font-weight:600}
+  td{border:1px solid var(--line);padding:7px 12px;vertical-align:top}
+  tr:nth-child(even) td{background:#fafcfe}
+  .callout,.warning,.danger-box,.ok-box{border-radius:6px;padding:14px 20px;margin:16px 0}
+  .callout{background:var(--card);border:1px solid var(--line)}
+  .warning{background:var(--warn-bg);border-left:5px solid var(--warn-border)}
+  .danger-box{background:#fdeeea;border-left:5px solid var(--danger)}
+  .ok-box{background:#e9f4ee;border-left:5px solid var(--ok)}
+  .step{display:flex;gap:16px;margin:18px 0;align-items:flex-start}
+  .step .num{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--accent);
+    color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .step .body{flex:1}
+  .step .body h3{margin:2px 0 8px}
+  .skill-card{border:1px solid var(--line);border-radius:8px;padding:18px 22px;margin:18px 0;
+    background:var(--card)}
+  .skill-card .cmd{font-size:19px;font-weight:700;color:var(--accent);
+    font-family:"SF Mono",Consolas,monospace;margin-bottom:4px}
+  .skill-card .save{display:inline-block;background:#e9f4ee;color:var(--ok);
+    font-size:12.5px;font-weight:700;padding:3px 12px;border-radius:12px;margin-top:8px}
+  ul,ol{margin:8px 0 14px;padding-left:24px}
+  li{margin:5px 0}
+  footer{margin-top:44px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+  @media print{body{background:#fff;font-size:12.5px}.page{box-shadow:none;padding:0 8mm;max-width:none}
+    h2{break-after:avoid}table,pre,.skill-card,.warning,.danger-box{break-inside:avoid}}
+  @media (max-width:640px){.page{padding:26px 18px 48px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="doc">
+  <h1>電商營運 × Claude Code 上手指南</h1>
+  <div class="meta">對象:電商營運(現任 Aries)|建立:2026-08-10|維護:營運管理</div>
+</header>
+
+<div class="ok-box">
+  <strong>設計原則:第一週只學三個 skill,每個都對應你現在最花時間的工作。</strong><br>
+  這份工具是為了讓你的工作變少,不是多一件事要學。
+</div>
+
+<h2>⚠️ 開始前:帳號信箱要先確認</h2>
+
+<p>指定帳號為 <code>EC@lycander.tw</code>,但這個信箱<strong>正在變更為 <code>Aries@lycander.tw</code></strong>(見 IT 信箱異動申請)。</p>
+
+<div class="danger-box">
+  <strong>建議直接用 Aries@lycander.tw 註冊。</strong><br>
+  Claude 帳號的密碼重設與登入驗證都靠註冊信箱。若用 <code>EC@</code> 註冊,等舊帳號停用(目前規劃保留別名 6 個月),帳號就救不回來。<br>
+  若 <code>Aries@</code> 尚未開通,請等開通再註冊,不要為了快而用 <code>EC@</code>。
+</div>
+
+<p><strong>訂閱申請歸負責人(Aaron)</strong>,請併入這次的軟體授權申請一起處理:</p>
+<table>
+  <tr><th style="width:18%">項目</th><th>說明</th></tr>
+  <tr><td>方案</td><td>Claude Pro(個人使用足夠)或 Team(需多人共用時)</td></tr>
+  <tr><td>用途</td><td>電商營運:活動文案、商品上架、客服草稿、數據整理</td></tr>
+  <tr><td>申請人</td><td>Aaron(依手冊 ERP 權限表,帳號與授權歸負責人)</td></tr>
+</table>
+
+<h2>一、30 分鐘完成設定</h2>
+
+<div class="step">
+  <div class="num">1</div>
+  <div class="body">
+    <h3>安裝 Claude Code(選最簡單的方式)</h3>
+    <p><strong>推薦:桌面版 App</strong>(Mac / Windows)——到 <code>claude.com/code</code> 下載安裝,一路下一步即可。</p>
+    <div class="callout">也可以直接用瀏覽器版 <code>claude.ai/code</code>,不必安裝任何東西。<br>
+      終端機 CLI 版是給工程師用的,你不需要。</div>
+  </div>
+</div>
+
+<div class="step">
+  <div class="num">2</div>
+  <div class="body">
+    <h3>登入</h3>
+    <p>用 <code>Aries@lycander.tw</code> 登入(或 Aaron 開通後給你的帳號)。</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="num">3</div>
+  <div class="body">
+    <h3>安裝公司的 AI 團隊 plugin</h3>
+    <p>在輸入框直接輸入這兩行(一次一行,等第一行跑完再輸第二行):</p>
+    <pre><code>/plugin marketplace add Lycander168/FrankAie-hub</code></pre>
+    <pre><code>/plugin install frankaie-research-hub@frankaie-hub</code></pre>
+    <p style="font-size:13px;color:var(--muted)">若出現 GitHub 權限問題,找 Frankie 協助。</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="num">4</div>
+  <div class="body">
+    <h3>確認安裝成功</h3>
+    <pre><code>/help</code></pre>
+    <p>看到清單中有 <code>listing-optimizer</code>、<code>ad-hook-writer</code> 等項目就成功了。</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="num">5</div>
+  <div class="body">
+    <h3>試跑第一個</h3>
+    <pre><code>/ad-hook-writer 幫我為 PQI 65W 快充寫廣告 hook,
+主打輕巧與快充,受眾是常出差的上班族</code></pre>
+    <p>跑得出東西就代表設定完成,可以開始用了。</p>
+  </div>
+</div>
+
+<h2>二、第一週:只學這三個</h2>
+
+<p>不要一次看完 33 個 skill。<strong>先把這三個用熟,其他之後再說。</strong><br>
+這三個是一條線:<strong>想 hook → 寫商品頁 → 潤稿</strong>,正好是你做活動最花時間的部分。</p>
+
+<div class="skill-card">
+  <div class="cmd">1️⃣ /ad-hook-writer</div>
+  <div><strong>廣告文案 hook</strong></div>
+  <p><strong>用在</strong>:8/25 檔期的廣告素材、社群貼文開場、短影音腳本</p>
+  <pre><code>/ad-hook-writer 產品:PQI 65W 氮化鎵充電器
+賣點:比原廠小一半、可同時充筆電+手機
+受眾:常出差的上班族
+用途:蝦皮活動主圖文案</code></pre>
+  <p><strong>產出</strong>:8 種不同框架的 hook + 短影音開場分鏡</p>
+  <span class="save">原本想文案卡半小時 → 3 分鐘拿到 8 個方向</span>
+</div>
+
+<div class="skill-card">
+  <div class="cmd">2️⃣ /listing-optimizer</div>
+  <div><strong>商品頁文案</strong></div>
+  <p><strong>用在</strong>:官網新品上架、蝦皮商品頁優化</p>
+  <pre><code>/listing-optimizer 幫我優化這個商品的蝦皮頁面
+產品:(貼上規格)
+目前標題:(貼上現有標題)
+主要關鍵字:氮化鎵充電器、65W快充</code></pre>
+  <p><strong>產出</strong>:轉換導向的標題、五點特色、賣點結構、後台關鍵字</p>
+  <span class="save">上架文案 30–40 分鐘 → 10 分鐘</span>
+</div>
+
+<div class="skill-card">
+  <div class="cmd">3️⃣ /copy-humanizer</div>
+  <div><strong>文案去 AI 味</strong></div>
+  <p><strong>用在</strong>:任何 AI 產出的文案,發布前都先過一次</p>
+  <pre><code>/copy-humanizer (貼上你要潤的文案)
+語氣:親切、口語,像跟朋友推薦</code></pre>
+  <p><strong>產出</strong>:改自然的版本 + 改動清單(事實不會被改動)</p>
+  <p style="font-size:13.5px"><strong>為什麼重要</strong>:AI 寫的文案有固定腔調,顧客看得出來。這一步是讓文案「像人寫的」的關鍵。</p>
+</div>
+
+<h2>三、第二週起:依工作項目擴充</h2>
+
+<p>熟悉上面三個之後,再依當下需要挑用。<strong>不用背,遇到再查這張表。</strong></p>
+
+<table>
+  <tr><th style="width:52%">你要做的事</th><th>用哪個</th></tr>
+  <tr><td>分析商品評價找痛點與賣點</td><td><code>/review-miner</code></td></tr>
+  <tr><td>想活動關鍵字、SEO 字詞</td><td><code>/seo-keyword-expander</code></td></tr>
+  <tr><td>寫客服回覆、處理客訴話術</td><td><code>/cx-team</code></td></tr>
+  <tr><td>做 EDM、會員信序列</td><td><code>/email-sequence-builder</code></td></tr>
+  <tr><td>比較競品、找差異化說法</td><td><code>/competitor-comparison</code></td></tr>
+  <tr><td>算活動折扣後的毛利</td><td><code>/pricing-calculator</code></td></tr>
+  <tr><td>整理銷售數據、找掉量原因</td><td><code>/data-analyst</code></td></tr>
+  <tr><td>提升回購率、會員經營</td><td><code>/growth-retention</code></td></tr>
+  <tr><td>完整活動企劃(要多角色分工)</td><td><code>/marketing-team</code></td></tr>
+  <tr><td>想測文案或定價會不會被買</td><td><code>/consumers-taiwan</code></td></tr>
+  <tr><td><strong>不知道該找誰</strong></td><td><code>/hub-router</code></td></tr>
+</table>
+
+<div class="callout">
+  <code>/hub-router</code> 是總機。任何時候卡住、不知道用哪個,就丟給它,它會告訴你該找誰、順序怎麼排。
+</div>
+
+<h2>四、使用規範(重要)</h2>
+
+<h3>🔴 不要輸入的內容</h3>
+<table>
+  <tr><th style="width:34%">不可輸入</th><th>原因與替代做法</th></tr>
+  <tr><td>顧客個資(姓名、電話、地址、訂單編號)</td><td>個資保護。要分析客訴時,把個資去掉再貼</td></tr>
+  <tr><td>供應商報價、成本結構</td><td>商業機密。需要算毛利時用 <code>/pricing-calculator</code> 輸入區間或代號</td></tr>
+  <tr><td>客戶的規範文件原檔</td><td>例如台灣大哥大的標籤規範,以公司規範表為準,不要靠 AI 記憶</td></tr>
+</table>
+
+<h3>✅ 產出一定要人工確認的三件事</h3>
+<ol>
+  <li><strong>規格數字</strong>(W 數、尺寸、容量)— AI 可能寫錯,對照原始規格表</li>
+  <li><strong>價格與折扣</strong> — 一律回到正航或官網後台確認</li>
+  <li><strong>客戶規範相關內容</strong>(標籤、包裝、外箱標示)— 以書面規範表為準</li>
+</ol>
+
+<div class="warning">
+  這一條是有原因的:先前 PQI 65W 因標籤不符客戶規範被退貨,15,000 pcs 全數重貼。<br>
+  <strong>AI 產出的文案同樣可能與規範不符——它不會知道客戶的最新規範。</strong>
+</div>
+
+<h3>💡 使用原則</h3>
+<ul>
+  <li>AI 是產草稿的工具,不是決策者。決定要不要用、怎麼改,還是你</li>
+  <li>覺得產出不好,就把不滿意的地方講出來讓它改,不必自己從頭重寫</li>
+  <li>用得順的指令,存成自己的範本,下次直接改參數</li>
+</ul>
+
+<h2>五、遇到問題找誰</h2>
+<table>
+  <tr><th style="width:40%">問題類型</th><th>找誰</th></tr>
+  <tr><td>帳號、訂閱、授權</td><td>Aaron</td></tr>
+  <tr><td>安裝、plugin、怎麼用</td><td>Frankie</td></tr>
+  <tr><td>某個 skill 產出不理想</td><td>Frankie(可調整 skill 內容)</td></tr>
+</table>
+
+<h2>六、上手節奏建議</h2>
+
+<p>考量目前工作量與 8/25 檔期,建議節奏:</p>
+<table>
+  <tr><th style="width:16%">時間</th><th>做什麼</th><th style="width:24%">預計投入</th></tr>
+  <tr><td>第 1 天</td><td>完成設定(第一段)</td><td>30 分鐘</td></tr>
+  <tr><td>第 1 週</td><td>用 <code>/ad-hook-writer</code> 產 8/25 活動文案</td><td>邊做邊學,不額外花時間</td></tr>
+  <tr><td>第 2 週</td><td>加入 <code>/listing-optimizer</code> 與 <code>/copy-humanizer</code></td><td>用在既有上架工作上</td></tr>
+  <tr><td>8/25 後</td><td>依第三段的表,挑當下需要的擴充</td><td>不設進度</td></tr>
+</table>
+
+<div class="ok-box">
+  <strong>這份工具是為了讓你的工作變少,不是多一件事要學。</strong><br>
+  如果學習本身變成負擔,就先停下來,只用第一個 skill 就好,其他等檔期過了再說。
+</div>
+
+<footer>
+  電商營運 × Claude Code 上手指南|v1.0|2026-08-10|維護:營運管理(Frankie)
+</footer>
+
+</div>
+</body>
+</html>
