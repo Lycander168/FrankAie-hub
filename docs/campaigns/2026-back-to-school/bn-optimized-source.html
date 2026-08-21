@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1000px; height:1000px; }
+  body {
+    font-family:'Noto Sans TC', sans-serif;
+    width:1000px; height:1000px; overflow:hidden; position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(255,211,77,.14), transparent 60%),
+      radial-gradient(ellipse 700px 600px at -10% 110%, rgba(139,195,74,.10), transparent 60%),
+      linear-gradient(160deg, #14352c 0%, #0f2b23 55%, #0c231d 100%);
+    color:#F7F3E8;
+  }
+  .grain { position:absolute; inset:0; opacity:.3; pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:7px 7px; }
+  .frame { position:absolute; inset:18px; border:3px solid rgba(247,243,232,.28); border-radius:22px; }
+  .wrap { position:absolute; inset:0; padding:34px 52px 26px; display:flex; flex-direction:column; }
+
+  /* ---------- header ---------- */
+  .header { display:flex; align-items:center; justify-content:space-between; height:50px; }
+  .logo { display:flex; align-items:center; gap:12px; }
+  .logo svg { display:block; }
+  .logo-text { font-weight:900; letter-spacing:.24em; font-size:27px; color:#fff; }
+  .bts-tag { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px;
+    color:#FFD34D; letter-spacing:.14em; }
+  .bts-tag .en { color:rgba(247,243,232,.65); font-size:13px; letter-spacing:.22em; font-weight:500; }
+
+  /* ---------- title ---------- */
+  .titleblock { margin-top:14px; text-align:center; position:relative; }
+  h1 { font-size:102px; font-weight:900; line-height:1.04; letter-spacing:.012em; color:#FFFFFF;
+       text-shadow:0 6px 24px rgba(0,0,0,.35); }
+  h1 .hl { color:#FFD34D; }
+  .chalkline { width:590px; height:14px; margin:0 auto; }
+  .subtitle { margin-top:8px; font-size:25px; font-weight:700; color:#EDE7D6; letter-spacing:.1em; }
+  .subtitle b { color:#FFD34D; font-weight:900; }
+
+  .datepill { margin:12px auto 0; width:fit-content; background:#FFD34D; color:#132b23;
+    font-weight:900; font-size:24px; letter-spacing:.1em; padding:7px 30px; border-radius:999px;
+    box-shadow:0 6px 18px rgba(0,0,0,.35); display:flex; gap:16px; align-items:center; }
+  .datepill .sep { width:2px; height:22px; background:rgba(19,43,35,.35); border-radius:2px; }
+  .datepill .days { font-size:18px; font-weight:700; letter-spacing:.04em; }
+
+  /* ---------- hero ---------- */
+  .hero { margin-top:18px; display:flex; gap:22px; align-items:stretch; height:248px; }
+  .hero-card { flex:1.5; background:rgba(247,243,232,.07); border:2px solid rgba(247,243,232,.22);
+    border-radius:20px; padding:20px 28px; position:relative; display:flex; flex-direction:column; justify-content:center; }
+  .hero-eyebrow { display:flex; align-items:center; gap:12px; }
+  .hero-eyebrow .tag { background:#E8543F; color:#fff; font-weight:900; font-size:17px;
+    padding:5px 14px; border-radius:8px; letter-spacing:.08em; }
+  .hero-eyebrow .lim { color:#FFD34D; font-weight:700; font-size:16.5px; letter-spacing:.04em; }
+  .hero-name { margin-top:9px; font-size:29px; white-space:nowrap; font-weight:900; color:#fff; letter-spacing:.02em; }
+  .hero-spec { margin-top:4px; font-size:16.5px; font-weight:500; color:rgba(247,243,232,.78); letter-spacing:.04em; }
+  .hero-price-row { margin-top:8px; display:flex; align-items:center; gap:14px; }
+  .price { font-size:56px; font-weight:900; color:#FFD34D; line-height:1; letter-spacing:.01em; }
+  .price .cur { font-size:28px; font-weight:900; margin-right:2px; }
+  .price-was { font-size:18px; color:rgba(247,243,232,.6); text-decoration:line-through; font-weight:500; }
+  .save-pill { background:#E8543F; color:#fff; font-weight:900; font-size:17px;
+    padding:5px 14px; border-radius:999px; letter-spacing:.03em; box-shadow:0 4px 12px rgba(232,84,63,.35); }
+  .bump-row { margin-top:10px; display:flex; align-items:center; gap:8px;
+    background:rgba(232,84,63,.16); border:1.5px dashed rgba(255,154,136,.6); border-radius:10px;
+    padding:6px 12px; width:fit-content; }
+  .bump-row .plus { color:#FF9A88; font-weight:900; font-size:18px; }
+  .bump-row .txt { color:#FFC7BC; font-weight:700; font-size:16.5px; letter-spacing:.03em; }
+  .bump-row .txt b { color:#FFD34D; }
+
+  .hero-illus { flex:1; background:rgba(0,0,0,.22); border-radius:20px; border:2px solid rgba(247,243,232,.14);
+    display:flex; align-items:center; justify-content:center; position:relative; }
+  .hero-illus svg { display:block; }
+  .illus-note { position:absolute; bottom:8px; right:14px; font-size:12px; color:rgba(247,243,232,.4); letter-spacing:.06em; }
+
+  /* ---------- product strip ---------- */
+  .strip { margin-top:16px; display:flex; gap:16px; height:138px; }
+  .pcard { flex:1; background:rgba(247,243,232,.94); color:#20362f; border-radius:16px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; padding:10px 8px;
+    box-shadow:0 6px 16px rgba(0,0,0,.28); }
+  .pcard .pic { height:56px; width:96px; display:flex; align-items:center; justify-content:center; }
+  .pcard .pname { font-size:16.5px; font-weight:900; letter-spacing:.02em; text-align:center; line-height:1.25; }
+  .pcard .pfit { font-size:12.5px; font-weight:500; color:#7a8a84; letter-spacing:.04em; }
+  .pcard .ptag { font-size:13px; font-weight:700; color:#E8543F; letter-spacing:.05em;
+    border-top:1.5px solid rgba(32,54,47,.12); padding-top:4px; margin-top:1px; width:80%; text-align:center; }
+
+  /* ---------- gift bar ---------- */
+  .giftbar { margin-top:16px; background:#F7F3E8; border-radius:18px; padding:12px 22px 12px;
+    color:#20362f; box-shadow:0 8px 20px rgba(0,0,0,.3); }
+  .gift-title { display:flex; align-items:center; gap:14px; justify-content:center; margin-bottom:8px; }
+  .gift-title .line { flex:1; height:2px; background:rgba(32,54,47,.16); border-radius:2px; }
+  .gift-title .t { font-size:19px; font-weight:900; letter-spacing:.18em; color:#20362f; }
+  .gift-title .basis { font-size:13px; font-weight:500; color:#7a8a84; letter-spacing:.05em; }
+  .tiers { display:flex; }
+  .tier { flex:1; min-width:0; display:flex; align-items:center; gap:9px; padding:2px 2px; }
+  .tier + .tier { border-left:2px solid rgba(32,54,47,.14); padding-left:12px; }
+  .tier .amt { white-space:nowrap; font-size:14px; font-weight:700; color:#5c6f68; letter-spacing:.05em; }
+  .tier .amt b { display:block; font-size:23px; font-weight:900; color:#C43A28; letter-spacing:0; line-height:1.15; }
+  .tier .gift { min-width:0; font-size:15px; white-space:nowrap; font-weight:900; line-height:1.3; }
+  .tier .gift small { display:block; font-size:12.5px; color:#C43A28; font-weight:700; }
+  .tier .gpic { margin-left:auto; flex:none; display:flex; align-items:center; }
+
+  /* ---------- footer ---------- */
+  .footer { margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:12px; }
+  .legal { font-size:11.5px; color:rgba(247,243,232,.55); letter-spacing:.03em; text-align:left; line-height:1.65; max-width:600px; }
+  .cta { background:#E8543F; color:#fff; font-weight:900; font-size:23px; letter-spacing:.14em;
+    padding:14px 36px; border-radius:999px; box-shadow:0 8px 20px rgba(232,84,63,.4); white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="frame"></div>
+<div class="wrap">
+
+  <!-- header -->
+  <div class="header">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <polygon points="20,3 37,34 27,34 20,21 13,34 3,34" fill="#fff"/>
+        <polygon points="20,12 25,21 15,21" fill="#FFD34D"/>
+      </svg>
+      <div class="logo-text">LYCANDER</div>
+    </div>
+    <div class="bts-tag"><span class="en">BACK&nbsp;TO&nbsp;SCHOOL</span>開學季</div>
+  </div>
+
+  <!-- title -->
+  <div class="titleblock">
+    <h1>開學<span class="hl">抗漲</span></h1>
+    <svg class="chalkline" viewBox="0 0 560 14">
+      <path d="M6 9 C120 3, 240 12, 350 7 S 520 5, 554 8" stroke="#FFD34D" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>
+    </svg>
+    <div class="subtitle">全站 3C 開學季優惠｜滿額再贈 <b>3 重好禮</b></div>
+    <div class="datepill">8/25 – 9/6<span class="sep"></span><span class="days">8/25 10:00 開跑</span></div>
+  </div>
+
+  <!-- hero -->
+  <div class="hero">
+    <div class="hero-card">
+      <div class="hero-eyebrow">
+        <span class="tag">每日限量 20 組</span>
+        <span class="lim">開學限定價・每日 10:00 開搶，售完為止</span>
+      </div>
+      <div class="hero-name">廣穎 ARMOR 軍規防摔行動硬碟</div>
+      <div class="hero-spec">5TB 超大容量｜軍規防摔認證・IPX4 防潑水</div>
+      <div class="hero-price-row">
+        <span class="price"><span class="cur">NT$</span>4,999</span>
+        <span class="price-was">原價 NT$5,999</span>
+        <span class="save-pill">現省 NT$1,000</span>
+      </div>
+      <div class="bump-row">
+        <span class="plus">＋</span>
+        <span class="txt">加購任一配件即達 NT$5,000，<b>三重贈全拿</b></span>
+      </div>
+    </div>
+    <div class="hero-illus">
+      <svg width="270" height="212" viewBox="0 0 270 212">
+        <ellipse cx="135" cy="198" rx="100" ry="10" fill="rgba(0,0,0,.35)"/>
+        <!-- bumper -->
+        <rect x="55" y="6" width="160" height="188" rx="24" fill="#FFD34D"/>
+        <rect x="65" y="16" width="140" height="168" rx="16" fill="#1a1a1a"/>
+        <!-- ARMOR cross anti-shock pattern -->
+        <g stroke="#303030" stroke-width="3" stroke-linecap="round">
+          <path d="M85 40 h20 M95 30 v20"/>
+          <path d="M150 40 h20 M160 30 v20"/>
+          <path d="M85 152 h20 M95 142 v20"/>
+          <path d="M150 152 h20 M160 142 v20"/>
+          <path d="M118 96 h34 M135 79 v34" stroke="#3a3a3a" stroke-width="4"/>
+        </g>
+        <!-- silver trim bar -->
+        <rect x="65" y="112" width="140" height="6" rx="3" fill="#8f8f8f"/>
+        <rect x="65" y="122" width="84" height="4" rx="2" fill="#5a5a5a"/>
+        <!-- USB cable tucked -->
+        <path d="M55 160 C40 160 36 138 48 130" stroke="#FFD34D" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <rect x="30" y="156" width="18" height="12" rx="3" fill="#cfcfcf"/>
+        <!-- 5TB chip -->
+        <g>
+          <circle cx="222" cy="34" r="30" fill="#F7F3E8"/>
+          <text x="222" y="31" text-anchor="middle" font-family="Noto Sans TC" font-weight="900" font-size="17" fill="#132b23">5TB</text>
+          <text x="222" y="48" text-anchor="middle" font-family="Noto Sans TC" font-weight="700" font-size="10.5" fill="#132b23">超大容量</text>
+        </g>
+      </svg>
+      <div class="illus-note">示意圖・以實品為準</div>
+    </div>
+  </div>
+
+  <!-- product strip -->
+  <div class="strip">
+    <div class="pcard">
+      <div class="pic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#20362f" stroke-width="3">
+          <rect x="6" y="12" width="34" height="34" rx="9"/>
+          <path d="M15 5 v7 M27 5 v7" stroke-linecap="round"/>
+          <rect x="15" y="24" width="7" height="3.5" rx="1.5" fill="#FFD34D" stroke="none"/>
+          <rect x="15" y="33" width="7" height="3.5" rx="1.5" fill="#FFD34D" stroke="none"/>
+        </svg>
+      </div>
+      <div class="pname">45W 氮化鎵雙孔快充</div>
+      <div class="pfit">USB-C ×2</div>
+      <div class="ptag">加購湊滿額</div>
+    </div>
+    <div class="pcard">
+      <div class="pic">
+        <svg width="74" height="52" viewBox="0 0 74 52" fill="none" stroke="#20362f" stroke-width="3">
+          <rect x="10" y="5" width="54" height="19" rx="3"/>
+          <rect x="5" y="29" width="64" height="18" rx="5"/>
+          <g stroke-width="2.5">
+            <path d="M12 35 h6 M22 35 h6 M32 35 h6 M42 35 h6 M52 35 h6"/>
+            <path d="M24 41.5 h26"/>
+          </g>
+          <rect x="13" y="8" width="48" height="13" rx="1.5" fill="#FFD34D" stroke="none" opacity=".55"/>
+        </svg>
+      </div>
+      <div class="pname">藍牙觸控鍵盤</div>
+      <div class="pfit">適用 iPad</div>
+      <div class="ptag">加購湊滿額</div>
+    </div>
+    <div class="pcard">
+      <div class="pic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#20362f" stroke-width="3">
+          <g transform="rotate(38 26 26)">
+            <rect x="21" y="1" width="10" height="38" rx="5"/>
+            <path d="M21 39 h10 l-5 10 z"/>
+            <path d="M21 9 h10" stroke-width="2.5"/>
+            <rect x="23.5" y="3.5" width="5" height="4" fill="#FFD34D" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pname">磁吸觸控筆</div>
+      <div class="pfit">適用 iPad</div>
+      <div class="ptag">加購湊滿額</div>
+    </div>
+    <div class="pcard">
+      <div class="pic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#20362f" stroke-width="3">
+          <rect x="7" y="12" width="38" height="34" rx="11"/>
+          <path d="M7 25 h38" stroke-width="2.5"/>
+          <circle cx="19" cy="36" r="4.5" fill="#FFD34D" stroke="none"/>
+          <circle cx="33" cy="36" r="4.5" fill="#FFD34D" stroke="none"/>
+          <rect x="21" y="3" width="10" height="9" rx="4"/>
+        </svg>
+      </div>
+      <div class="pname">防撞保護殼</div>
+      <div class="pfit">適用 AirPods</div>
+      <div class="ptag">加購湊滿額</div>
+    </div>
+  </div>
+
+  <!-- gift bar -->
+  <div class="giftbar">
+    <div class="gift-title">
+      <span class="line"></span>
+      <span class="t">滿額三重贈</span>
+      <span class="basis">單筆訂單滿額計算</span>
+      <span class="line"></span>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <div class="amt">滿 <b>NT$2,000</b></div>
+        <div class="gift">典雅擴香組</div>
+        <div class="gpic">
+          <svg width="38" height="49" viewBox="0 0 40 52">
+            <rect x="12" y="22" width="16" height="26" rx="4" fill="#C43A28"/>
+            <rect x="16" y="16" width="8" height="8" fill="#8d2317"/>
+            <g stroke="#a8875a" stroke-width="2" stroke-linecap="round">
+              <line x1="20" y1="20" x2="10" y2="2"/><line x1="20" y1="20" x2="20" y2="1"/><line x1="20" y1="20" x2="30" y2="3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="amt">滿 <b>NT$3,500</b></div>
+        <div class="gift">品牌筆電包</div>
+        <div class="gpic">
+          <svg width="52" height="41" viewBox="0 0 56 44">
+            <rect x="2" y="8" width="52" height="32" rx="10" fill="#2f6f75"/>
+            <path d="M6 16 H50" stroke="#1d4b50" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="47" cy="16" r="3" fill="#cfe3e5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="amt">滿 <b>NT$5,000</b></div>
+        <div class="gift">磁吸藍牙音箱<small>加購配件即達標</small></div>
+        <div class="gpic">
+          <svg width="40" height="48" viewBox="0 0 42 50">
+            <rect x="6" y="6" width="30" height="38" rx="12" fill="#8d9691"/>
+            <g fill="#6d746f">
+              <circle cx="15" cy="18" r="2"/><circle cx="21" cy="18" r="2"/><circle cx="27" cy="18" r="2"/>
+              <circle cx="15" cy="25" r="2"/><circle cx="21" cy="25" r="2"/><circle cx="27" cy="25" r="2"/>
+              <circle cx="15" cy="32" r="2"/><circle cx="21" cy="32" r="2"/><circle cx="27" cy="32" r="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="legal">
+      活動期間 2026/8/25 10:00 – 9/6 23:59・部分商品除外・商品規格以原廠公告為準・贈品數量有限，送完為止（擴香組不挑款／音箱顏色隨機出貨），詳見官網活動頁<br>
+      iPad、AirPods 為 Apple Inc. 之商標；本站配件為第三方適用商品，非原廠授權配件
+    </div>
+    <div class="cta">立即逛開學專區 →</div>
+  </div>
+
+</div>
+</body>
+</html>
