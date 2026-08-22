@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1000px; height:1000px; }
+  body {
+    font-family:'Noto Sans TC', sans-serif;
+    width:1000px; height:1000px; overflow:hidden; position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(255,211,77,.16), transparent 60%),
+      radial-gradient(ellipse 700px 600px at -10% 110%, rgba(139,195,74,.10), transparent 60%),
+      linear-gradient(160deg, #14352c 0%, #0f2b23 55%, #0c231d 100%);
+    color:#F7F3E8;
+  }
+  .grain { position:absolute; inset:0; opacity:.3; pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:7px 7px; }
+  .frame { position:absolute; inset:18px; border:3px solid rgba(247,243,232,.28); border-radius:22px; }
+  .wrap { position:absolute; inset:0; padding:34px 52px 26px; display:flex; flex-direction:column; }
+
+  .header { display:flex; align-items:center; justify-content:space-between; height:50px; }
+  .logo { display:flex; align-items:center; gap:12px; }
+  .logo-text { font-weight:900; letter-spacing:.24em; font-size:27px; color:#fff; }
+  .bts-tag { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px;
+    color:#FFD34D; letter-spacing:.14em; }
+  .bts-tag .en { color:rgba(247,243,232,.65); font-size:13px; letter-spacing:.22em; font-weight:500; }
+
+  .titleblock { margin-top:24px; text-align:center; }
+  .kicker { font-size:26px; font-weight:700; color:#EDE7D6; letter-spacing:.18em; }
+  h1 { margin-top:4px; font-size:106px; font-weight:900; line-height:1.06; letter-spacing:.02em; color:#FFFFFF;
+       text-shadow:0 6px 24px rgba(0,0,0,.35); }
+  h1 .hl { color:#FFD34D; }
+  .chalkline { width:560px; height:14px; margin:0 auto; }
+  .datepill { margin:16px auto 0; width:fit-content; background:#FFD34D; color:#132b23;
+    font-weight:900; font-size:23px; letter-spacing:.1em; padding:7px 28px; border-radius:999px;
+    box-shadow:0 6px 18px rgba(0,0,0,.35); display:flex; gap:14px; align-items:center; }
+  .datepill .sep { width:2px; height:20px; background:rgba(19,43,35,.35); border-radius:2px; }
+  .datepill .days { font-size:17px; font-weight:700; letter-spacing:.04em; }
+
+  /* tier cards */
+  .tiers { margin-top:32px; display:flex; gap:20px; height:360px; }
+  .tcard { flex:1; background:#F7F3E8; color:#20362f; border-radius:20px; position:relative;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding:22px 16px 16px; box-shadow:0 10px 26px rgba(0,0,0,.32); }
+  .tcard .lv { position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+    background:#E8543F; color:#fff; font-weight:900; font-size:15px; letter-spacing:.14em;
+    padding:5px 18px; border-radius:999px; box-shadow:0 4px 12px rgba(232,84,63,.4); white-space:nowrap; }
+  .tcard .amt { margin-top:12px; font-size:17px; font-weight:700; color:#5c6f68; letter-spacing:.06em; }
+  .tcard .amt b { font-size:44px; font-weight:900; color:#C43A28; letter-spacing:0; margin-left:4px; }
+  .tcard .pic { height:150px; display:flex; align-items:center; justify-content:center; margin-top:12px; }
+  .tcard .gname { font-size:24px; font-weight:900; letter-spacing:.03em; }
+  .tcard .gnote { margin-top:4px; font-size:14px; color:#7a8a84; font-weight:500; letter-spacing:.04em; }
+
+  /* formula */
+  .formula { margin-top:30px; background:rgba(232,84,63,.16); border:2px dashed rgba(255,154,136,.6);
+    border-radius:16px; padding:14px 26px; display:flex; align-items:center; justify-content:center; gap:14px; }
+  .formula .seg { font-size:20px; font-weight:900; color:#F7F3E8; letter-spacing:.03em; white-space:nowrap; }
+  .formula .seg small { display:block; font-size:13px; font-weight:500; color:rgba(247,243,232,.65); letter-spacing:.05em; text-align:center; }
+  .formula .op { font-size:26px; font-weight:900; color:#FF9A88; }
+  .formula .res { background:#FFD34D; color:#132b23; font-weight:900; font-size:20px;
+    padding:8px 18px; border-radius:12px; letter-spacing:.03em; white-space:nowrap; }
+
+  .footer { margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:12px; }
+  .legal { font-size:11.5px; color:rgba(247,243,232,.55); letter-spacing:.03em; line-height:1.65; max-width:590px; }
+  .cta { background:#E8543F; color:#fff; font-weight:900; font-size:23px; letter-spacing:.14em;
+    padding:14px 36px; border-radius:999px; box-shadow:0 8px 20px rgba(232,84,63,.4); white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="frame"></div>
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <polygon points="20,3 37,34 27,34 20,21 13,34 3,34" fill="#fff"/>
+        <polygon points="20,12 25,21 15,21" fill="#FFD34D"/>
+      </svg>
+      <div class="logo-text">LYCANDER</div>
+    </div>
+    <div class="bts-tag"><span class="en">BACK&nbsp;TO&nbsp;SCHOOL</span>開學抗漲・開學季</div>
+  </div>
+
+  <div class="titleblock">
+    <div class="kicker">開學季買越多、送越多</div>
+    <h1>滿額<span class="hl">三重贈</span></h1>
+    <svg class="chalkline" viewBox="0 0 560 14">
+      <path d="M6 9 C120 3, 240 12, 350 7 S 520 5, 554 8" stroke="#FFD34D" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>
+    </svg>
+    <div class="datepill">8/25 – 9/6<span class="sep"></span><span class="days">單筆訂單滿額計算</span></div>
+  </div>
+
+  <div class="tiers">
+    <div class="tcard">
+      <div class="lv">第 1 重</div>
+      <div class="amt">滿<b>NT$2,000</b></div>
+      <div class="pic">
+        <svg width="112" height="146" viewBox="0 0 40 52">
+          <rect x="12" y="22" width="16" height="26" rx="4" fill="#C43A28"/>
+          <rect x="16" y="16" width="8" height="8" fill="#8d2317"/>
+          <g stroke="#a8875a" stroke-width="2" stroke-linecap="round">
+            <line x1="20" y1="20" x2="10" y2="2"/><line x1="20" y1="20" x2="20" y2="1"/><line x1="20" y1="20" x2="30" y2="3"/>
+          </g>
+        </svg>
+      </div>
+      <div class="gname">典雅擴香組</div>
+      <div class="gnote">50ml・不挑款</div>
+    </div>
+    <div class="tcard">
+      <div class="lv">第 2 重</div>
+      <div class="amt">滿<b>NT$3,500</b></div>
+      <div class="pic">
+        <svg width="176" height="138" viewBox="0 0 56 44">
+          <rect x="2" y="8" width="52" height="32" rx="10" fill="#2f6f75"/>
+          <path d="M6 16 H50" stroke="#1d4b50" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="47" cy="16" r="3" fill="#cfe3e5"/>
+        </svg>
+      </div>
+      <div class="gname">品牌筆電包</div>
+      <div class="gnote">13–14 吋適用</div>
+    </div>
+    <div class="tcard">
+      <div class="lv">第 3 重</div>
+      <div class="amt">滿<b>NT$5,000</b></div>
+      <div class="pic">
+        <svg width="118" height="140" viewBox="0 0 42 50">
+          <rect x="6" y="6" width="30" height="38" rx="12" fill="#8d9691"/>
+          <g fill="#6d746f">
+            <circle cx="15" cy="18" r="2"/><circle cx="21" cy="18" r="2"/><circle cx="27" cy="18" r="2"/>
+            <circle cx="15" cy="25" r="2"/><circle cx="21" cy="25" r="2"/><circle cx="27" cy="25" r="2"/>
+            <circle cx="15" cy="32" r="2"/><circle cx="21" cy="32" r="2"/><circle cx="27" cy="32" r="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="gname">磁吸藍牙音箱</div>
+      <div class="gnote">顏色隨機出貨</div>
+    </div>
+  </div>
+
+  <div class="formula">
+    <span class="seg">軍規硬碟 NT$4,999<small>每日限量 20 組</small></span>
+    <span class="op">＋</span>
+    <span class="seg">任一配件<small>快充／鍵盤／觸控筆／保護殼</small></span>
+    <span class="op">＝</span>
+    <span class="res">滿 NT$5,000・三重贈全拿</span>
+  </div>
+
+  <div style="margin-top:14px; text-align:center; font-size:15px; font-weight:500;
+    color:rgba(247,243,232,.65); letter-spacing:.08em;">達成各級門檻即贈・三重可同時累計｜贈品細節與數量詳見活動頁</div>
+
+  <div class="footer">
+    <div class="legal">
+      活動期間 2026/8/25 10:00 – 9/6 23:59・部分商品除外・商品規格以原廠公告為準・贈品數量有限，送完為止（擴香組不挑款／音箱顏色隨機出貨），詳見官網活動頁
+    </div>
+    <div class="cta">滿額三重贈 這樣買 →</div>
+  </div>
+
+</div>
+</body>
+</html>
