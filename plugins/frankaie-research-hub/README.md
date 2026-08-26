@@ -29,6 +29,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `supply-chain-expert` — 資深供應鏈 / 策略採購。供應商評鑑、多源備援、TCO 降本、斷鏈韌性。與 operations-team 分工（它做策略層選誰/佈局，operations 做執行層下單/跟料）。
 - `growth-retention` — 資深成長 / 再購。留存、流失喚回、會員分層、LTV 提升。與 marketing-team（獲取）、cx-team（服務）分工，專攻既有客成長。
 - `web-engineer` — 資深前端 / DTC 站工程。官網/落地頁、結帳優化、效能(Core Web Vitals)、追蹤埋點、A/B 基建。與 visual-team（設計稿）、data-analyst（分析）分工。
+- `logo-craft-expert` — 資深包袋 Logo 工藝／品牌識別加工專家。電腦包／背包的 Logo 工藝選型（織標、電繡、皮標、矽膠/TPU 標、金屬銘牌、絲印、熱轉印、高週波壓花、雷雕）、材質相容性、開模/製版費與 MOQ、打樣對色與耐久測試，產出可發工廠的《Logo 工藝規格書》與 QC 檢驗標準。與 visual-team 分工（它設計 Logo 長相，本角色決定用什麼工藝做出來）。
 - `financial-analyst` — 資深產品財務分析師（CFO 視角）。成本/毛利/現金流/回本/投資評估，與 pricing-calculator 搭配。
 - `legal-ip` — 資深法務 / 智財顧問。專利迴避 FTO、合約紅線、商標、廣告與隱私合規（提示風險，非正式法律意見）。
 
@@ -98,6 +99,7 @@ description: >
 
 ## 版本
 
+- v0.13.0 — 新增支援專家 `logo-craft-expert`（包袋 Logo 工藝／品牌識別加工）：11 種電腦包常用工藝知識庫（織標/電繡/繡片/皮標/矽膠標/金屬牌/絲印/熱轉印/高週波壓花/雷雕/拉片）、材質相容與位置策略、工藝選型矩陣、可發工廠的《Logo 工藝規格書》與 QC 驗收範本；`hub-router` 旗艦專家表與仲裁表加入「Logo/商標」分流；ROSTER 支援專家 11 → 12 位、新增「工藝/加工中心」對照。skill 數 33 → 34。
 - v0.12.0 — 衝刺品質分數（WS1–WS4）：① hub-router 加端到端 worked example ＋「第一次使用」指引；② CI `check_skills.py` 升級為**結構強制**（name=資料夾、description、輸出範本、防臆造守則）＋ 新增 `skills/_TEMPLATE/`（Pattern A/B/C 範本）；③ 補 3 垂直角色 `supply-chain-expert`/`growth-retention`/`web-engineer`；④ 招牌 `validation-panel`（統一 1–5 購買意願 rubric 的 AI 消費者驗證關卡）＋ 4 個 consumers-* 補「模擬非真實數據」聲明。skill 數 29 → 33。
 - v0.11.0 — 品質治理（全 skill 審計後）：修復 10 處壞引用（已不存在的 ecommerce-operator / sourcing-expert，改指向 `channel-sales`／`seo-keyword-expander`／`operations-team`）；hub-router 新增「觸發衝突仲裁表」；plugin README 新增「格式選用指南(Pattern A/B/C)」；根 README 計數/目錄樹更新；新增 `scripts/check_skills.py` 與 `.github/workflows/check-skills.yml`（CI 自動檢查引用完整性、skill 計數與版本一致性）。
 - v0.10.0 — 補強中優先角色缺口：新增 `security-engineer`（裝置/韌體/資料安全，防禦性技術面）與 `channel-sales`（marketplace 帳號健康/經銷批發/B2B/通路價格）；hub-router 動線於開發(安全需求)、上市/投放(通路鋪設)納入兩者；ROSTER 支援專家增至 8 位、新增資安中心與通路中心對照、總數更新為 29 個 skill。

@@ -48,6 +48,7 @@ description: >
 | `supply-chain-expert` | 策略採購/供應商評鑑/多源備援/TCO 降本/斷鏈風險（策略層） |
 | `growth-retention` | 再購/留存/流失喚回/會員分層/LTV 成長 |
 | `web-engineer` | DTC 站/落地頁/結帳優化/效能/埋點/A-B 基建（技術實作） |
+| `logo-craft-expert` | 電腦包/背包的 Logo 識別加工：織標/電繡/皮標/矽膠標/金屬牌/雷雕/熱轉印選型、開模與打樣、QC 規格 |
 | `financial-analyst` | 成本/定價/毛利/現金流/投資評估 |
 | `legal-ip` | 合約/專利迴避/商標/法規合規風險 |
 
@@ -79,6 +80,7 @@ description: >
 | 定價 / pricing / 毛利 | pricing-calculator / financial-analyst / channel-sales / marketing-team | 先 `pricing-calculator`（算 unit economics）→ 要策略/現金流找 `financial-analyst` → 各通路 MAP/價差找 `channel-sales` → 促銷機制找 `marketing-team` |
 | 數據 / 分析 | data-analyst / review-miner / consumers-* | 行為/成效/漏斗/ROAS → `data-analyst`；評論文字 → `review-miner`；購買意願打分 → `consumers-*` |
 | 視覺 / 設計 | animation-designer / visual-team | 快速單支 brief/分鏡 → `animation-designer`；完整多人視覺專案（KV/動態/包裝/UI）→ `visual-team` |
+| Logo / 商標 / 印標 | logo-craft-expert / visual-team / legal-ip / mechanical-team | Logo 的**造型/配色/品牌規範** → `visual-team`；Logo 的**加工工藝/位置/耐久/開模費** → `logo-craft-expert`；商標**權利與註冊/侵權** → `legal-ip`；本體結構與整體 CMF → `mechanical-team` |
 | 安全 / security | quality-gate / security-engineer / electronics-team / legal-ip | 產出審查 → `quality-gate`；韌體/連網/資料資安 → `security-engineer`；電氣安規 → `electronics-team`；法規合規條文 → `legal-ip` |
 | 新品上市 / GTM | hub-router / product-manager / marketing-team | 整體拆解排程 → `hub-router`；做什麼產品/PRD → `product-manager`；上市執行 → `marketing-team` |
 | 電子 / 硬體 | electronics-engineer / electronics-team | 一位專家快速判斷 → `electronics-engineer`；5 人分工完整開發 → `electronics-team` |
