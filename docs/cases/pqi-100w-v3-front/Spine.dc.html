@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; }
+    a { color: #1157C6; } a:hover { color: #0C3E92; }
+    .pk { font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; }
+    .px { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; }
+  </style>
+</helmet>
+
+<div class="pk" style="position: relative; width: 189px; height: 1270px; background: #FFFFFF; overflow: hidden; box-shadow: 0 0 0 1px #E3E6EA;">
+  <div style="position: absolute; left: 0; top: 0; width: 1270px; height: 189px; transform-origin: 0 0; transform: translate(0, 1270px) rotate(-90deg); display: flex; align-items: center; gap: 0; padding: 0 46px; box-sizing: border-box;">
+
+    <img src="pqi-logo.jpg" alt="pqi" style="width: 96px; height: 60px; object-fit: contain; mix-blend-mode: multiply; flex: none;">
+
+    <span style="width: 52px;"></span>
+
+    <span style="display: flex; align-items: center; gap: 11px; flex: none;">
+      <span style="width: 22px; height: 22px; border-radius: 999px; background: {{dot}}; box-shadow: inset 0 0 0 2px {{dotEdge}};"></span>
+      <span class="px" style="font-size: 21px; font-weight: 500; color: #43494F; white-space: nowrap;">{{skuName}}</span>
+    </span>
+
+    <span style="width: 1px; height: 62px; background: #DDE1E6; margin: 0 44px; flex: none;"></span>
+
+    <span style="display: flex; flex-direction: column; gap: 7px; flex: none;">
+      <span style="font-size: 40px; font-weight: 700; letter-spacing: -0.015em; color: #17181B; white-space: nowrap;">Braided USB-C Cable</span>
+      <span class="px" style="font-size: 19px; font-weight: 400; color: #5D656E; white-space: nowrap;">100W Fast Charging&nbsp; ·&nbsp; Aluminum Shell&nbsp; ·&nbsp; Nylon Braided</span>
+    </span>
+
+    <span style="flex: 1 1 auto;"></span>
+
+    <span class="px" style="font-size: 17px; font-weight: 600; letter-spacing: 0.17em; color: #949BA3; white-space: nowrap; flex: none;">CMC SERIES</span>
+
+    <span style="width: 34px;"></span>
+
+    <span style="display: inline-flex; align-items: baseline; gap: 5px; background: #1157C6; border-radius: 7px; padding: 12px 18px; flex: none;">
+      <span style="font-size: 42px; font-weight: 800; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1;">100</span>
+      <span style="font-size: 26px; font-weight: 600; color: #FFFFFF; line-height: 1;">W</span>
+      <span class="px" style="font-size: 15px; font-weight: 600; letter-spacing: 0.06em; color: #BFD3F2; line-height: 1;">PD 3.0</span>
+    </span>
+
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":189,"height":1270},"sku":{"editor":"enum","options":["white","black","navy"],"default":"white","section":"SKU"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const map = {
+      white: { dot: '#FFFFFF', dotEdge: '#C4CAD1', skuName: 'Braided White' },
+      black: { dot: '#26282B', dotEdge: '#26282B', skuName: 'Braided Black' },
+      navy:  { dot: '#2C4C7C', dotEdge: '#2C4C7C', skuName: 'Braided Navy' }
+    };
+    const s = map[this.props.sku ?? 'white'] || map.white;
+    return { dot: s.dot, dotEdge: s.dotEdge, skuName: s.skuName };
+  }
+}
+</script>
+</body>
+</html>

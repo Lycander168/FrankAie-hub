@@ -186,6 +186,8 @@ Keep away from children under 3.
 
 **背面**：採用 §4 楊昀諺改寫版；規格改雙欄；補條碼、UKCA、EU 責任人、測試方法註腳。
 
+> 本節已出成設計稿：`docs/cases/pqi-100w-v3-front/`（正面／側標母件、堆疊標註、縮圖驗證、三色 SKU）。
+
 ---
 
 ## 7. 模擬購買意願（validation-panel · 1–5 rubric）

@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; }
+    a { color: #1157C6; } a:hover { color: #0C3E92; }
+    .tc { font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
+    .px { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; }
+    .mk { position: absolute; width: 34px; height: 34px; border-radius: 999px; background: #1157C6; color: #FFFFFF;
+          display: grid; place-items: center; font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 17px;
+          font-weight: 600; box-shadow: 0 0 0 4px rgba(255,255,255,.92), 0 4px 10px -4px rgba(17,87,198,.6); z-index: 5; }
+    .row { display: flex; gap: 16px; align-items: flex-start; }
+    .no  { flex: none; width: 30px; height: 30px; border-radius: 999px; background: #E6EEFA; color: #1157C6;
+           display: grid; place-items: center; font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; }
+    .ttl { font-size: 18px; font-weight: 700; color: #17181B; }
+    .bod { font-size: 15px; line-height: 1.72; color: #6E767F; }
+    .tag { display: inline-block; font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 11px; font-weight: 600;
+           letter-spacing: 0.11em; padding: 2px 7px; border-radius: 3px; background: #FBEAE6; color: #C33B27; margin-left: 8px; vertical-align: 2px; }
+  </style>
+</helmet>
+
+<div class="tc" style="position: relative; width: 1420px; height: 1500px; background: #FAFBFC; box-sizing: border-box;">
+
+  <div style="position: absolute; left: 60px; top: 44px; display: flex; flex-direction: column; gap: 6px;">
+    <span class="px" style="font-size: 14px; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; color: #8A9199;">Layout Spec</span>
+    <span style="font-size: 26px; font-weight: 700; color: #17181B;">V3 正面堆疊順序（由上而下＝視線動線）</span>
+  </div>
+
+  <div style="position: absolute; left: 60px; top: 130px; width: 665px; height: 1270px;">
+    <dc-import name="Front" sku="white" hint-size="665px,1270px"></dc-import>
+  </div>
+
+  <div class="mk" style="left: 196px; top: 232px;">1</div>
+  <div class="mk" style="left: 432px; top: 328px;">2</div>
+  <div class="mk" style="left: 150px; top: 470px;">3</div>
+  <div class="mk" style="left: 438px; top: 806px;">4</div>
+  <div class="mk" style="left: 60px; top: 1024px;">5</div>
+  <div class="mk" style="left: 60px; top: 1210px;">6</div>
+  <div class="mk" style="left: 392px; top: 1000px;">7</div>
+  <div class="mk" style="left: 60px; top: 1306px;">8</div>
+
+  <div style="position: absolute; left: 790px; top: 130px; width: 570px; display: flex; flex-direction: column; gap: 26px;">
+
+    <div class="row"><span class="no">1</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">掛孔區：pqi 標誌置中<span class="tag">新增</span></span>
+      <span class="bod">掛勾陳列時最上緣是視線第一落點，兩版原稿都空著。標誌上移把這 20 mm 用起來，歐規掛孔上方留 6 mm 撕裂補強。</span></span></div>
+
+    <div class="row"><span class="no">2</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">色點 ＋ 色名（右上）</span>
+      <span class="bod">放大到 Ø3.2 mm、加細邊框，色名 9 pt。三色白盒外觀幾乎一致，這是貨架與倉庫唯一的辨識點——版本 2 拿掉它會揀錯貨。</span></span></div>
+
+    <div class="row"><span class="no">3</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">主視覺：整條捲線 ＋ 極淺冷灰底</span>
+      <span class="bod">採用版本 2 的攝影。底色 #EDF0F3（約 4% 冷灰）加柔投影，把白編織線從白紙上拉起來——白壓白是兩版原稿最大的物理問題。</span></span></div>
+
+    <div class="row"><span class="no">4</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">圓形小圖改鋁殼接頭特寫<span class="tag">新增</span></span>
+      <span class="bod">版本 1 的小圖又放一次捲線，等於兩張圖說同一件事。改成接頭特寫：主圖講長度，小圖講質感——鋁殼是這條線的溢價來源。</span></span></div>
+
+    <div class="row"><span class="no">5</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">賣點圖標：砍到兩條</span>
+      <span class="bod">100W 快充（E-Marker）＋ 1.2 m。原稿第三條「USB 2.0 480 Mbps」在正面是負向資訊，移到背面規格表。</span></span></div>
+
+    <div class="row"><span class="no">6</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">第二徽章：10,000-BEND TESTED<span class="tag">待實測</span></span>
+      <span class="bod">100W 與 1.2 m 是入場券，不是差異化；線材真正的痛點是接頭斷裂。這是唯一撐得住溢價的一句話——但彎折角度、負重、依據標準確認後才可上稿。</span></span></div>
+
+    <div class="row"><span class="no">7</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">主徽章：品牌藍，三層資訊</span>
+      <span class="bod">100W ｜ PD 3.0 ｜ 1.2M · USB-C to C。全稿唯一的飽和色塊，也是 1.5 m 外唯一讀得到的元素。版本 2 的銀灰對比低於 3:1，等於把這個錨點關掉。</span></span></div>
+
+    <div class="row"><span class="no">8</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">底部鎖定 ＋ CMC SERIES</span>
+      <span class="bod">系列名從背面拉到正面，後續 65W／240W 共用同一套視覺系統，才長得出產品線資產。</span></span></div>
+
+    <div class="row"><span class="no">9</span><span style="display: flex; flex-direction: column; gap: 5px;">
+      <span class="ttl">側標：色點色名必須重複一次</span>
+      <span class="bod">見側標稿。貨架與棧板上多半只看得到側面；文字由下往上排，符合掛勾陳列的閱讀方向。</span></span></div>
+
+  </div>
+
+  <div style="position: absolute; left: 790px; bottom: 56px; width: 570px; padding-top: 20px; border-top: 1px solid #E1E5E9;
+              font-size: 14px; line-height: 1.75; color: #8A9199;">
+    廣告素材安全區：Feed 常裁成 1:1 與 4:5，徽章與圖標列已內縮至中央 80% 內，裁切不會切到。
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1420,"height":1500}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

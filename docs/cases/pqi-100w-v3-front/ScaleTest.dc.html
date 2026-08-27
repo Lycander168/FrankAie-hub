@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; }
+    a { color: #1157C6; } a:hover { color: #0C3E92; }
+    .tc { font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
+    .px { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; }
+    .cap { font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #43494F; }
+    .sub { font-size: 13px; color: #8A9199; }
+  </style>
+</helmet>
+
+<div class="tc" style="width: 1120px; height: 700px; background: #FAFBFC; box-sizing: border-box; padding: 50px 60px; display: flex; flex-direction: column; gap: 30px;">
+
+  <div style="display: flex; flex-direction: column; gap: 9px;">
+    <span class="px" style="font-size: 14px; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; color: #8A9199;">Scale Check</span>
+    <span style="font-size: 25px; font-weight: 700; color: #17181B;">縮到電商縮圖尺寸，還剩下什麼？</span>
+    <span style="font-size: 15px; line-height: 1.7; color: #6E767F;">主圖的前 0.5 秒決定點擊還是滑過。三版同縮至 300 px 高並排，右側再檢查 100 px 與灰階。</span>
+  </div>
+
+  <div style="display: flex; align-items: flex-end; gap: 46px;">
+
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <img src="v1-front.jpg" alt="版本 1" style="height: 300px; width: auto; box-shadow: 0 0 0 1px #E3E6EA;">
+      <span class="cap">版本 1<br><span class="sub">藍徽章可辨識，但元素互搶</span></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <img src="v2-front.jpg" alt="版本 2" style="height: 300px; width: auto; box-shadow: 0 0 0 1px #E3E6EA;">
+      <span class="cap">版本 2<br><span class="sub">銀灰徽章消失，只剩一塊白</span></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <div style="width: 157px; height: 300px; overflow: hidden;">
+        <div style="width: 665px; height: 1270px; transform-origin: 0 0; transform: scale(0.2362);">
+          <dc-import name="Front" sku="white" hint-size="665px,1270px"></dc-import>
+        </div>
+      </div>
+      <span class="cap">V3 · 300 px<br><span class="sub">100W／1.2M 仍讀得到</span></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <div style="width: 157px; height: 300px; overflow: hidden; filter: grayscale(1);">
+        <div style="width: 665px; height: 1270px; transform-origin: 0 0; transform: scale(0.2362);">
+          <dc-import name="Front" sku="white" hint-size="665px,1270px"></dc-import>
+        </div>
+      </div>
+      <span class="cap">V3 · 灰階<br><span class="sub">單色印刷仍分得出階層</span></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <div style="width: 52px; height: 100px; overflow: hidden;">
+        <div style="width: 665px; height: 1270px; transform-origin: 0 0; transform: scale(0.0787);">
+          <dc-import name="Front" sku="white" hint-size="665px,1270px"></dc-import>
+        </div>
+      </div>
+      <span class="cap">V3 · 100 px<br><span class="sub">貨架 1.5 m 模擬</span></span>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1120,"height":700}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>
