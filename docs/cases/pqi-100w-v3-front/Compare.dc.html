@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; }
+    a { color: #1157C6; } a:hover { color: #0C3E92; }
+    .tc { font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
+    .px { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; }
+    .lab { font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; color: #8A9199; }
+    .nm  { font-size: 21px; font-weight: 700; color: #17181B; }
+    .hd  { font-size: 14px; font-weight: 700; letter-spacing: 0.04em; }
+    .bd  { font-size: 15px; line-height: 1.72; color: #57606B; }
+  </style>
+</helmet>
+
+<div class="tc" style="width: 1560px; height: 1860px; background: #FAFBFC; box-sizing: border-box; padding: 58px 70px 50px; display: flex; flex-direction: column; gap: 34px;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 24px; border-bottom: 2px solid #17181B;">
+    <span class="px" style="font-size: 14px; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; color: #8A9199;">Hero Direction · A / B</span>
+    <span style="font-size: 28px; font-weight: 700; color: #17181B;">同一套 V3 版型，兩種主視覺角度</span>
+    <span class="bd" style="max-width: 78ch;">版型、徽章、圖標列、色點與底部鎖定完全一致——只有主視覺與圓形小圖對調。A 沿用版本 2 的整條捲線，B 把版本 1 的接頭角度做成滿版裁切。</span>
+  </div>
+
+  <div style="display: flex; gap: 90px;">
+
+    <div style="display: flex; flex-direction: column; gap: 18px; width: 665px;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <span class="lab">A</span><span class="nm">整條捲線</span>
+        <span class="px" style="font-size: 13px; font-weight: 600; padding: 3px 9px; border-radius: 3px; background: #E6EEFA; color: #1157C6;">建議主打</span>
+      </div>
+      <dc-import name="Front" sku="white" hint-size="665px,1270px"></dc-import>
+      <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+        <div style="display: flex; gap: 12px;"><span class="hd" style="color: #3F7A52; flex: none; width: 42px;">主張</span>
+          <span class="bd">一眼看懂「這是一條 1.2 m 的編織線」，長度與線材質地同時說完。縮圖與 1.5 m 貨架測試都最穩，主圖直接沿用不必另拍。</span></div>
+        <div style="display: flex; gap: 12px;"><span class="hd" style="color: #C33B27; flex: none; width: 42px;">代價</span>
+          <span class="bd">鋁殼與接頭質感只能靠右下 30 mm 的小圖交代，溢價點被縮到最小。</span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px; width: 665px;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <span class="lab">B</span><span class="nm">接頭角度（V1 構圖）</span>
+      </div>
+      <dc-import name="FrontB" sku="white" hint-size="665px,1270px"></dc-import>
+      <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+        <div style="display: flex; gap: 12px;"><span class="hd" style="color: #3F7A52; flex: none; width: 42px;">主張</span>
+          <span class="bd">滿版特寫把「機削鋁殼」放到最大，質感訴求最強，最像高單價配件；滿版裁切也讓它跟 A 版有明顯的貨架區隔。</span></div>
+        <div style="display: flex; gap: 12px;"><span class="hd" style="color: #C33B27; flex: none; width: 42px;">代價</span>
+          <span class="bd">看不到整條線，長度只剩徽章的 1.2M 在說。縮到 300 px 時主體偏抽象，會輸掉電商縮圖那一關。</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #E1E5E9; font-size: 15px; line-height: 1.72; color: #6E767F;">
+    <b style="color: #17181B;">仲裁：</b>零售與電商主圖走 A，B 留給高單價陳列、廣告素材與 A+ content——那些情境裡消費者已經知道長度，需要的是質感。
+    若三色分版，也可讓黑色 SKU 走 B：深色線材的鋁殼對比更好看。兩版共用同一套刀模與版型，切換成本只有一張圖。
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1560,"height":1860}}'>
+class Component extends DCLogic {}
+</script>
+</body></html>

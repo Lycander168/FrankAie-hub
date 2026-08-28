@@ -1,11 +1,13 @@
 {
   "artboards": [
     { "file": "Main.dc.html",      "x": 0,    "y": 0,    "w": 1060, "h": 1760, "title": "出稿總覽 · 正面＋側標" },
-    { "file": "Callouts.dc.html",  "x": 1180, "y": 0,    "w": 1420, "h": 1500, "title": "堆疊規格標註" },
-    { "file": "ScaleTest.dc.html", "x": 1180, "y": 1660, "w": 1120, "h": 700,  "title": "縮圖驗證" },
-    { "file": "Variants.dc.html",  "x": 1180, "y": 2520, "w": 1020, "h": 760,  "title": "三色 SKU" },
-    { "file": "Front.dc.html",     "x": 0,    "y": 1920, "w": 665,  "h": 1270, "title": "正面完稿（母件）" },
-    { "file": "Spine.dc.html",     "x": 790,  "y": 1920, "w": 189,  "h": 1270, "title": "側標完稿（母件）" }
+    { "file": "Compare.dc.html",   "x": 1180, "y": 0,    "w": 1560, "h": 1860, "title": "主視覺 A / B 對照" },
+    { "file": "Callouts.dc.html",  "x": 2860, "y": 0,    "w": 1420, "h": 1500, "title": "堆疊規格標註" },
+    { "file": "Front.dc.html",     "x": 0,    "y": 2010, "w": 665,  "h": 1270, "title": "正面 A · 整條捲線（母件）" },
+    { "file": "FrontB.dc.html",    "x": 785,  "y": 2010, "w": 665,  "h": 1270, "title": "正面 B · 接頭角度（母件）" },
+    { "file": "Spine.dc.html",     "x": 1570, "y": 2010, "w": 189,  "h": 1270, "title": "側標完稿（母件）" },
+    { "file": "ScaleTest.dc.html", "x": 1959, "y": 2010, "w": 1120, "h": 700,  "title": "縮圖驗證" },
+    { "file": "Variants.dc.html",  "x": 3199, "y": 2010, "w": 1020, "h": 760,  "title": "三色 SKU" }
   ],
   "launch": { "view": "canvas" }
 }
