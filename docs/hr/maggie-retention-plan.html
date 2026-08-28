@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maggie 慰留面談暨工作重新分配完整方案</title>
+<style>
+  :root {
+    --ink: #1f2a37;
+    --muted: #5b6b7c;
+    --accent: #1c5d99;
+    --accent-soft: #eaf2f9;
+    --warn-bg: #fdf3e7;
+    --warn-border: #e8a33d;
+    --danger: #b3402f;
+    --ok: #2e7d55;
+    --line: #d9e1e8;
+    --card: #f7f9fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: #eef1f4;
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    line-height: 1.75;
+    font-size: 15px;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 56px 64px 72px;
+    box-shadow: 0 2px 24px rgba(31,42,55,.08);
+  }
+  header.doc {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .confidential {
+    display: inline-block;
+    background: var(--danger);
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 3px 12px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 27px; margin: 0 0 8px; line-height: 1.4; }
+  .meta { color: var(--muted); font-size: 13px; }
+  h2 {
+    font-size: 20px;
+    color: var(--accent);
+    border-left: 5px solid var(--accent);
+    padding-left: 12px;
+    margin: 44px 0 16px;
+  }
+  h3 { font-size: 16.5px; margin: 26px 0 10px; }
+  p { margin: 10px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 13.8px;
+  }
+  th {
+    background: var(--accent);
+    color: #fff;
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+  }
+  td {
+    border: 1px solid var(--line);
+    padding: 7px 12px;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #fafcfe; }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 1px 9px;
+    border-radius: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tag.keep { background: #e6f2ec; color: var(--ok); }
+  .tag.move { background: #fdeeea; color: var(--danger); }
+  .tag.same { background: #eef1f4; color: var(--muted); }
+  .high { color: var(--danger); font-weight: 700; }
+  .mid { color: var(--warn-border); font-weight: 700; }
+  .summary, .callout, .warning, .quote-block {
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .summary { background: var(--accent-soft); border: 1px solid #c3d9ec; }
+  .callout { background: var(--card); border: 1px solid var(--line); }
+  .warning { background: var(--warn-bg); border-left: 5px solid var(--warn-border); }
+  .quote-block {
+    background: var(--card);
+    border-left: 5px solid var(--accent);
+    font-size: 14.5px;
+  }
+  .quote-block .who {
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .phase {
+    display: flex;
+    gap: 16px;
+    margin: 14px 0;
+  }
+  .phase .badge {
+    flex: 0 0 auto;
+    width: 96px;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 4px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    height: fit-content;
+  }
+  .phase .badge b { font-size: 15px; display: block; }
+  .phase .body { flex: 1; }
+  ul, ol { margin: 8px 0 14px; padding-left: 24px; }
+  li { margin: 4px 0; }
+  .check li { list-style: none; position: relative; }
+  .check li::before { content: "☐"; position: absolute; left: -22px; color: var(--accent); }
+  .final {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .final .no { color: #f0b3a8; text-decoration: line-through; }
+  .final .yes { color: #ffd97a; font-weight: 700; }
+  footer { margin-top: 48px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); padding-top: 14px; }
+  @media print {
+    body { background: #fff; font-size: 12.5px; }
+    .page { box-shadow: none; padding: 0 8mm; max-width: none; }
+    h2 { break-after: avoid; }
+    table, .quote-block, .warning, .phase { break-inside: avoid; }
+  }
+  @media (max-width: 640px) {
+    .page { padding: 28px 20px 48px; }
+    .phase { flex-direction: column; }
+    .phase .badge { width: 130px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="doc">
+  <span class="confidential">機密文件・僅限 Aaron / Frankie</span>
+  <h1>Maggie 慰留面談暨工作重新分配完整方案</h1>
+  <div class="meta">版本 v2.0(優化版)|日期:2026-08-05|狀態:待執行</div>
+</header>
+
+<div class="summary">
+  <strong>30 秒摘要</strong><br>
+  Maggie 提出離職,原因不是待遇或人際,而是<strong>長期一人承擔多職、分工失衡、看不到改變的可能</strong>。<br>
+  本方案核心策略:<strong>不靠情感慰留,靠「已經開始的具體改變」慰留。</strong><br><br>
+  三個交付重點:<br>
+  1. <strong>重新分工方案</strong>(不增加人力)— Maggie 從「什麼都做」收斂為「後勤行政暨營運支援」核心角色<br>
+  2. <strong>90 分鐘結構化面談流程</strong> — Aaron 與 Frankie 分工明確,含逐字講稿<br>
+  3. <strong>落地時程與 Plan B</strong> — 留任後檢核機制;若仍離職,完整交接方案
+</div>
+
+<h2>一、背景與問題分析</h2>
+
+<h3>1.1 離職信重點解讀</h3>
+<table>
+  <tr><th style="width:46%">她寫的</th><th>背後的訊息</th></tr>
+  <tr><td>「從採購開始,慢慢接下了倉儲、人事、會計、客戶對接、內部管理」</td><td>職務範圍無邊界,累積式加載,從未卸載</td></tr>
+  <tr><td>「真正能分擔的人卻沒有增加」</td><td>問題不是她的能力,是組織資源配置</td></tr>
+  <tr><td>「不是不累,而是選擇不說」</td><td>過去沒有安全的回饋管道,或回饋後沒有改變</td></tr>
+  <tr><td>「直到最近,又有新的工作需要我承接時」</td><td><strong>有明確的壓垮點</strong>——最近一次新增工作是導火線,面談中必須問清楚是哪一項</td></tr>
+  <tr><td>「害怕因為自己的疲憊而影響工作品質」</td><td>高責任感人格,擔心的是辜負信任,不是逃避工作</td></tr>
+  <tr><td>「希望未來接手這個職位的人,能夠擁有更合理的工作安排」</td><td>離職信同時是一封<strong>組織診斷書</strong>——她已替公司指出問題</td></tr>
+</table>
+<div class="callout">
+  <strong>判讀結論:</strong>這是一封「還願意對話」的離職信。她花大量篇幅解釋原因、承諾交接、祝福公司,代表關係未破裂。<strong>慰留有機會,但只有一次機會</strong>——若面談只有口頭承諾而無具體方案,將加速她離開並帶走信任。
+</div>
+
+<h3>1.2 根本原因</h3>
+<ul>
+  <li><strong>分工失衡</strong>:能者多勞變成能者「過」勞,新任務預設丟給最可靠的人</li>
+  <li><strong>單點依賴</strong>:採購、對帳、人事、客服、出貨全部集中一人,無備援</li>
+  <li><strong>回饋失靈</strong>:她「選擇不說」,表示說了沒用或不敢說——這是制度問題,不是個性問題</li>
+</ul>
+
+<h3>1.3 若 Maggie 離開,公司的風險盤點</h3>
+<table>
+  <tr><th>風險領域</th><th>影響</th><th style="width:12%">嚴重度</th></tr>
+  <tr><td>採購執行</td><td>發單、追交期、驗收中斷,供應商關係僅她掌握</td><td class="high">高</td></tr>
+  <tr><td>應收應付對帳</td><td>帳務接手需長時間交接,錯帳風險</td><td class="high">高</td></tr>
+  <tr><td>人事行政</td><td>勞健保、出勤等法定作業無人熟悉</td><td class="high">高</td></tr>
+  <tr><td>客服與客訴</td><td>客戶關係與處理經驗流失</td><td class="mid">中</td></tr>
+  <tr><td>內部隱性知識</td><td>大量流程只在她腦中,未文件化</td><td class="high">高</td></tr>
+</table>
+<div class="warning">
+  這張表不是拿來面談用的,是提醒 Aaron 與 Frankie:<strong>無論她留不留,「單點依賴」都必須解除。</strong>本方案的分工調整,同時就是風險解除方案。
+</div>
+
+<h2>二、面談目的與原則</h2>
+
+<h3>目的</h3>
+<ol>
+  <li>了解 Maggie 真正的離職原因(含導火線事件)</li>
+  <li>承認公司分工失衡的問題——不辯解、不淡化</li>
+  <li>提出<strong>已經決定執行</strong>的具體改善方案,而非「妳留下來我們再改」</li>
+  <li>與 Maggie 共同修訂新的工作內容</li>
+  <li>爭取留下核心人才;若留不住,守住信任、確保交接品質</li>
+</ol>
+
+<h3>面談 Do &amp; Don't</h3>
+<table>
+  <tr><th>✅ Do</th><th>❌ Don't</th></tr>
+  <tr><td>先聽完,再說方案</td><td>打斷、辯解、翻舊帳</td></tr>
+  <tr><td>承認「公司讓妳承擔太多」</td><td>說「大家都很辛苦」稀釋她的感受</td></tr>
+  <tr><td>給具體的分工表與時程</td><td>只給口頭承諾、「以後會改」</td></tr>
+  <tr><td>給她思考時間(3–5 天)</td><td>當場逼她決定或情緒勒索</td></tr>
+  <tr><td>問「需要什麼支持才願意留下」</td><td>直接用加薪堵嘴(她信中未提待遇,先解決分工)</td></tr>
+  <tr><td>尊重她若仍決定離開</td><td>暗示離開是背叛或不負責任</td></tr>
+</table>
+
+<h2>三、現況組織與職務盤點</h2>
+<table>
+  <tr><th style="width:18%">人員</th><th>主要職責</th></tr>
+  <tr><td>Aaron</td><td>蝦皮營運、付款、匯款、採購決策</td></tr>
+  <tr><td>Frankie</td><td>公司營運、制度建立、跨部門管理</td></tr>
+  <tr><td><strong>Maggie</strong></td><td><strong>採購執行、應收應付對帳、人事行政、客服、出貨管理</strong>(五大領域集中一人)</td></tr>
+  <tr><td>小民</td><td>電商營運、企劃、官網</td></tr>
+  <tr><td>Tina</td><td>美工設計</td></tr>
+  <tr><td>Abby</td><td>倉儲管理</td></tr>
+  <tr><td>Una</td><td>工讀、行政協助</td></tr>
+</table>
+
+<h2>四、重新分工方案(不增加人力)</h2>
+
+<h3>4.1 分工調整總表</h3>
+<table>
+  <tr><th>工作項目</th><th style="width:13%">現況</th><th style="width:13%">調整後</th><th>交接方式與備註</th></tr>
+  <tr><td>蝦皮營運</td><td>Aaron</td><td><span class="tag same">Aaron</span></td><td>不變</td></tr>
+  <tr><td>採購決策</td><td>Maggie</td><td><span class="tag move">Aaron</span></td><td>依銷售與庫存數據決策;Maggie 提供資訊,不再扛決策責任</td></tr>
+  <tr><td>採購執行</td><td>Maggie</td><td><span class="tag keep">Maggie</span></td><td>保留:發單、追交期、驗收</td></tr>
+  <tr><td>付款、匯款</td><td>Aaron</td><td><span class="tag same">Aaron</span></td><td>不變</td></tr>
+  <tr><td>應收應付對帳</td><td>Maggie</td><td><span class="tag keep">Maggie</span></td><td>保留</td></tr>
+  <tr><td>出貨執行</td><td>Maggie/Abby</td><td><span class="tag move">Abby</span></td><td>Maggie 完全退出日常出貨;第一週由 Maggie 帶 Abby 走完整流程一次</td></tr>
+  <tr><td>出貨管理</td><td>Maggie</td><td><span class="tag move">Abby</span></td><td>異常案件才回報 Maggie 協調</td></tr>
+  <tr><td>客服第一線</td><td>Maggie</td><td><span class="tag move">小民</span></td><td>官網、蝦皮、LINE;第一週 Maggie 交付常見問題與回覆範本</td></tr>
+  <tr><td>客訴及特殊案件</td><td>Maggie</td><td><span class="tag keep">Maggie</span></td><td>保留:第二線處理,發揮經驗價值</td></tr>
+  <tr><td>人事制度</td><td>Maggie</td><td><span class="tag move">Frankie</span></td><td>招募、制度、教育訓練</td></tr>
+  <tr><td>人事行政</td><td>Maggie</td><td><span class="tag keep">Maggie</span></td><td>保留:勞健保、出勤、資料維護</td></tr>
+  <tr><td>營運協調</td><td>Maggie</td><td><span class="tag move">Frankie</span></td><td>專案與跨部門協調</td></tr>
+  <tr><td>行政支援</td><td>Maggie</td><td><span class="tag move">Una</span></td><td>文書、資料整理、庶務</td></tr>
+</table>
+<p style="font-size:12.5px;color:var(--muted)">圖例:<span class="tag keep">保留</span> Maggie 核心職務 <span class="tag move">移轉</span> 卸載給承接人 <span class="tag same">不變</span> 原本就非 Maggie 負責</p>
+
+<h3>4.2 Maggie 新角色定位:後勤行政暨營運支援</h3>
+<table>
+  <tr><th>✅ 保留(核心價值區)</th><th>🚫 不再負責(明確卸載)</th></tr>
+  <tr><td>
+    ・採購執行<br>・應收應付對帳<br>・人事行政<br>・客訴處理(第二線)<br>・特殊案件協調
+  </td><td>
+    ・第一線客服 → 小民<br>・日常出貨 → Abby<br>・採購決策 → Aaron<br>・人事制度、跨部門營運管理 → Frankie<br>・一般行政庶務 → Una
+  </td></tr>
+</table>
+<div class="callout">
+  <strong>量化說明(面談時使用):</strong>調整前 Maggie 橫跨 13 項職務,調整後收斂為 5 項核心職務——不是降職,是<strong>從「承擔所有事」回到「承擔最專業的事」</strong>。
+</div>
+
+<h3>4.3 各承接人的變動與配套</h3>
+<table>
+  <tr><th style="width:14%">承接人</th><th style="width:26%">新增工作</th><th>配套措施</th></tr>
+  <tr><td>Aaron</td><td>採購決策</td><td>建立每週採購決策會(30 分鐘),Maggie 提供庫存與銷售資訊</td></tr>
+  <tr><td>Frankie</td><td>人事制度、營運協調</td><td>納入其制度建立職掌,順勢文件化</td></tr>
+  <tr><td>小民</td><td>客服第一線</td><td>Maggie 第一週交付 FAQ 與回覆範本;第一個月 Maggie 僅支援疑難案件</td></tr>
+  <tr><td>Abby</td><td>出貨執行與管理</td><td>Maggie 帶跑一輪完整流程;異常處理 SOP 文件化</td></tr>
+  <tr><td>Una</td><td>行政支援</td><td>建立交辦清單,由 Frankie 分派,不再直接找 Maggie</td></tr>
+</table>
+<div class="warning">
+  <strong>⚠️ 承接人溝通順序:</strong>面談 Maggie <strong>之前</strong>,Aaron/Frankie 需先私下確認小民、Abby、Una 能承接(不透露 Maggie 離職一事,以「組織分工優化」名義溝通)。若面談時 Maggie 發現承接人根本不知情,方案可信度歸零。
+</div>
+
+<h3>4.4 新工作進件規則(防止問題復發的制度)</h3>
+<ol>
+  <li><strong>不預設由 Maggie 承接</strong></li>
+  <li>先由 Aaron + Frankie 討論:負責人是誰?需要什麼資源?排擠了什麼既有工作?</li>
+  <li>指派後於週會公告,讓分工透明</li>
+  <li>任何人覺得負荷過重,可在週會直接提出——<strong>提出不需要理由,調整才需要理由</strong></li>
+</ol>
+<div class="callout">
+  這一條是回應她信中「不是沒有壓力,而是告訴自己再撐一下」——要讓「說出來」變成制度預設,而不是個人勇氣。
+</div>
+
+<h2>五、Aaron 與 Frankie 面談分工</h2>
+<table>
+  <tr><th>Aaron(公司經營決策者)</th><th>Frankie(營運改革負責人)</th></tr>
+  <tr><td>
+    ・面談開場、定調<br>・代表公司承認管理問題<br>・說明公司願意且<strong>已經開始</strong>調整<br>・提出工作重分配方案<br>・總結與慰留
+  </td><td>
+    ・說明新的組織規劃與流程改善<br>・說明工作量平衡機制(新工作進件規則)<br>・回答制度面問題<br>・確認 Maggie 的真正需求與遺漏事項
+  </td></tr>
+</table>
+
+<h2>六、面談流程(約 90 分鐘,六階段)</h2>
+<p style="color:var(--muted);font-size:13.5px">場地:安靜的獨立空間,勿在開放辦公區。時間:避開出貨與對帳高峰日。</p>
+
+<div class="phase">
+  <div class="badge"><b>階段 1</b>10 分鐘<br>Aaron</div>
+  <div class="body">
+    <strong>開場定調</strong>
+    <div class="quote-block"><span class="who">AARON 講稿</span>
+      Maggie,謝謝妳願意把心裡真正的想法寫出來。我和 Frankie 看了很多次,也討論了很多次。<br>
+      今天找妳,不是希望妳立刻收回離職,而是希望我們一起討論,公司的工作方式是否有機會重新調整。<br>
+      妳信裡提到的內容,我們沒有打算否認,也沒有打算解釋。我們承認,公司確實讓妳承擔了超過一個人應該承擔的工作。
+    </div>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="badge"><b>階段 2</b>20 分鐘<br>Maggie 發言</div>
+  <div class="body">
+    <strong>只聽、只記錄。不打斷、不辯解、不急著給答案。</strong>
+    <p>引導提問(視情況使用,不逐題轟炸):</p>
+    <ul>
+      <li>最近讓妳決定寫這封信的那件事,是哪一項工作?(<strong>找出導火線</strong>)</li>
+      <li>現在手上的工作,哪一項最消耗妳?</li>
+      <li>如果可以立刻移除一項工作,妳會選哪一項?</li>
+      <li>有沒有哪些工作,其實妳做起來有成就感、願意保留?</li>
+      <li>除了工作量之外,還有其他原因嗎?(待遇、氛圍、發展、家庭——開放但不逼問)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="badge"><b>階段 3</b>15 分鐘<br>Frankie</div>
+  <div class="body">
+    <strong>回應與承認</strong>
+    <div class="quote-block"><span class="who">FRANKIE 講稿</span>
+      我最大的感受是,公司讓一個願意承擔的人,慢慢變成了承擔所有事情的人。<br>
+      這不是妳能力不足,而是公司的分工出了問題。<br>
+      所以今天不是請妳再撐,而是我們把組織重新調整——<strong>而且不管妳最後怎麼決定,這個調整都會做,因為它本來就該做。</strong>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">最後一句是關鍵:表明改革不是慰留的交換條件,而是公司真心認錯。這會大幅提高可信度。</p>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="badge"><b>階段 4</b>20 分鐘<br>Aaron</div>
+  <div class="body">
+    <strong>說明新分工</strong>(拿出 4.1 分工調整總表逐項說明)
+    <ul>
+      <li>客服第一線 → 小民|日常出貨 → Abby|採購決策 → Aaron</li>
+      <li>人事制度、營運協調 → Frankie|行政支援 → Una</li>
+      <li>Maggie → 後勤行政核心(採購執行、對帳、人事行政、客訴二線)</li>
+    </ul>
+    <p>補充兩點:</p>
+    <ol>
+      <li><strong>承接人都已初步溝通過</strong>,不是紙上談兵</li>
+      <li><strong>未來新增工作不會直接交給妳</strong>——說明新工作進件規則(4.4)</li>
+    </ol>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="badge"><b>階段 5</b>15 分鐘<br>Frankie</div>
+  <div class="body">
+    <strong>確認需求</strong>
+    <ul>
+      <li>這樣的分工,妳覺得合理嗎?哪裡需要調?</li>
+      <li>有沒有我們遺漏的、妳其實還在做的工作?(<strong>隱性工作往往最多,務必問</strong>)</li>
+      <li>除了分工,妳還需要什麼支持,才會願意留下來?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="badge"><b>階段 6</b>10 分鐘<br>Aaron</div>
+  <div class="body">
+    <strong>總結</strong>
+    <div class="quote-block"><span class="who">AARON 講稿</span>
+      我們今天不是要求妳立刻決定,而是希望妳看到:公司願意改變,而且已經開始改變。<br>
+      妳可以花幾天時間思考——我們約好 <u>(具體日期,建議 3–5 天後)</u> 再談一次,把所有問題談清楚。<br>
+      不管妳的決定是什麼,這段時間妳為公司做的一切,我們都記在心裡。
+    </div>
+    <div class="warning"><strong>⚠️ 務必當場約定回覆日期</strong>,不要說「妳想好再跟我說」——開放式等待讓雙方煎熬,也顯得公司不夠重視。</div>
+  </div>
+</div>
+
+<h2>七、慰留配套(視面談狀況啟用)</h2>
+<p>分工調整是主菜;以下為備援選項,<strong>依階段 5 她說出的需求</strong>決定是否啟用,不要一次全給:</p>
+<table>
+  <tr><th style="width:26%">選項</th><th style="width:34%">適用情境</th><th>注意</th></tr>
+  <tr><td>職稱正名(如:行政管理主任)</td><td>她在意的是被看見、被認可</td><td>職稱需對應實質定位,勿淪為空銜</td></tr>
+  <tr><td>薪酬檢視</td><td>她或市場行情顯示現職被低估</td><td>信中未提待遇,勿主動用錢開場;但分工收斂後責任更聚焦,合理檢視是誠意</td></tr>
+  <tr><td>補休/彈性</td><td>長期透支需要修復期</td><td>給明確天數,勿說「妳自己安排」</td></tr>
+  <tr><td>教育訓練/發展路徑</td><td>她想要長期職涯感</td><td>對應新角色定位規劃</td></tr>
+</table>
+
+<h2>八、若 Maggie 同意留下:落地時程與檢核</h2>
+
+<h3>第一週(立即執行)</h3>
+<ul class="check">
+  <li>客服第一線 → 小民(Maggie 交付 FAQ 與範本)</li>
+  <li>日常出貨 → Abby(Maggie 帶跑一輪)</li>
+  <li>行政支援 → Una(建立交辦清單)</li>
+  <li>全員公告新分工(以「組織優化」名義,不提離職事件)</li>
+</ul>
+
+<h3>第一個月(每週一次 30 分鐘檢核會)</h3>
+<p>參與人:Aaron + Frankie + Maggie,檢視三件事:</p>
+<ol>
+  <li>Maggie 的工作量是否<strong>實際</strong>下降?(不是帳面移轉、實際還在做)</li>
+  <li>是否有工作<strong>回流</strong>?(承接人做不來又流回她手上——最常見的失敗模式)</li>
+  <li>流程是否需要調整?</li>
+</ol>
+<div class="warning">
+  <strong>🚨 回流是慰留失敗的頭號殺手。</strong>若發現回流,當週處理,由 Frankie 補訓練或調整 SOP,<strong>絕不允許「先請 Maggie 幫忙一下」。</strong>
+</div>
+
+<h3>三個月</h3>
+<ul class="check">
+  <li>確認新組織穩定,Maggie 主觀負荷回到可長期運作水準(直接問她,1–10 分自評)</li>
+  <li>評估是否需再優化或增補人力</li>
+  <li>關鍵流程文件化完成(採購、對帳、人事行政 SOP)——同步解除單點依賴</li>
+  <li>若有啟用薪酬/職稱配套,於此時兌現或確認進度</li>
+</ul>
+
+<h2>九、Plan B:若 Maggie 仍決定離開</h2>
+<p>慰留失敗不等於任務失敗——守住信任與交接品質,同樣是這場面談的成果。</p>
+<ol>
+  <li><strong>尊重且感謝</strong>:不施壓、不冷處理。她信中已承諾「做好每一項交接」,這是最好的合作基礎</li>
+  <li><strong>交接期規劃</strong>(建議與她協商 4 週以上):
+    <ul>
+      <li>第 1 週:職務清單盤點(含隱性工作),排定交接優先序</li>
+      <li>第 2–3 週:採購執行、對帳、人事行政流程文件化 + 帶承接人實作</li>
+      <li>第 4 週:承接人獨立作業,Maggie 只答疑</li>
+    </ul>
+  </li>
+  <li><strong>交接文件最低要求</strong>:供應商聯絡清單與眉角、對帳流程與科目、勞健保作業行事曆、客訴處理案例集</li>
+  <li><strong>好聚好散</strong>:離職面談正式致謝;保留回聘大門(「未來公司調整好了,隨時歡迎回來」)</li>
+  <li><strong>對內溝通</strong>:公告聚焦感謝與交接安排,禁止任何咎責或八卦氛圍</li>
+</ol>
+
+<h2>十、成功關鍵訊息</h2>
+<div class="final">
+  核心<strong>不是</strong>:<br>
+  <span class="no">「妳很重要,請留下來。」</span><br><br>
+  而是:<br>
+  <span class="yes">「我們承認過去分工有問題,也已經開始調整。<br>
+  未來希望妳留下來,但不是繼續硬撐,而是在分工清楚、有支援、可長期工作的環境中,一起把公司做好。」</span>
+</div>
+<p>三個支撐這句話的行動證據:</p>
+<ol>
+  <li>分工表在面談前已完成,承接人已溝通 → 「已經開始」不是話術</li>
+  <li>改革不以她留下為前提 → 誠意不是交換</li>
+  <li>新工作進件規則 → 問題不會在三個月後重演</li>
+</ol>
+
+<h2>附錄:面談記錄表</h2>
+<table>
+  <tr><th style="width:38%">欄位</th><th>記錄</th></tr>
+  <tr><td>面談日期/時間</td><td>&nbsp;</td></tr>
+  <tr><td>導火線事件(最近壓垮的那項工作)</td><td>&nbsp;</td></tr>
+  <tr><td>最消耗的工作</td><td>&nbsp;</td></tr>
+  <tr><td>最想移除的工作</td><td>&nbsp;</td></tr>
+  <tr><td>願意保留的工作</td><td>&nbsp;</td></tr>
+  <tr><td>工作量以外的原因</td><td>&nbsp;</td></tr>
+  <tr><td>對新分工的意見</td><td>&nbsp;</td></tr>
+  <tr><td>遺漏的隱性工作</td><td>&nbsp;</td></tr>
+  <tr><td>留下所需的支持</td><td>&nbsp;</td></tr>
+  <tr><td>約定回覆日期</td><td>&nbsp;</td></tr>
+  <tr><td>後續行動</td><td>&nbsp;</td></tr>
+</table>
+
+<footer>
+  機密文件・僅限 Aaron / Frankie|v2.0|2026-08-05|列印本頁或以瀏覽器「另存為 PDF」即可攜帶至面談使用
+</footer>
+
+</div>
+</body>
+</html>
