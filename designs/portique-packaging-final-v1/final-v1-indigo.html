@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="inter-local.css">
+<style>
+  :root{
+    --lime:#51648a; --lime-deep:#39496b; --lime-band:#c7cce8;
+    --ink:#20242a; --char:#23272e; --paper:#faf8f2; --gray:#8a8f98;
+    --hair:#d8d5cc;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1680px;height:1080px;overflow:hidden;}
+  html{background:#dcdcdf;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:radial-gradient(120% 90% at 50% 8%, #f2f2f4 0%, #e7e7ea 55%, #dcdcdf 100%);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- board header ---------- */
+  .hdr{position:absolute;top:44px;left:60px;display:flex;align-items:center;gap:20px;z-index:50;}
+  .hdr .mark{width:64px;height:64px;border-radius:50%;background:#1c1f24;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;}
+  .hdr h1{font-size:27px;font-weight:800;letter-spacing:.5px;}
+  .hdr p{font-size:13px;font-weight:600;letter-spacing:3.2px;color:#9a9aa0;margin-top:5px;}
+  .score-strip{position:absolute;left:60px;bottom:30px;font-size:11.5px;letter-spacing:1.4px;color:#a2a2a8;font-weight:600;z-index:50;}
+  .score-strip b{color:#6d6d74;}
+
+  /* ---------- 3d scenes ---------- */
+  .scene{position:absolute;top:150px;perspective:2600px;perspective-origin:50% 42%;}
+  .scene.front-scene{left:150px;}
+  .scene.back-scene{left:880px;}
+  .box{position:relative;width:400px;height:700px;transform-style:preserve-3d;}
+  .front-scene .box{transform:rotateY(-20deg);}
+  .back-scene .box{transform:rotateY(20deg);}
+  .face{position:absolute;top:0;left:0;backface-visibility:hidden;}
+  .panel{width:400px;height:700px;background:var(--paper);overflow:hidden;}
+  /* right spine attached to right edge, extending backward */
+  .spine-r{width:58px;height:700px;left:400px;transform-origin:left center;transform:rotateY(90deg);}
+  /* left spine attached to left edge, extending backward */
+  .spine-l{width:58px;height:700px;left:-58px;transform-origin:right center;transform:rotateY(-90deg);}
+  .shadow{position:absolute;top:690px;left:6px;width:400px;height:44px;background:radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.30), rgba(0,0,0,0));filter:blur(10px);transform:rotateX(90deg) translateZ(-20px);}
+  .caption{position:absolute;top:905px;width:400px;text-align:center;font-size:12px;letter-spacing:3px;font-weight:700;color:#9a9aa0;}
+  .cap-front{left:150px;}
+  .cap-back{left:880px;}
+
+  /* ---------- shared panel bits ---------- */
+  .band{position:relative;height:86px;background:linear-gradient(180deg,var(--lime-band),#b7bede);}
+  .hang{position:absolute;left:50%;top:24px;transform:translateX(-50%);width:74px;height:22px;border-radius:12px;background:#e2e2e5;box-shadow:inset 0 2px 4px rgba(0,0,0,.25);}
+
+  /* ---------- FRONT panel ---------- */
+  .f-head{display:flex;justify-content:space-between;align-items:center;padding:18px 28px 0;}
+  .f-head .brand{font-weight:800;font-size:17px;letter-spacing:3.5px;}
+  .f-head .prod{font-weight:600;font-size:12px;letter-spacing:4.5px;color:#8b8f96;}
+  .usp-pill{display:inline-block;margin:11px 0 0 28px;background:var(--char);color:#f2f2ee;font-size:10px;font-weight:600;letter-spacing:1.6px;padding:6px 13px;border-radius:20px;}
+  .photo{margin:11px 24px 0;height:212px;border-radius:10px;background:linear-gradient(160deg,#ffffff 0%,#f2f1ec 70%,#eceae4 100%);box-shadow:inset 0 0 0 1px #eceae2;position:relative;overflow:hidden;}
+  .photo svg{position:absolute;left:0;top:0;}
+  .hero-row{display:flex;align-items:flex-end;padding:4px 28px 0;gap:14px;}
+  .hero-row .five{font-size:148px;font-weight:800;line-height:.8;color:var(--lime);letter-spacing:-5px;}
+  .hero-row .stack{padding-bottom:8px;}
+  .hero-row .stack .l1{font-size:27px;font-weight:800;line-height:1.05;}
+  .hero-row .stack .l2{font-size:27px;font-weight:800;line-height:1.05;}
+  .hero-row .stack .sub{font-size:10.5px;color:#8b8f96;font-weight:500;margin-top:7px;letter-spacing:.3px;}
+  .darkband{position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(180deg,#262a31,#1d2025);color:#fff;padding:18px 24px 0;}
+  .chips{display:flex;gap:12px;}
+  .chip{flex:1;border:1.5px solid rgba(255,255,255,.55);border-radius:12px;text-align:center;padding:12px 0 9px;}
+  .chip .v{font-size:16.5px;font-weight:800;line-height:1.1;}
+  .chip .k{font-size:8.5px;font-weight:500;color:rgba(255,255,255,.62);margin-top:5px;letter-spacing:.3px;}
+  .darkband .foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;}
+  .cdot{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#e8e8e2;}
+  .cdot i{width:12px;height:12px;border-radius:50%;background:var(--lime);display:inline-block;box-shadow:0 0 0 2px rgba(255,255,255,.25);}
+  .model{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1.5px;font-weight:500;}
+
+  /* ---------- SPINE ---------- */
+  .spine{background:linear-gradient(180deg,#b7bede,#aab2d8);height:700px;position:relative;}
+  .spine .vt{position:absolute;top:60px;left:50%;transform:translateX(-50%);writing-mode:vertical-rl;font-size:12px;font-weight:700;letter-spacing:2.5px;color:#232c4a;white-space:nowrap;}
+  .spine .vt2{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);writing-mode:vertical-rl;font-size:8px;font-weight:500;letter-spacing:1.2px;color:#414d74;white-space:nowrap;}
+  .spine.dark{background:linear-gradient(180deg,#2a2e35,#1d2025);}
+  .spine.dark .vt{color:#e8e8e2;}
+  .spine.dark .vt2{color:#9a9d92;}
+  .ports{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:6px;}
+  .ports .p{width:40px;text-align:center;border:1px solid rgba(0,0,0,.28);border-radius:6px;padding:4px 0;font-size:7px;font-weight:700;color:#232c4a;line-height:1.3;}
+
+  /* ---------- BACK panel ---------- */
+  .b-body{padding:16px 26px 0;}
+  .kicker{font-size:9.5px;letter-spacing:3.4px;color:#9a9ea6;font-weight:600;}
+  .headline{font-size:21px;font-weight:800;margin-top:5px;line-height:1.15;}
+  .benefit{font-size:10.5px;color:#6f747c;margin-top:5px;line-height:1.45;font-weight:500;}
+  .steps{display:flex;gap:10px;margin-top:11px;}
+  .step{flex:1;}
+  .step .tile{height:70px;border-radius:9px;background:linear-gradient(160deg,#ffffff,#efeee9);box-shadow:inset 0 0 0 1px #e7e5dd;position:relative;overflow:hidden;}
+  .step .cap{font-size:8.4px;color:#6f747c;margin-top:5px;line-height:1.4;}
+  .step .cap b{color:var(--ink);font-weight:700;}
+  .spec-title{display:inline-block;background:var(--char);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:1.4px;padding:5px 12px;border-radius:6px;margin-top:12px;}
+  table.spec{width:100%;border-collapse:collapse;margin-top:6px;}
+  table.spec td{font-size:9.2px;padding:5.5px 2px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.4;}
+  table.spec td.k{color:#8b8f96;width:32%;font-weight:500;}
+  table.spec td.v{color:var(--ink);font-weight:600;}
+  .legal{display:flex;gap:12px;margin-top:9px;}
+  .legal .qr{width:60px;flex:none;}
+  .legal .qr svg{width:60px;height:60px;}
+  .legal .qr .ql{font-size:6.5px;color:#9a9ea6;text-align:center;margin-top:2px;letter-spacing:1px;}
+  .legal .txt{font-size:7.4px;color:#6f747c;line-height:1.5;}
+  .legal .txt b{color:var(--ink);}
+  .certband{position:absolute;left:0;right:0;bottom:0;height:84px;background:#fff;border-top:1px solid #e7e5dd;display:flex;align-items:center;padding:0 22px;gap:14px;}
+  .cert{border:1.5px solid var(--ink);border-radius:5px;padding:5px 8px;text-align:center;}
+  .cert .a{font-size:11px;font-weight:800;line-height:1;}
+  .cert .b{font-size:6.5px;font-weight:600;color:#6f747c;margin-top:2px;letter-spacing:.5px;}
+  .certsm{font-size:8px;font-weight:700;line-height:1.35;color:var(--ink);}
+  .certsm span{display:block;font-size:6.3px;color:#8b8f96;font-weight:500;}
+  .barcode{margin-left:auto;text-align:center;}
+  .bars{width:128px;height:44px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 8px,#111 8px 11px,#fff 11px 13px);}
+  .barcode .bn{font-size:8px;letter-spacing:2px;margin-top:3px;color:#333;}
+  .ean{font-size:7px;color:#c0392b;margin-top:2px;letter-spacing:.5px;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="mark">F</div>
+  <div>
+    <h1>FINAL v1 — Indigo Mist</h1>
+    <p>PORTIQUE 5-IN-1 USB-C HUB · OPTIMIZED FROM EXPERT SCORING · D FRAMEWORK + C CONTRAST &amp; USP + Y BENEFIT COPY</p>
+  </div>
+</div>
+
+<!-- ================= FRONT BOX ================= -->
+<div class="scene front-scene">
+  <div class="box">
+    <div class="face panel">
+      <div class="band"><div class="hang"></div></div>
+      <div class="f-head">
+        <div class="brand">LYCANDER</div>
+        <div class="prod">PORTIQUE</div>
+      </div>
+      <div class="usp-pill">RETRACTABLE CABLE · ALUMINUM BODY</div>
+      <div class="photo">
+        <svg width="352" height="238" viewBox="0 0 352 238">
+          <defs>
+            <linearGradient id="bodyg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8fa4c6"/><stop offset=".45" stop-color="#51648a"/><stop offset="1" stop-color="#334363"/>
+            </linearGradient>
+            <linearGradient id="topg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#aebdd6"/><stop offset="1" stop-color="#7387ac"/>
+            </linearGradient>
+            <linearGradient id="cabg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#f4f4f0"/><stop offset="1" stop-color="#dddDD6"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="180" cy="196" rx="150" ry="16" fill="#00000012"/>
+          <g transform="translate(176 128) rotate(-16)">
+            <!-- cable -->
+            <path d="M -128 6 C -190 6 -210 40 -252 34" stroke="#e9e9e4" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <path d="M -128 6 C -190 6 -210 40 -252 34" stroke="#f8f8f5" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- usb-c plug from body -->
+            <rect x="-146" y="-2" width="26" height="16" rx="5" fill="#c9c9c2"/>
+            <!-- body side -->
+            <rect x="-122" y="-34" width="266" height="70" rx="14" fill="url(#bodyg)"/>
+            <!-- top face -->
+            <rect x="-122" y="-46" width="266" height="30" rx="12" fill="url(#topg)"/>
+            <!-- port cutouts on top edge front -->
+            <g fill="#243252">
+              <rect x="-52" y="-38" width="30" height="6" rx="3"/>
+              <rect x="-8" y="-38" width="22" height="6" rx="3"/>
+              <rect x="26" y="-38" width="22" height="6" rx="3"/>
+              <rect x="60" y="-38" width="30" height="7" rx="2"/>
+            </g>
+            <!-- HDMI end -->
+            <rect x="118" y="-18" width="30" height="34" rx="6" fill="#42547a"/>
+            <rect x="124" y="-8" width="17" height="13" rx="3" fill="#161f33"/>
+            <text x="-96" y="12" font-family="Inter" font-size="12" font-weight="700" letter-spacing="3" fill="#7d90b4">LYCANDER</text>
+          </g>
+        </svg>
+      </div>
+      <div class="hero-row">
+        <div class="five">5</div>
+        <div class="stack">
+          <div class="l1">in 1</div>
+          <div class="l2">USB-C Hub</div>
+          <div class="sub">Retractable cable · Aluminum · Pocket size</div>
+        </div>
+      </div>
+      <div class="darkband">
+        <div class="chips">
+          <div class="chip"><div class="v">100W</div><div class="k">PD pass-through</div></div>
+          <div class="chip"><div class="v">4K 60Hz</div><div class="k">HDMI 2.0</div></div>
+          <div class="chip"><div class="v">5G ×3</div><div class="k">USB-C / USB-A</div></div>
+          <div class="chip"><div class="v">90 mm</div><div class="k">Retractable</div></div>
+        </div>
+        <div class="foot">
+          <div class="cdot"><i></i>Indigo Mist</div>
+          <div class="model">LY-HB05-BU</div>
+        </div>
+      </div>
+    </div>
+    <div class="face spine-r">
+      <div class="spine">
+        <div class="vt">LYCANDER&nbsp;&nbsp;·&nbsp;&nbsp;PORTIQUE 5-in-1 USB-C Hub</div>
+        <div class="vt2">LY-HB05-BU · Indigo Mist</div>
+      </div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+</div>
+<div class="caption cap-front">FRONT</div>
+
+<!-- ================= BACK BOX ================= -->
+<div class="scene back-scene">
+  <div class="box">
+    <div class="face panel">
+      <div class="band"><div class="hang"></div></div>
+      <div class="b-body">
+        <div class="kicker">POWER · DISPLAY · DATA, ALL AT ONCE</div>
+        <div class="headline">One tiny block,<br>a full workstation.</div>
+        <div class="benefit">Charge your laptop while you expand. One cable to presentations, monitors and TV — then it all tucks back inside.</div>
+        <div class="steps">
+          <div class="step">
+            <div class="tile">
+              <svg width="100%" height="84" viewBox="0 0 104 84">
+                <rect x="30" y="34" width="52" height="16" rx="6" fill="#51648a"/>
+                <path d="M30 42 C 18 42 14 52 4 50" stroke="#cfcfc8" stroke-width="4" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="cap"><b>Use</b> · Cable out, plug in</div>
+          </div>
+          <div class="step">
+            <div class="tile">
+              <svg width="100%" height="84" viewBox="0 0 104 84">
+                <rect x="24" y="36" width="56" height="16" rx="6" fill="#51648a"/>
+                <g fill="#243252"><rect x="30" y="30" width="9" height="3" rx="1.5"/><rect x="43" y="30" width="7" height="3" rx="1.5"/><rect x="54" y="30" width="7" height="3" rx="1.5"/><rect x="65" y="30" width="9" height="3" rx="1.5"/></g>
+                <g stroke="#b9b9b2" stroke-width="1.6"><line x1="34" y1="24" x2="34" y2="18"/><line x1="46" y1="24" x2="46" y2="18"/><line x1="57" y1="24" x2="57" y2="18"/><line x1="69" y1="24" x2="69" y2="18"/></g>
+              </svg>
+            </div>
+            <div class="cap"><b>Expand</b> · Five ports at once</div>
+          </div>
+          <div class="step">
+            <div class="tile">
+              <svg width="100%" height="84" viewBox="0 0 104 84">
+                <rect x="24" y="34" width="56" height="18" rx="7" fill="#51648a"/>
+                <rect x="30" y="40" width="44" height="6" rx="3" fill="#334363"/>
+                <path d="M34 43 h36" stroke="#f2f2ee" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="cap"><b>Store</b> · Cable tucks inside</div>
+          </div>
+        </div>
+        <div class="spec-title">PRODUCT SPECIFICATIONS</div>
+        <table class="spec">
+          <tr><td class="k">Model</td><td class="v">LY-HB05-BU | Indigo Mist</td></tr>
+          <tr><td class="k">PD pass-through</td><td class="v">100W in; up to 86W to device (with 100W adapter)</td></tr>
+          <tr><td class="k">HDMI 2.0</td><td class="v">4K @ 60Hz</td></tr>
+          <tr><td class="k">Data ports</td><td class="v">1× USB-C 5Gbps, 2× USB-A 5Gbps</td></tr>
+          <tr><td class="k">Retractable cable</td><td class="v">Built-in 90 mm USB-C cable tucks into the body</td></tr>
+          <tr><td class="k">Size / Material</td><td class="v">112 × 36.4 × 12.7 mm | Aluminum + ABS</td></tr>
+        </table>
+        <div class="legal">
+          <div class="qr">
+            <svg width="74" height="74" viewBox="0 0 25 25" shape-rendering="crispEdges" id="qrsvg"></svg>
+            <div class="ql">WARRANTY</div>
+          </div>
+          <div class="txt">
+            <b>In the box:</b> Hub ×1, Quick guide with warranty card ×1 · <b>Warranty:</b> 1 year<br>
+            <b>WARNING:</b> Keep plastic bags away from children.<br>
+            <b>Imported by</b> Lycander International Co., Ltd. | 4F-2, No. 518, Zhongyuan Rd., Xinzhuang Dist., New Taipei City, Taiwan | +886-2-6608-1000 | service@lycander.tw | www.lycander.tw | <b>Made in China</b>
+          </div>
+        </div>
+      </div>
+      <div class="certband">
+        <div class="cert"><div class="a">BSMI</div><div class="b">R3____<br>Certified</div></div>
+        <div class="certsm">RoHS<span>REACH</span></div>
+        <div class="certsm">FSC®<span>MIX C156881</span></div>
+        <div class="certsm">♻<span>Recycle</span></div>
+        <div class="barcode">
+          <div class="bars"></div>
+          <div class="bn">LY-HB05-BU</div>
+          <div class="ean">EAN-13 sample</div>
+        </div>
+      </div>
+    </div>
+    <div class="face spine-l">
+      <div class="spine dark">
+        <div class="vt">LYCANDER&nbsp;&nbsp;·&nbsp;&nbsp;PORTIQUE 5-in-1 USB-C Hub</div>
+        <div class="vt2">100W PD · 4K 60Hz · 5Gbps ×3 · 90 mm</div>
+      </div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+</div>
+<div class="caption cap-back">BACK</div>
+
+<div class="score-strip">
+  EXPERT SCORING&nbsp;&nbsp;—&nbsp;&nbsp;MARKET <b>D 41 · C 40 · Y 24</b>&nbsp;&nbsp;|&nbsp;&nbsp;VISUAL <b>D 43 · C 42 · Y 23</b>&nbsp;&nbsp;|&nbsp;&nbsp;MARKETING <b>D 43 · C 42 · Y 20</b>&nbsp;&nbsp;|&nbsp;&nbsp;FINAL v1 = D LAYOUT SKELETON + C DARK ANCHOR / USP BADGES + Y BENEFIT COPY
+</div>
+
+<script>
+/* deterministic pseudo-QR for mockup */
+(function(){
+  const svg=document.getElementById('qrsvg');const N=25;
+  function rnd(seed){return function(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}}
+  const r=rnd(42);let cells='';
+  function finder(x,y){cells+=`<rect x="${x}" y="${y}" width="7" height="7" fill="#111"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#111"/>`;}
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){
+    const inF=(x<8&&y<8)||(x>N-9&&y<8)||(x<8&&y>N-9);
+    if(!inF&&r()>0.52)cells+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#111"/>`;
+  }
+  finder(0,0);finder(N-7,0);finder(0,N-7);
+  svg.innerHTML=`<rect width="25" height="25" fill="#fff"/>`+cells;
+})();
+</script>
+</body>
+</html>
