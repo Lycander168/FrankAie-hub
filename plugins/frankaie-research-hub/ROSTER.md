@@ -91,6 +91,7 @@
 |-------|------|
 | `electronics-engineer` | 資深電子工程師 — 單兵完整開發包（快速諮詢用，多人協作改 electronics-team）|
 | `animation-designer` | 資深動畫/視覺設計師 — 單兵創意包（快速方向用，多人協作改 visual-team）|
+| `short-video-director` | 短影音導演 — 參考影片拆解→高轉換腳本→製作包→投放迭代（整支影片操盤）|
 | `product-manager` | 資深產品經理 — 產品決策者：該不該做/做哪版/砍哪些功能/PRD/優先級裁決 |
 | `data-analyst` | 資深資料分析師 — 把流量/轉換/ROAS/評論等數據變成可決策洞察與指標盤 |
 | `security-engineer` | 資深資安/裝置安全 — 韌體/OTA/連網/DTC 站資安與資料隱私（防禦性，技術面）|
@@ -141,6 +142,7 @@
 | 測產品/定價/文案會不會被買 | `consumers-taiwan/usa/japan/europe` |
 | 寫 Listing | `listing-optimizer` |
 | 寫廣告 hook | `ad-hook-writer` |
+| 短影音企劃/腳本/翻拍參考影片 | `short-video-director` |
 | 文案去 AI 味 | `copy-humanizer` |
 | 分析評論找痛點/賣點 | `review-miner` |
 | 做 EDM 序列 | `email-sequence-builder` |
