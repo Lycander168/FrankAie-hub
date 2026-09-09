@@ -56,6 +56,7 @@ LYCANDER AI RESEARCH HUB 的核心 plugin —— 收錄各領域**資深專家 A
 - `email-sequence-builder` — EDM 序列產生器。目標＋受眾階段 → 完整 email 自動化序列（時機 / 主旨 / 內文 / CTA）。
 - `competitor-comparison` — 競品比較表生成器。自家 vs 競品 → 加權比較表＋差異化定位與主打方向。
 - `seo-keyword-expander` — SEO 關鍵字擴展器。種子詞 → 分群分意圖的關鍵字地圖，供 Listing / SEO / 廣告使用。
+- `design-system` — 品牌設計系統管理器。把品牌色 / 字體 / 間距 / 元件收斂成一份可直接套用的變數表（單一真實來源），並提供出稿前品牌合規稽核（含 WCAG 對比度檢查）。讓 `visual-team`、`animation-designer`、`listing-optimizer`、`web-engineer` 的視覺產出共用同一組值，而不是各憑記憶遵守文件規範。
 
 ## 基礎建設 skill（記憶 / 品質 / 驗證）
 
@@ -98,6 +99,7 @@ description: >
 
 ## 版本
 
+- v0.13.0 — 視覺產出鏈打通：① `visual-team` / `animation-designer` 的 Stage 2 新增「產出可視化變體」步驟並加上產製能力邊界表，讓驗證階段交出的是實稿而非描述；② `validation-panel` 新增「受測物合格條件」——視覺驗證一律要求實際稿件，描述型受測物退回補件；③ `listing-optimizer` 的 A+ 模組從「視覺建議（交 visual-team）」改為文案與版面一起交；④ 新增 `design-system`（品牌變數單一真實來源 ＋ 合規稽核）。skill 數 33 → 34。
 - v0.12.0 — 衝刺品質分數（WS1–WS4）：① hub-router 加端到端 worked example ＋「第一次使用」指引；② CI `check_skills.py` 升級為**結構強制**（name=資料夾、description、輸出範本、防臆造守則）＋ 新增 `skills/_TEMPLATE/`（Pattern A/B/C 範本）；③ 補 3 垂直角色 `supply-chain-expert`/`growth-retention`/`web-engineer`；④ 招牌 `validation-panel`（統一 1–5 購買意願 rubric 的 AI 消費者驗證關卡）＋ 4 個 consumers-* 補「模擬非真實數據」聲明。skill 數 29 → 33。
 - v0.11.0 — 品質治理（全 skill 審計後）：修復 10 處壞引用（已不存在的 ecommerce-operator / sourcing-expert，改指向 `channel-sales`／`seo-keyword-expander`／`operations-team`）；hub-router 新增「觸發衝突仲裁表」；plugin README 新增「格式選用指南(Pattern A/B/C)」；根 README 計數/目錄樹更新；新增 `scripts/check_skills.py` 與 `.github/workflows/check-skills.yml`（CI 自動檢查引用完整性、skill 計數與版本一致性）。
 - v0.10.0 — 補強中優先角色缺口：新增 `security-engineer`（裝置/韌體/資料安全，防禦性技術面）與 `channel-sales`（marketplace 帳號健康/經銷批發/B2B/通路價格）；hub-router 動線於開發(安全需求)、上市/投放(通路鋪設)納入兩者；ROSTER 支援專家增至 8 位、新增資安中心與通路中心對照、總數更新為 29 個 skill。

@@ -1,9 +1,9 @@
 # LYCANDER AI RESEARCH HUB — 編制總表 & 路由（Org Chart）
 
 > **核心 100 人**：30 位專家（6 團隊 × 5 人）＋ 70 位 AI 消費者（4 市場）。
-> **支援陣容**：1 總機（hub-router）＋ 11 位支援專家（電子/視覺/產品/數據/資安/通路/供應鏈/成長/網站/財務/法務）＋ 8 個工具型 skill ＋ 3 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質 / validation-panel 驗證）。
+> **支援陣容**：1 總機（hub-router）＋ 11 位支援專家（電子/視覺/產品/數據/資安/通路/供應鏈/成長/網站/財務/法務）＋ 9 個工具型 skill ＋ 3 個基礎建設 skill（planning-with-files 記憶 / quality-gate 品質 / validation-panel 驗證）。
 > 專家負責「把產品做出來、賣出去、服務好」；消費者負責「投錢前先告訴你會不會買」；
-> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶/品質/驗證」。共 33 個 skill。
+> 總機負責「分流」、工具負責「執行產出」、基礎建設負責「記憶/品質/驗證」。共 34 個 skill。
 
 ---
 
@@ -112,6 +112,7 @@
 | `email-sequence-builder` | EDM 自動化序列 |
 | `competitor-comparison` | 競品加權比較＋差異化定位 |
 | `seo-keyword-expander` | 分群分意圖關鍵字地圖 |
+| `design-system` | 品牌設計變數表（色彩/字體/間距/元件）＋ 品牌合規稽核 |
 
 ---
 
@@ -146,6 +147,7 @@
 | 做 EDM 序列 | `email-sequence-builder` |
 | 競品比較 | `competitor-comparison` |
 | 擴充關鍵字 | `seo-keyword-expander` |
+| 定品牌色/字體/間距、檢查視覺一致性、出稿前品牌稽核 | `design-system` |
 
 ---
 
@@ -163,7 +165,7 @@
 | 成長中心 | `growth-retention`（再購/留存/LTV）＋ `data-analyst`（成效量化）＋ `web-engineer`（站台/埋點）|
 | 驗證關卡 | `validation-panel`（統一 1–5 rubric）→ 調度 `consumers-taiwan/usa/japan/europe` |
 | 行銷中心 | `marketing-team` ＋ 行銷工具（hook/listing/seo/EDM）|
-| 視覺中心 | `visual-team` / `animation-designer` |
+| 視覺中心 | `visual-team` / `animation-designer`（創意）＋ `design-system`（品牌變數與稽核）|
 | 營運中心 | `operations-team` |
 | 財務中心 | `financial-analyst` ＋ `pricing-calculator` |
 | 法務 | `legal-ip` |
